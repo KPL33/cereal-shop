@@ -1,0 +1,6 @@
+.header {
+    height: 100px;
+    width: 100vw;
+    background-color: var(--5);
+    flex-shrink: 0;
+}
