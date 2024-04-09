@@ -2,9 +2,13 @@ import express from "express";
 import session from "express-session";
 import sequelize from "./config/connection.js";
 import routes from "./api-routes/routesIndex.js"; // Import the routesIndex.js file
+import cors from "cors"; // Import the cors middleware
 
 // Create an Express application
 const app = express();
+
+// Middleware to enable CORS
+app.use(cors());
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
