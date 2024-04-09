@@ -1,33 +1,26 @@
-// root/client/src/components/Main/Signup/Signup.jsx
-
-import React, { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 import "./signup.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-        const response = await fetch("http://localhost:3000/api/users", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-
-
-      if (!response.ok) {
-        throw new Error("Failed to create user");
-      }
-
-      // User created successfully, handle response here if needed
-      console.log("User created successfully");
+      // Send POST request to backend endpoint
+      const response = await axios.post("http://localhost:3000/users/", {
+        email,
+        password,
+      });
+      console.log("User signed up:", response.data);
+      // Optionally, you can handle successful signup (e.g., display a success message)
     } catch (error) {
-      console.error("Error creating user:", error);
+      console.error("Error signing up:", error.response.data.error);
+      // Handle signup error (e.g., display error message)
+      setError(error.response.data.error);
     }
   };
 
@@ -36,29 +29,25 @@ const SignUp = () => {
       <h2 className="signup-greeting">
         Welcome to Cereal! Please register to start.
       </h2>
-
+      {error && <div className="error">{error}</div>}
       <label>
-        Email:
+        Email:{" "}
         <input
           type="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
       </label>
-
       <label>
-        Password:
+        Password:{" "}
         <input
           type="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
       </label>
-
       <button className="submit" type="submit">
         Submit
       </button>
