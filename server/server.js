@@ -1,8 +1,12 @@
 import express from "express";
 import session from "express-session";
 import sequelize from "./config/connection.js";
-import routes from "./api-routes/routesIndex.js"; // Import the routesIndex.js file
-import cors from "cors"; // Import the cors middleware
+import routes from "./api-routes/routesIndex.js";
+import cors from "cors";
+import dotenv from "dotenv"; // Import dotenv
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Create an Express application
 const app = express();
