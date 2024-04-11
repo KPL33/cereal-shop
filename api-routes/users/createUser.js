@@ -1,4 +1,5 @@
 import express from "express";
+import sendEmail from "../../../utils/emailer.mjs";
 import createUser from "../../controllers/user/createUser.js";
 
 const router = express.Router();
@@ -11,6 +12,9 @@ router.post("/", async (req, res) => {
 
     // Call the user controller function to create the new user
     const newUser = await createUser(userData);
+
+    // Send email to the user
+    sendEmail(newUser.email); // Assuming newUser.email contains the user's email address
 
     // Send a success response with the newly created user
     res.status(201).json(newUser);
