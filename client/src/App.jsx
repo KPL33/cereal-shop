@@ -1,5 +1,6 @@
 // App.jsx
 import { Routes, Route } from "react-router-dom";
+import { AppProvider } from "./context/AppContext";
 
 import Header from "./components/Header/Header";
 import About from "./components/Main/About/About";
@@ -14,25 +15,27 @@ import Footer from "./components/Footer/Footer";
 
 import "./app.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="app-wrapper">
-      <Header />
-      <div className="content-wrapper">
-        <Routes>
-          <Route path="/" element={<Products />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/error" element={<Error />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+    <AppProvider>
+      <div className="app-wrapper">
+        <Header />
+        <div className="content-wrapper">
+          <Routes>
+            <Route path="/" element={<Products />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/error" element={<Error />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </AppProvider>
   );
 }
 

@@ -15,7 +15,10 @@ const sendEmail = (recipientEmail) => {
   transporter.sendMail(
     {
       to: recipientEmail,
-      from: process.env.EMAIL_USER,
+      from: {
+        name: "Against The Grains", // Display name
+        address: process.env.EMAIL_USER, // Email address
+      },
       subject: "Welcome to Against The Grains!",
       html: `<h2 style="color:blue;font-size:20px;">
       <em>Thank you for registering. This is a fictitious company and this email is for demonstration purposes only.</em>
