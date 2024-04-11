@@ -1,5 +1,5 @@
 .products {
-    background-color: blue;
+    background-color: var(--4);
     width: 100vw;
     height: 80px;
 }

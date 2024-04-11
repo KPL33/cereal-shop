@@ -2,7 +2,7 @@
     margin: 10px;
     flex-grow: 1;
     width: 100%;
-    background-color: var(--light);
+    background-color: var(--1);
     display: flex;
     justify-content: center;
     align-items: center;
