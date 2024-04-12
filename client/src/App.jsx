@@ -20,7 +20,7 @@ const App = () => {
     <AppProvider>
       <div className="app-wrapper">
         <Header />
-        <div className="content-wrapper">
+        <div className="page">
           <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/about" element={<About />} />

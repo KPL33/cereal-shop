@@ -1,7 +1,70 @@
 .products {
-    background-color: var(--2);
+    background-color: var(--4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: products;
+    height: 100vh;
 }
 
 .products-title {
-    color: var(--5);
+    grid-area: products-title;
+    font-size: 4rem;
+    color: var(--2);
+}
+
+.product-categories {
+    display: grid;
+    grid-area: product-categories;
+    grid-template-areas:
+    "cereal-card merch-card";
+    justify-content: space-evenly;
+    background-color: var(--5);
+    grid-gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.product-card {
+    background-color: var(--1);
+    display: grid;
+    grid-template-areas:
+    "product-card-title"
+    "product-card-image"
+    "product-card-description";
+    height: 50%;
+    width: 100%;
+    justify-items: center;
+    
+}
+
+.product-card-title, .product-card-description {
+    color: var(--4);
+    text-align: center;
+}
+
+.product-card-title {
+    grid-area: product-card-title;
+    font-size: 3rem;
+}
+
+.product-card-description {
+    grid-area: product-card-description;
+    font-size: 2rem;
+}
+
+.product-card-image {
+    height: 300px;
+    width: 300px;
+    grid-area: product-card-image;
+    width: 80%;
+    border: 2px solid var(--5);
+}
+
+#cereal-card {
+    grid-area: cereal-card;
+}
+
+#merch-card {
+    grid-area: merch-card;
 }
