@@ -39,7 +39,7 @@ const SignUp = () => {
   return (
     <form name="signup" onSubmit={handleSubmit} className="signup-form">
       <h2 className="signup-greeting">
-        Welcome to Cereal! Please register to start.
+        Welcome to Against the Grains! Please register to start eating healthier today!
       </h2>
       {error && <div className="error">{error}</div>}
       <label>

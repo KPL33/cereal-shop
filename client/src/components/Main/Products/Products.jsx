@@ -1,5 +1,5 @@
-import CerealSelect from "./Select/CerealSelect.jsx";
-import ProductSelect from "./Select/ProductSelect.jsx";
+import FoodSelect from "./Select/FoodSelect.jsx";
+import MerchSelect from "./Select/MerchSelect.jsx";
 import "./products.css";
 
 const Products = () => {
@@ -8,18 +8,18 @@ const Products = () => {
       <h1 className="products-title">
         What would you like to check out today?
       </h1>
-      <div className="product-card" id="cereal-card">
+      <div className="product-card" id="food-card">
         <h2 className="product-card-title">Food</h2>
         <img
           className="product-card-image"
-          id="cereal-pic"
+          id="food-pic"
           src=""
-          alt="A picture of a bowl of cereal."
+          alt="A picture of food."
         />
         <h4 className="product-card-description">
           Hungry? You&apos;re in the right place!
         </h4>
-        <CerealSelect className="select-menu" />
+        <FoodSelect className="select-menu" />
       </div>
 
       <div className="product-card" id="merch-card">
@@ -33,7 +33,7 @@ const Products = () => {
         <h4 className="product-card-description">
           Love our products? Spread the word!
         </h4>
-        <ProductSelect className="select-menu" />
+        <MerchSelect className="select-menu" />
       </div>
     </section>
   );

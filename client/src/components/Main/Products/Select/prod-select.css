@@ -1,0 +1,67 @@
+/* .react-dropdown-select {
+    background-color: var(--1);
+}
+
+.react-dropdown-select-item {
+    background-color: var(--3);
+    color: var(--1)
+} */
+
+.react-dropdown-select {
+    background-color: var(--1);
+    color: var(--4);
+    font-size: 1.5rem;
+}
+
+.react-dropdown-select-item-selected {
+    background-color: var(--4);
+}
+
+/* Arrow box */
+/* .e1vudypg0 {
+    background-color: var(--3);
+    color: var(--1);
+} */
+.action-buttons {
+    display: flex;
+    grid-area: action-buttons;
+    background-color: aqua;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#food-quantity {
+    display: flex;
+    align-items: center;
+
+    /* visibility: hidden; */
+}
+
+#food-quantity button {
+    margin: 0 10px;
+    background-color: red;
+    border-radius: 10rem;
+    font-size: 3rem;
+    padding: 0 10px;
+    line-height: 50px;
+    width: 55px;
+}
+
+.count {
+    font-size: 2rem;
+    margin: 0 10px;
+}
+
+.atc {
+    background-color: var(--3);
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    font-family: "Eczar", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.5rem;
+}

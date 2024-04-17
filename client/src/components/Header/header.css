@@ -1,6 +1,44 @@
 .header {
-    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
     width: 100vw;
     background-color: var(--5);
     flex-shrink: 0;
+    padding: 20px;
+}
+
+#logo {
+    height: 200px;
+    width: 200px;
+    background-color: var(--5);
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.company-title {
+    font-size: 6rem;
+    color: var(--1);
+    font-family: "Eczar", serif;
+}
+
+.subtitle {
+    color: var(--3);
+    font-size: 4.5rem;
+    font-family: "Reenie Beanie", cursive;
+}
+
+.subtitle span {
+    text-decoration: underline;
+}
+
+.company-title, .subtitle {
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }

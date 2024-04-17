@@ -7,12 +7,14 @@ const AppProvider = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [searchValid, setSearchValid] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [quantity, setQuantity] = useState(1);
     // atc="add to cart"
     const [atcClicked, setAtcClicked] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const [goBackVisable, setGoBackVisable] = useState(false);
     const [atcButtonClickable, setAtcButtonClickable] = useState(true);
-    const [isNavOpen, setIsNavOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
     
     return (
@@ -24,6 +26,10 @@ const AppProvider = ({ children }) => {
                 setPassword,
                 searchValid,
                 setSearchValid,
+                selectedOption,
+                setSelectedOption,
+                quantity,
+                setQuantity,
                 atcClicked,
                 setAtcClicked,
                 goBackVisable,
@@ -32,7 +38,7 @@ const AppProvider = ({ children }) => {
                 setAtcButtonClickable,
                 error,
                 setError,
-                isNavOpen, setIsNavOpen,
+                isOpen, setIsOpen,
                 loggedIn, setLoggedIn,
             }}
         >

@@ -1,26 +1,22 @@
 import Select from "react-dropdown-select";
-import "./cereal-select.css";
+import "./prod-select.css";
 
 const options = [
   {
     value: 1,
-    label: "0.5 lbs. cereal - $4.99",
+    label: "T-Shirt - $6.99",
   },
   {
     value: 2,
-    label: "2.0 lbs. cereal - $8.99",
+    label: "Coffee Mug - $4.99",
   },
   {
     value: 3,
-    label: "5.0 lbs. cereal - $12.99",
-  },
-  {
-    value: 4,
-    label: "10.0 lbs. cereal - $21.99",
+    label: "Commuter Mug - $10.99",
   },
 ];
 
-const CerealSelect = () => {
+const MerchSelect = () => {
   const handleOnChange = (values) => {
     // Handle selected values
     console.log("Selected values:", values);
@@ -28,16 +24,16 @@ const CerealSelect = () => {
 
   return (
     <div className="action-buttons">
-      <button className="atc">Add to cart</button>
       <Select
         className="select-menu"
         options={options}
         onChange={handleOnChange}
         labelField="label" // Set labelField to "label"
-        searchable={false} // Disable the search functionality
+        searchable={false} // Disable the search functionality, blinking cursor.
       />
+      <button className="atc">Add to cart</button>
     </div>
   );
 };
 
-export default CerealSelect;
+export default MerchSelect;
