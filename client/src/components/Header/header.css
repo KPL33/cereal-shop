@@ -1,36 +1,56 @@
 .header {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     height: auto;
     width: 100vw;
-    background-color: var(--5);
     flex-shrink: 0;
-    padding: 20px;
+    padding: 20px 40px;
+}
+
+.header, .title-container, .company-title {
+    display: flex;
+}
+
+
+.header, #logo {
+    background-color: var(--5);
 }
 
 #logo {
     height: 200px;
     width: 200px;
-    background-color: var(--5);
 }
 
 .title-container {
-    display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 300px;
 }
 
-.company-title {
-    font-size: 6rem;
-    color: var(--1);
-    font-family: "Eczar", serif;
+.against {
+    transform: skew(-.25rad);
 }
+
+.the {
+    font-size: 6rem;
+    color: var(--3);
+    margin-top: 35px;
+
+}
+
+.grains {
+    transform: skew(.25rad);
+}
+
+.against, .grains {
+    color: var(--1);
+}
+
 
 .subtitle {
-    color: var(--3);
-    font-size: 4.5rem;
-    font-family: "Reenie Beanie", cursive;
+    color: var(--2);
+    transform: skew(-.25rad);
+    text-align: center;
 }
 
 .subtitle span {
@@ -39,6 +59,8 @@
 
 .company-title, .subtitle {
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 100;
+    font-family: "active", sans-serif;
     font-style: normal;
+    font-size: 5rem;
 }

@@ -1,3 +1,4 @@
+import bowl from '../../../../src/assets/bowl.jpg';
 import FoodSelect from "./Select/FoodSelect.jsx";
 import MerchSelect from "./Select/MerchSelect.jsx";
 import "./products.css";
@@ -9,12 +10,12 @@ const Products = () => {
         What would you like to check out today?
       </h1>
       <div className="product-card" id="food-card">
-        <h2 className="product-card-title">Food</h2>
+        <h2 className="product-card-title">Cereal</h2>
         <img
           className="product-card-image"
           id="food-pic"
-          src=""
-          alt="A picture of food."
+          src={bowl}
+          alt="A picture of a bowl of cereal."
         />
         <h4 className="product-card-description">
           Hungry? You&apos;re in the right place!

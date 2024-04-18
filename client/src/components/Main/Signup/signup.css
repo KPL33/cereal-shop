@@ -1,7 +1,13 @@
 .signup-greeting {
-    color: aqua;
+    color: var(--1)
 }
 
 .signup-form {
+    display: flex;
+    flex-direction: column;
     background-color: var(--4);
+    height: 50vh;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
 }

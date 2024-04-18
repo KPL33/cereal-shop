@@ -1,21 +1,23 @@
 import "./header.css";
 import atgLogo from "../../../src/assets/atg_logo.svg";
 
-import NavBar from "./NavBar/NavBar.jsx"
+import Nav from "./Nav/Nav.jsx";
 
 const Header = () => {
   return (
     <header className="header">
       <img id="logo" src={atgLogo}></img>
       <div className="title-container">
-        <h1 className="company-title">Against The Grains</h1>
+        <div className="company-title">
+          <h1 className="against">Against</h1>
+          <h1 className="the">the</h1>
+          <h1 className="grains">Grains</h1>
+        </div>
         <h3 className="subtitle">
           The best grain-free cereal ever. P<span>eriod.</span>
         </h3>
       </div>
-      <div id="navbar">
-        <NavBar />
-      </div>
+      <Nav id="nav-sidebar" />
     </header>
   );
 };

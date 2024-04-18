@@ -5,8 +5,9 @@
     grid-template-areas:
     "products-title products-title"
     "food-card merch-card";
-    justify-content: space-around;
-    height: 100%; /* Set the height to 100% of the viewport height */
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100vw;
 }
 
 .products-title {
@@ -36,10 +37,12 @@
     max-height: 700px; /* Set maximum height */
     max-width: 400px; /* Set maximum width */
     justify-items: center;
+    border-radius: 2rem;
+    padding: 0 10px;
 }
 
 .product-card-title, .product-card-description {
-    font-family: "Reenie Beanie", cursive;
+    font-family: "active", san-serif;
     color: var(--5);
     text-align: center;
     font-optical-sizing: auto;
@@ -60,11 +63,12 @@
 }
 
 .product-card-image {
-    height: 300px;
+    height: auto;
     width: 300px;
     grid-area: product-card-image;
     width: 80%;
     border: 2px solid var(--5);
+    border-radius: 2rem;
 }
 
 #food-card {

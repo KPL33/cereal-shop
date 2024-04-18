@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [goBackVisable, setGoBackVisable] = useState(false);
     const [atcButtonClickable, setAtcButtonClickable] = useState(true);
-    const [isOpen, setIsOpen] = useState(false);
+    const [navOpen, setNavOpen] = useState(false);
     const [error, setError] = useState("");
     
     return (
@@ -38,7 +38,7 @@ const AppProvider = ({ children }) => {
                 setAtcButtonClickable,
                 error,
                 setError,
-                isOpen, setIsOpen,
+                navOpen, setNavOpen,
                 loggedIn, setLoggedIn,
             }}
         >

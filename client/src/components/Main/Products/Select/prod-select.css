@@ -1,47 +1,63 @@
-/* .react-dropdown-select {
+/* .react-dropdown-select-item is the Div for items items on List that appears on-click of 'select' drop-downs. */
+.react-dropdown-select-item {
     background-color: var(--1);
+    color: var(--5);
+    border-top: 0.3rem dotted var(--5);
+    margin: 4px 0;
 }
 
-.react-dropdown-select-item {
-    background-color: var(--3);
-    color: var(--1)
-} */
+.react-dropdown-select-item:nth-child(1) {
+    border-top: none;
+}
 
+/*Drop-down menu (main'select' box)*/
 .react-dropdown-select {
     background-color: var(--1);
+    color: var(--3);
+}
+
+#food-quantity button {
+    background-color: var(--2);
+    color: var(--5);
+    cursor: pointer;
+}
+
+#food-quantity button:hover {
+    background-color: var(--1);
+}
+
+/* Text in dropdown menus (says "select") */
+.react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0, .react-dropdown-select {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.75rem;
+}
+
+/* Box surrounding Arrow in select menu */
+.e1vudypg0 {
     color: var(--4);
-    font-size: 1.5rem;
 }
 
-.react-dropdown-select-item-selected {
-    background-color: var(--4);
-}
-
-/* Arrow box */
-/* .e1vudypg0 {
-    background-color: var(--3);
-    color: var(--1);
-} */
 .action-buttons {
     display: flex;
     grid-area: action-buttons;
-    background-color: aqua;
     width: 100%;
     padding: 0 10px;
     justify-content: space-evenly;
     align-items: center;
+    border-top: 1rem dotted var(--5);
+}
+
+.action-buttons div {
+    border-radius: 1rem;
 }
 
 #food-quantity {
     display: flex;
     align-items: center;
-
-    /* visibility: hidden; */
 }
 
 #food-quantity button {
     margin: 0 10px;
-    background-color: red;
     border-radius: 10rem;
     font-size: 3rem;
     padding: 0 10px;
@@ -59,9 +75,9 @@
     width: 40%;
     height: auto;
     padding: 10px;
-    font-family: "Eczar", serif;
+    font-family: "active", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
-    font-style: normal;
-    font-size: 1.5rem;
+    font-size: 3rem;
+    border-radius: 1rem;
 }

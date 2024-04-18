@@ -1,3 +1,7 @@
 .about {
     background-color: var(--1);
+    color: var(--5);
+    font-size: 2rem;
+    padding: 40px;
+    font-family: "Raleway", sans-serif;
 }
