@@ -1,6 +1,7 @@
 // App.jsx
 import { Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
+import useAppContext from "./context/useAppContext";
 
 import Header from "./components/Header/Header";
 import About from "./components/Main/About/About";
@@ -20,7 +21,10 @@ const App = () => {
     <AppProvider>
       <div className="app-wrapper">
         <Header />
-        <div className="page">
+        <main className="page">
+          <div className="logged-in">
+            <h3 className="logged-in-message">You are now logged in!</h3>
+          </div>
           <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/about" element={<About />} />
@@ -32,7 +36,7 @@ const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </AppProvider>

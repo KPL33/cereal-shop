@@ -28,7 +28,7 @@ const Nav = () => {
           About Us
         </Link>
         <Link
-          to="/signup"
+          to="/login"
           className="nav-link"
           style={{ display: loggedIn ? "none" : "block" }}
           onClick={() => setNavOpen(false)}

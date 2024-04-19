@@ -5,6 +5,7 @@
     width: 100vw;
     flex-shrink: 0;
     padding: 20px 40px;
+    z-index: 1;
 }
 
 .header, .title-container, .company-title {

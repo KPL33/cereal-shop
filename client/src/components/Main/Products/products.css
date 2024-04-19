@@ -3,6 +3,7 @@
     display: grid;
     grid-template-rows: 1fr 10fr;
     grid-template-areas:
+    "logged-in-message-container logged-in-message-container"
     "products-title products-title"
     "food-card merch-card";
     justify-content: space-evenly;
@@ -39,6 +40,7 @@
     justify-items: center;
     border-radius: 2rem;
     padding: 0 10px;
+    box-shadow: 0px 4px 8px  var(--5, 0.4);
 }
 
 .product-card-title, .product-card-description {

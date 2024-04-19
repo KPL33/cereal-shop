@@ -6,6 +6,7 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, togglePasswordVisibility] = useState(false);
     const [searchValid, setSearchValid] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
     const [quantity, setQuantity] = useState(1);
@@ -24,6 +25,8 @@ const AppProvider = ({ children }) => {
                 setEmail,
                 password,
                 setPassword,
+                showPassword,
+                togglePasswordVisibility,
                 searchValid,
                 setSearchValid,
                 selectedOption,

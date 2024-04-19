@@ -6,10 +6,63 @@
 
 .page {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
   align-items: center;
   flex-grow: 1;
   background-color: var(--1);
   height: 70vh;
   width: 100vw;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.logged-in {
+  grid-area: logged-in-message-container;
+  background-color: var(--3);
+  text-align: center;
+  border-radius: 0 0 1rem 1rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: auto;
+  animation: slide 5s ease-in-out forwards;
+}
+
+.logged-in-message {
+  font-size: 3rem;
+  font-family: "active", sans-serif;
+  color: var(--1);
+  padding: 10px 40px;
+  transform: scale(1.2, 1);
 }
