@@ -20,8 +20,19 @@ export const getUserById = async (id) => {
   }
 };
 
-// Export an object containing both functions
+// Function to retrieve a user by email
+export const getUserByEmail = async (email) => {
+  try {
+    const user = await User.findOne({ where: { email } }); // Find the user by email in the database
+    return user; // Return the retrieved user
+  } catch (error) {
+    throw error; // Throw any errors encountered during retrieval
+  }
+};
+
+// Export an object containing all functions
 export default {
   getAllUsers,
   getUserById,
+  getUserByEmail,
 };

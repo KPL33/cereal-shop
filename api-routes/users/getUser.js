@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllUsers, getUserById } from "../../controllers/user/getUser.js";
+import { getAllUsers, getUserById, getUserByEmail } from "../../controllers/user/getUser.js";
 
 const router = express.Router();
 
@@ -25,6 +25,20 @@ router.get("/:id", async (req, res) => {
     return res.status(200).json(user); // Return the response immediately
   } catch (error) {
     console.error("Error getting user by ID:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/email/:email", async (req, res) => {
+  const { email } = req.params;
+  try {
+    const user = await getUserByEmail(email);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json(user); // Return the response immediately
+  } catch (error) {
+    console.error("Error getting user by email:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
