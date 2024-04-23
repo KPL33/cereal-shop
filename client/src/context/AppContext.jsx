@@ -13,40 +13,45 @@ const AppProvider = ({ children }) => {
     // atc="add to cart"
     const [atcClicked, setAtcClicked] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [signoutClicked, setSignoutClicked] = useState(false);
     const [goBackVisable, setGoBackVisable] = useState(false);
     const [atcButtonClickable, setAtcButtonClickable] = useState(true);
     const [navOpen, setNavOpen] = useState(false);
     const [error, setError] = useState("");
     
     return (
-        <AppContext.Provider
-            value={{
-                email,
-                setEmail,
-                password,
-                setPassword,
-                showPassword,
-                togglePasswordVisibility,
-                searchValid,
-                setSearchValid,
-                selectedOption,
-                setSelectedOption,
-                quantity,
-                setQuantity,
-                atcClicked,
-                setAtcClicked,
-                goBackVisable,
-                setGoBackVisable,
-                atcButtonClickable,
-                setAtcButtonClickable,
-                error,
-                setError,
-                navOpen, setNavOpen,
-                loggedIn, setLoggedIn,
-            }}
-        >
-            {children}
-        </AppContext.Provider>
+      <AppContext.Provider
+        value={{
+          email,
+          setEmail,
+          password,
+          setPassword,
+          showPassword,
+          togglePasswordVisibility,
+          searchValid,
+          setSearchValid,
+          selectedOption,
+          setSelectedOption,
+          quantity,
+          setQuantity,
+          atcClicked,
+          setAtcClicked,
+          goBackVisable,
+          setGoBackVisable,
+          atcButtonClickable,
+          setAtcButtonClickable,
+          error,
+          setError,
+          navOpen,
+          setNavOpen,
+          loggedIn,
+          setLoggedIn,
+          signoutClicked,
+          setSignoutClicked,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
     );
 };
 

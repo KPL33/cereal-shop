@@ -1,4 +1,4 @@
-// App.jsx
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import useAppContext from "./context/useAppContext";
@@ -19,28 +19,48 @@ import "./app.css";
 const App = () => {
   return (
     <AppProvider>
-      <div className="app-wrapper">
-        <Header />
-        <main className="page">
-          <div className="logged-in">
-            <h3 className="logged-in-message">You are now logged in!</h3>
-          </div>
-          <Routes>
-            <Route path="/" element={<Products />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/error" element={<Error />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppContent />
     </AppProvider>
   );
-}
+};
+
+const AppContent = () => {
+  const { loggedIn, signoutClicked } = useAppContext();
+
+  useEffect(() => {
+    console.log("loggedIn:", loggedIn);
+    console.log("signoutClicked:", signoutClicked);
+  }, [loggedIn, signoutClicked]);
+
+  return (
+    <div className="app-wrapper">
+      <Header />
+      <main className="page">
+        {loggedIn && !signoutClicked && (
+          <div className="logged-in-out">
+            <h3 className="logged-in-out-message">You are now logged in!</h3>
+          </div>
+        )}
+        {signoutClicked && (
+          <div className="logged-in-out">
+            <h3 className="logged-in-out-message">You are now signed out!</h3>
+          </div>
+        )}
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

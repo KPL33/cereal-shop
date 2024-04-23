@@ -4,12 +4,8 @@ import Hamburger from "hamburger-react";
 import "./nav.css";
 
 const Nav = () => {
-  const { loggedIn, setLoggedIn, navOpen, setNavOpen } = useAppContext();
+  const { loggedIn, setLoggedIn, navOpen, setNavOpen, setSignoutClicked } = useAppContext();
 
-  const handleSignOut = () => {
-    // Handle sign-out logic
-    setLoggedIn(false);
-  };
 
   return (
     <div className={`sidebar ${navOpen ? "open" : ""}`}>
@@ -59,11 +55,12 @@ const Nav = () => {
           Contact Us
         </Link>
         <Link
-          to="/signout"
+          to="/"
           className="nav-link"
           style={{ display: loggedIn ? "block" : "none" }}
           onClick={() => {
-            handleSignOut();
+            setLoggedIn(false);
+            setSignoutClicked(true);
             setNavOpen(false);
           }}
         >

@@ -23,7 +23,7 @@ const options = [
 ];
 
 const Food = () => {
-  const { quantity, setQuantity, selectedOption, setSelectedOption } = useContext(AppContext); // Access the context values
+  const { quantity, setQuantity, selectedOption, setSelectedOption, loggedIn } = useContext(AppContext); // Access the context values
 
   const handleOnChange = (values) => {
     // Handle selected values

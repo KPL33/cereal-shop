@@ -45,7 +45,7 @@
   }
 }
 
-.logged-in {
+.logged-in-out {
   grid-area: logged-in-message-container;
   background-color: var(--3);
   text-align: center;
@@ -59,7 +59,7 @@
   animation: slide 5s ease-in-out forwards;
 }
 
-.logged-in-message {
+.logged-in-out-message {
   font-size: 3rem;
   font-family: "active", sans-serif;
   color: var(--1);

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom"; // Import Redirect
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
+import { setAuthenticated } from "../../../../../utils/auth.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./login.css";
 
@@ -19,25 +20,29 @@ const Login = () => {
   } = useAppContext();
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    console.log(loggedIn);
-  }, [loggedIn]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:3000/users", {
-        email,
-        password,
-      });
-      console.log("User logged in:", response.data);
-      setLoggedIn(true);
-    } catch (error) {
-      console.error(
-        "Error logging in. Please double-check that user and password are correct.",
-        error.response.data.error
+      // Send a GET request to the server to authenticate the user
+      const response = await axios.get(
+        `http://localhost:3000/users/email/${email}`
       );
-      setError(error.response.data.error);
+
+      // If user not found or password doesn't match, set error message
+      if (!response.data || response.data.password !== password) {
+        setError("Invalid email or password");
+        return;
+      }
+
+      // If authentication is successful, set loggedIn state to true
+      setLoggedIn(true);
+      // Set authentication status in localStorage
+      setAuthenticated();
+      console.log("User logged in:", response.data);
+    } catch (error) {
+      // Handle server errors
+      console.error("Error logging in:", error);
+      setError("Internal server error");
     }
   };
 
@@ -46,7 +51,6 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  // Redirect to products page if logged in
   if (loggedIn) {
     return <Navigate to="/products" />;
   }

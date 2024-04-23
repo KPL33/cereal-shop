@@ -3,40 +3,38 @@ import session from "express-session";
 import sequelize from "./config/connection.js";
 import routes from "./api-routes/routesIndex.js";
 import cors from "cors";
-import dotenv from "dotenv"; // Import dotenv
+import dotenv from "dotenv";
 
-// Load environment variables from .env file
 dotenv.config();
 
-// Create an Express application
 const app = express();
 
-// Middleware to enable CORS
 app.use(cors());
-
-// Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Middleware for session management
+// Set up session middleware
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Set secure flag based on environment
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      sameSite: "lax", // Adjust as needed
+    },
   })
 );
 
-// Mount the routes defined in routesIndex.js at the root level
 app.use("/", routes);
 
-// Start the server
 const port = process.env.PORT || 3000;
+
 sequelize.sync().then(() => {
-  // Sync the sequelize models with the database before starting the server
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
 });
 
-// Export the app instance for testing purposes
 export default app;
