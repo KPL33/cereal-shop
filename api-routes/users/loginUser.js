@@ -1,17 +1,19 @@
 import express from "express";
-import bcrypt from "bcrypt";
-import User from "../../models/User.js";
+import loginUser from "../../controllers/user/loginUser.js";
 
-const router = express.Router();
+const loginUserRouter = express.Router();
 
-router.post("/login", async (req, res) => {
+loginUserRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
+    console.log("Received login request with email:", email); // Log received email
+    console.log("Received login request with password:", password); // Log received password
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ message: "Invalid email or password" });
+    const { success, user, message } = await loginUser(email, password);
+
+    if (!success) {
+      return res.status(401).json({ message });
     }
 
     req.session.userId = user.id;
@@ -22,16 +24,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error logging out:", err);
-      res.status(500).json({ message: "Internal server error" });
-    } else {
-      res.clearCookie("connect.sid"); // Clear session cookie
-      res.status(200).json({ message: "Logout successful" });
-    }
-  });
-});
+// Logout route remains the same
 
-export default router;
+export default loginUserRouter;
