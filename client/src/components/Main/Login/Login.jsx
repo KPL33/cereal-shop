@@ -23,22 +23,31 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send a GET request to the server to authenticate the user
-      const response = await axios.get(
-        `http://localhost:3000/users/email/${email}`
-      );
+      console.log("Submitting login form...");
 
-      // If user not found or password doesn't match, set error message
-      if (!response.data || response.data.password !== password) {
-        setError("Invalid email or password");
-        return;
-      }
+      // Log the current values of email and password
+      console.log("Email:", email);
+      console.log("Password:", password);
+
+      // Send a POST request to the server to authenticate the user
+      const response = await axios.post(`http://localhost:3000/users/login`, {
+        email: email,
+        password: password,
+      });
+
+      console.log("Response from server:", response);
 
       // If authentication is successful, set loggedIn state to true
-      setLoggedIn(true);
-      // Set authentication status in localStorage
-      setAuthenticated();
-      console.log("User logged in:", response.data);
+      if (response.status === 200) {
+        console.log("Login successful!");
+        setLoggedIn(true);
+        // Set authentication status in localStorage
+        setAuthenticated();
+        console.log("User logged in:", response.data);
+      } else {
+        console.log("Login failed:", response.statusText);
+        setError("Invalid email or password");
+      }
     } catch (error) {
       // Handle server errors
       console.error("Error logging in:", error);

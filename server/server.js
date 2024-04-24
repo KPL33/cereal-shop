@@ -27,6 +27,7 @@ app.use(
   })
 );
 
+// Use routes from routesIndex.js
 app.use("/", routes);
 
 const port = process.env.PORT || 3000;
