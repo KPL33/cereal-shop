@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
 import { setAuthenticated } from "../../../../../utils/auth.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./login.css";
+import "./login-signup.css";
 
 const Login = () => {
   const {
@@ -16,32 +15,20 @@ const Login = () => {
     setEmail,
     password,
     setPassword,
-    togglePasswordVisibility,
+    showPassword,
+    setShowPassword,
   } = useAppContext();
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Submitting login form...");
-
-      // Log the current values of email and password
-      console.log("Email:", email);
-      console.log("Password:", password);
-
-      // Send a POST request to the server to authenticate the user
       const response = await axios.post(`http://localhost:3000/users/login`, {
         email: email,
         password: password,
       });
 
-      console.log("Response from server:", response);
-
-      // If authentication is successful, set loggedIn state to true
       if (response.status === 200) {
-        console.log("Login successful!");
         setLoggedIn(true);
-        // Set authentication status in localStorage
         setAuthenticated();
         console.log("User logged in:", response.data);
       } else {
@@ -55,24 +42,19 @@ const Login = () => {
     }
   };
 
-  const handleTogglePasswordVisibility = () => {
-    togglePasswordVisibility();
-    setShowPassword(!showPassword);
-  };
-
   if (loggedIn) {
     return <Navigate to="/products" />;
   }
 
   return (
-    <form name="login" onSubmit={handleSubmit} className="login-form">
+    <form name="login" onSubmit={handleSubmit} className="login-signup-form">
       <h2 className="log-greeting">
         Returning customer? Welcome back!
         <br />
         Please log-in to view your cart or make additional orders.
       </h2>
       {error && <div className="error">{error}</div>}
-      <label>
+      <label className="field-title">
         Email:{" "}
         <input
           type="email"
@@ -81,7 +63,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <label>
+      <label className="field-title">
         Password:{" "}
         <input
           type={showPassword ? "text" : "password"}
@@ -91,7 +73,7 @@ const Login = () => {
         />
         <span
           className="toggle-password"
-          onClick={handleTogglePasswordVisibility}
+          onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>

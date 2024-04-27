@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { setAuthenticated } from "../../../../../utils/auth.js";
 import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
-import "./signup.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import "../Login/login-signup.css";
 
 const SignUp = () => {
   const {
@@ -13,11 +15,9 @@ const SignUp = () => {
     setEmail,
     password,
     setPassword,
+    showPassword,
+    setShowPassword,
   } = useAppContext();
-
-  useEffect(() => {
-    console.log(loggedIn);
-  }, [loggedIn]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +29,7 @@ const SignUp = () => {
       });
       console.log("User signed up:", response.data);
       setLoggedIn(true);
+      setAuthenticated();
     } catch (error) {
       console.error("Error signing up:", error.response.data.error);
       // Handle signup error (e.g., display error message)
@@ -36,13 +37,18 @@ const SignUp = () => {
     }
   };
 
+  if (loggedIn) {
+    return <Navigate to="/products" />;
+  }
+
   return (
-    <form name="signup" onSubmit={handleSubmit} className="signup-form">
-      <h2 className="signup-greeting">
-        Welcome to Against the Grains! Please register to start eating healthier today!
+    <form name="signup" onSubmit={handleSubmit} className="login-signup-form">
+      <h2 className="log-greeting">
+        Welcome to Against the Grains! Please register to start eating healthier
+        today!
       </h2>
       {error && <div className="error">{error}</div>}
-      <label>
+      <label className="field-title">
         Email:{" "}
         <input
           type="email"
@@ -51,14 +57,20 @@ const SignUp = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <label>
+      <label className="field-title">
         Password:{" "}
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <span
+          className="toggle-password"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
       </label>
       <button className="submit" type="submit">
         Submit

@@ -1,28 +1,26 @@
 .products {
     background-color: var(--1);
-    display: grid;
-    grid-template-rows: 1fr 10fr;
-    grid-template-areas:
-    "logged-in-message-container logged-in-message-container"
-    "products-title products-title"
-    "food-card merch-card";
-    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    width: 100vw;
+    width: 100%;
+}
+
+.product-card-container {
+    display: flex;
+    justify-content: space-around;
 }
 
 .products-title {
     text-align: center;
-    grid-area: products-title;
     font-size: 4rem;
     color: var(--5);
-    height: auto;
     align-self: center;
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .product-card {
@@ -33,10 +31,10 @@
     "product-card-image"
     "product-card-description"
     "action-buttons";
-    height: 70vw; /* Set height proportional to the viewport width */
-    width: 40vw; /* Set width proportional to the viewport width */
-    max-height: 700px; /* Set maximum height */
-    max-width: 400px; /* Set maximum width */
+    height: 70vw;
+    width: 40vw;
+    max-height: 700px;
+    max-width: 400px;
     justify-items: center;
     border-radius: 2rem;
     padding: 0 10px;

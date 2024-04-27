@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Select from "react-dropdown-select";
+import { AppContext } from "../../../../context/AppContext";
 import "./prod-select.css";
-import { AppContext } from "../../../../context/AppContext"; // Import the AppContext
 
 const options = [
   {
@@ -23,13 +23,19 @@ const options = [
 ];
 
 const Food = () => {
-  const { quantity, setQuantity, selectedOption, setSelectedOption, loggedIn } = useContext(AppContext); // Access the context values
+  const {
+    quantity,
+    setQuantity,
+    selectedOption,
+    setSelectedOption,
+    loggedIn,
+    atcClicked,
+    setAtcClicked,
+  } = useContext(AppContext); // Access the context values
 
   const handleOnChange = (values) => {
-    // Handle selected values
-    console.log("Selected values:", values);
-    setSelectedOption(values.length > 0 ? values[0] : null); // Update selectedOption in context
-    setQuantity(1); // Reset quantity when an option is selected
+    setSelectedOption(values.length > 0 ? values[0] : null);
+    setQuantity(1);
   };
 
   const decrementQuantity = () => {
@@ -42,23 +48,43 @@ const Food = () => {
     setQuantity(quantity + 1);
   };
 
+  const handleAddToCart = () => {
+    if (loggedIn) {
+      // Handle adding item to cart (e.g., call an API to add to cart)
+      if (selectedOption) {
+        console.log("Adding to cart:", selectedOption.label);
+      }
+    } else {
+      // Redirect user to login page or display message
+      console.log("User must log in to add to cart");
+    }
+  };
+
   return (
     <div className="action-buttons">
       <Select
         className="select-menu"
         options={options}
         onChange={handleOnChange}
-        labelField="label" // Set labelField to "label"
-        searchable={false} // Disable the search functionality
+        labelField="label"
+        searchable={false}
       />
-      {selectedOption && ( // Render .food-quantity only when selectedOption is truthy
+      {selectedOption && (
         <div id="food-quantity">
           <button onClick={decrementQuantity}>–</button>
           <span className="count">{quantity}</span>
           <button onClick={incrementQuantity}>+</button>
         </div>
       )}
-      <button className="atc">Add to cart</button>
+      <button
+        className="atc"
+        onClick={handleAddToCart}
+        disabled={!loggedIn}
+        style={{ opacity: loggedIn ? 1 : 0.8,
+        fontSize: "2rem" }}
+      >
+        {loggedIn ? "Add to cart" : "Login to add to cart"}
+      </button>
     </div>
   );
 };

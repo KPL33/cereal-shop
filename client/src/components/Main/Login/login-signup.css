@@ -1,0 +1,39 @@
+.login-signup-form {
+  width: 80%;
+  height: auto;
+  background-color: var(--2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login-signup-form,
+.submit {
+  font-size: 4rem;
+  font-family: "Raleway", cursive;
+}
+
+.login-signup-form label {
+  width: 100%;
+}
+
+.login-signup-form input {
+  width: 50%;
+  height: 8rem;
+}
+
+.log-greeting {
+  font-size: 5rem;
+  color: var(--veryDark);
+  text-align: center;
+}
+
+.field-title {
+  font-family: "active", sans-serif;
+  color: var(--4);
+}
+
+.login-signup-form, .submit {
+  color: var(--5);
+}

@@ -36,16 +36,18 @@ const AppContent = () => {
     <div className="app-wrapper">
       <Header />
       <main className="page">
-        {loggedIn && !signoutClicked && (
-          <div className="logged-in-out">
-            <h3 className="logged-in-out-message">You are now logged in!</h3>
-          </div>
-        )}
-        {signoutClicked && (
-          <div className="logged-in-out">
-            <h3 className="logged-in-out-message">You are now signed out!</h3>
-          </div>
-        )}
+        <div className="logged-in-out-container">
+          {loggedIn && !signoutClicked && (
+            <div className="logged-in-out">
+              <h3 className="logged-in-out-message">You are now logged in!</h3>
+            </div>
+          )}
+          {signoutClicked && (
+            <div className="logged-in-out">
+              <h3 className="logged-in-out-message">You are now signed out!</h3>
+            </div>
+          )}
+        </div>
         <Routes>
           <Route path="/" element={<Products />} />
           <Route path="/about" element={<About />} />
