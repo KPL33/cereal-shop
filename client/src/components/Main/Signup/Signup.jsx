@@ -42,36 +42,52 @@ const SignUp = () => {
   }
 
   return (
-    <form name="signup" onSubmit={handleSubmit} className="login-signup-form">
+    <form name="signup"
+    onSubmit={handleSubmit} className="login-signup-form"
+    id ="signup-form"
+    >
       <h2 className="log-greeting">
         Welcome to Against the Grains! Please register to start eating healthier
         today!
       </h2>
-      {error && <div className="error">{error}</div>}
-      <label className="field-title">
-        Email:{" "}
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label className="field-title">
-        Password:{" "}
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+
+      <div className="fields-container">
+        <div className="form-fields">
+          <label className="field-title">
+            Email:{" "}
+            <input
+              id="email-input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+
+          <label className="field-title">
+            Password:{" "}
+            <input
+              // id="password-input" remove if doesn't affect form functionality.
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+
         <span
           className="toggle-password"
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
-      </label>
+      </div>
+
+      <div className="error-container">
+        {error && <div className="error">{error}</div>}
+      </div>
+
       <button className="submit" type="submit">
         Submit
       </button>

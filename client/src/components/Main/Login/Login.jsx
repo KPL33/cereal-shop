@@ -38,7 +38,7 @@ const Login = () => {
     } catch (error) {
       // Handle server errors
       console.error("Error logging in:", error);
-      setError("Internal server error");
+      setError("Invalid email or password.");
     }
   };
 
@@ -53,40 +53,53 @@ const Login = () => {
         <br />
         Please log-in to view your cart or make additional orders.
       </h2>
-      {error && <div className="error">{error}</div>}
-      <label className="field-title">
-        Email:{" "}
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label className="field-title">
-        Password:{" "}
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+
+      <div className="fields-container">
+        <div className="form-fields">
+          <label className="field-title">
+            Email:{" "}
+            <input
+              id="email-input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+
+          <label className="field-title">
+            Password:{" "}
+            <input
+              // id="password-input" remove if doesn't affect form functionality.
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
+
         <span
           className="toggle-password"
           onClick={() => setShowPassword(!showPassword)}
         >
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
-      </label>
+      </div>
+
+      <div className="error-container">
+        {error && <div className="error">{error}</div>}
+      </div>
+
       <button className="submit" type="submit">
         Submit
       </button>
-      <div className="signup-container">
-        <h3 className="signup-greeting">New around here?</h3>
-        <Link className="signup-link" to="/signup">
-          Sign-Up!
-        </Link>
-      </div>
+
+      <h4 className="signup-greeting">New around here?</h4>
+
+      <Link className="signup-link" to="/signup">
+        <h4>Sign-Up!</h4>
+      </Link>
     </form>
   );
 };
