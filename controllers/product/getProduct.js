@@ -1,10 +1,12 @@
-import Product from "../../models/Product.js";
+import ProductModel from "../../models/Product.js";
+
+const { Product } = ProductModel;
 
 const calculateValue = (product) => {
   return parseFloat(product.price) * product.amountInStock;
 };
 
-export const getAllProducts = async () => {
+const getAllProducts = async () => {
   try {
     const products = await Product.findAll();
     // Manually calculate the value for each product
@@ -18,7 +20,7 @@ export const getAllProducts = async () => {
   }
 };
 
-export const getProductById = async (id) => {
+const getProductById = async (id) => {
   try {
     const product = await Product.findByPk(id);
     // Manually calculate the value for the product
@@ -27,4 +29,9 @@ export const getProductById = async (id) => {
   } catch (error) {
     throw error;
   }
+};
+
+export default {
+  getAllProducts,
+  getProductById,
 };

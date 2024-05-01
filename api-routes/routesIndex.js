@@ -11,6 +11,11 @@ import editProductRouter from "./products/editProduct.js";
 import getProductRouter from "./products/getProduct.js";
 import deleteProductRouter from "./products/deleteProduct.js";
 
+import createInCart from "./cart/createInCart.js";
+import editInCart from "./cart/editInCart.js";
+import getInCart from "./cart/getInCart.js";
+import deleteInCart from "./cart/deleteInCart.js";
+
 // Create a router
 const router = express.Router();
 
@@ -26,6 +31,13 @@ router.use("/products", createProductRouter);
 router.use("/products", editProductRouter);
 router.use("/products", getProductRouter);
 router.use("/products", deleteProductRouter);
+
+// Use cart routes
+router.use("/cart", createInCart);
+router.use("/cart", editInCart);
+router.use("/cart", getInCart);
+router.use("/cart", deleteInCart);
+
 
 // Export the router
 export default router;

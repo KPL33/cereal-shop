@@ -1,7 +1,9 @@
-import Product from "../../models/Product.js";
+import ProductModel from "../../models/Product.js";
+
+const { Product } = ProductModel;
 
 // Function to create a new product
-export const createProduct = async (productData) => {
+const createProduct = async (productData) => {
   try {
     // Validate the required fields
     if (!productData.name) {
@@ -26,3 +28,5 @@ export const createProduct = async (productData) => {
     throw error;
   }
 };
+
+export default createProduct;

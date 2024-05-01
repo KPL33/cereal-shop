@@ -1,6 +1,8 @@
-import Product from "../../models/Product.js";
+import ProductModel from "../../models/Product.js";
 
-export const deleteProductById = async (productId) => {
+const { Product } = ProductModel;
+
+const deleteProductById = async (productId) => {
   try {
     const deletedProduct = await Product.destroy({
       where: {
@@ -18,3 +20,5 @@ export const deleteProductById = async (productId) => {
     throw new Error("Internal server error");
   }
 };
+
+export default deleteProductById;

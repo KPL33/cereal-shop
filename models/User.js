@@ -17,12 +17,33 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     timestamps: true,
     modelName: "user",
+    tableName: "users",
   }
 );
 
-export default User;
+const associate = (models) => {
+  const { Product, Cart, Purchase } = models;
+
+  User.belongsToMany(Product, { through: "Cart", foreignKey: "userId" });
+  User.hasMany(Purchase, { foreignKey: "userId" });
+  User.hasOne(Cart, { foreignKey: "userId" });
+};
+
+export default { User, associate };
