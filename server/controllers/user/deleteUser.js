@@ -1,4 +1,6 @@
-import User from "../../models/User.js";
+import UserModel from "../../models/User.js";
+
+const { User } = UserModel;
 
 // Function to delete a user by ID
 export const deleteUserById = async (userId) => {

@@ -1,5 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection.js";
+import Cart from "./Cart.js"; // Import Cart model
+import Purchase from "./Purchase.js"; // Import Purchase model
 
 class Product extends Model {}
 
@@ -25,8 +27,8 @@ Product.init(
     },
     amountInStock: {
       type: DataTypes.INTEGER,
-      allowNull: true, // Allow null because we'll handle default value in the hook
-      defaultValue: 0, // Default value for amountInStock
+      allowNull: true,
+      defaultValue: 0,
     },
     category: {
       type: DataTypes.STRING,
@@ -35,7 +37,7 @@ Product.init(
     value: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      defaultValue: 0, // Default value for value
+      defaultValue: 0,
     },
   },
   {
@@ -43,20 +45,17 @@ Product.init(
     timestamps: false,
     modelName: "product",
     underscored: true,
-    hooks: {
-      // Hook called before a product is saved or updated
-      beforeSave: async (product) => {
-        // Ensure both price and amountInStock are not null or undefined
-        if (product.price !== null && product.amountInStock !== null) {
-          // Calculate the value based on price and amountInStock
-          product.value = parseFloat(product.price) * product.amountInStock;
-        } else {
-          // If either price or amountInStock is null or undefined, set value to 0
-          product.value = 0;
-        }
-      },
-    },
   }
 );
 
-export default Product;
+const associate = (models) => {
+  const { User } = models;
+
+  // Association with Cart model (many-to-many)
+  Product.belongsToMany(User, { through: Cart, foreignKey: "productId" });
+
+  // Association with Purchase model (many-to-many)
+  Product.belongsToMany(User, { through: Purchase, foreignKey: "productId" });
+};
+
+export default { Product, associate };

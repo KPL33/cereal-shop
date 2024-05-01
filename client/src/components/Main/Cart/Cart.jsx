@@ -3,7 +3,17 @@ import "./cart.css";
 const Cart = () => {
   return (
     <section className="cart">
-      <h1 className>Cart</h1>
+      <div className="cart-container">
+        <h2 className="cart-title">Here&apos;s your cart!</h2>
+
+        <div id="in-cart">
+          
+        </div>
+
+        <button className="checkout-button">
+          <h4 className="checkout-text">Check out!</h4>
+        </button>
+      </div>
     </section>
   );
 };

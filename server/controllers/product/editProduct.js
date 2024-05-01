@@ -1,6 +1,8 @@
-import Product from "../../models/Product.js";
+import ProductModel from "../../models/Product.js";
 
-export const editProduct = async (productId, productData) => {
+const { Product } = ProductModel;
+
+const editProduct = async (productId, productData) => {
   try {
     // Validate if the product exists
     const productToUpdate = await Product.findByPk(productId);
@@ -35,3 +37,5 @@ export const editProduct = async (productId, productData) => {
     throw error;
   }
 };
+
+export default editProduct;

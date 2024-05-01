@@ -71,7 +71,7 @@
 }
 
 .atc {
-    background-color: var(--3);
+    background-color: var(--1);
     width: 40%;
     height: auto;
     padding: 10px;
@@ -80,4 +80,10 @@
     font-weight: 500;
     font-size: 3rem;
     border-radius: 1rem;
+}
+
+.atc:hover {
+    background-color: var(--3);
+    color: var(--1);
+    cursor: pointer;
 }

@@ -1,6 +1,14 @@
 import { useContext } from "react";
-import Select from "react-dropdown-select";
 import { AppContext } from "../../../../context/AppContext";
+import Select from "react-dropdown-select";
+
+import {
+  decrementAtc,
+  incrementAtc,
+  handleFoodSelection,
+  handleAddToCart,
+} from "../../../../../../utils/addToCart.js";
+
 import "./prod-select.css";
 
 const options = [
@@ -22,42 +30,29 @@ const options = [
   },
 ];
 
-const Food = () => {
+const FoodSelect = () => {
   const {
     quantity,
     setQuantity,
-    selectedOption,
-    setSelectedOption,
+    selectedFood,
+    setSelectedFood,
     loggedIn,
-    atcClicked,
-    setAtcClicked,
-  } = useContext(AppContext); // Access the context values
+  } = useContext(AppContext);
 
   const handleOnChange = (values) => {
-    setSelectedOption(values.length > 0 ? values[0] : null);
-    setQuantity(1);
+    handleFoodSelection(values, setSelectedFood, setQuantity);
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const handleDecrement = () => {
+    decrementAtc(quantity, setQuantity);
   };
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+  const handleIncrement = () => {
+    incrementAtc(quantity, setQuantity);
   };
 
-  const handleAddToCart = () => {
-    if (loggedIn) {
-      // Handle adding item to cart (e.g., call an API to add to cart)
-      if (selectedOption) {
-        console.log("Adding to cart:", selectedOption.label);
-      }
-    } else {
-      // Redirect user to login page or display message
-      console.log("User must log in to add to cart");
-    }
+  const handleCartClick = () => {
+    handleAddToCart(loggedIn, selectedFood);
   };
 
   return (
@@ -69,19 +64,18 @@ const Food = () => {
         labelField="label"
         searchable={false}
       />
-      {selectedOption && (
+      {selectedFood && (
         <div id="food-quantity">
-          <button onClick={decrementQuantity}>–</button>
+          <button onClick={handleDecrement}>–</button>
           <span className="count">{quantity}</span>
-          <button onClick={incrementQuantity}>+</button>
+          <button onClick={handleIncrement}>+</button>
         </div>
       )}
       <button
         className="atc"
-        onClick={handleAddToCart}
+        onClick={handleCartClick}
         disabled={!loggedIn}
-        style={{ opacity: loggedIn ? 1 : 0.8,
-        fontSize: "2rem" }}
+        style={{ opacity: loggedIn ? 1 : 0.8, fontSize: "2rem" }}
       >
         {loggedIn ? "Add to cart" : "Login to add to cart"}
       </button>
@@ -89,4 +83,4 @@ const Food = () => {
   );
 };
 
-export default Food;
+export default FoodSelect;

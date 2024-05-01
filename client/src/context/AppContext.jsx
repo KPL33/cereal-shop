@@ -8,8 +8,8 @@ const AppProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Moved from the Login component
   // atc="add to cart"
-  const [atcClicked, setAtcClicked] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [selectedMerch, setSelectedMerch] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
@@ -33,10 +33,10 @@ const AppProvider = ({ children }) => {
         setPassword,
         showPassword, // Expose showPassword state to components
         setShowPassword, // Expose setShowPassword function to components
-        atcClicked,
-        setAtcClicked,
-        selectedOption,
-        setSelectedOption,
+        selectedFood,
+        setSelectedFood,
+        selectedMerch,
+        setSelectedMerch,
         quantity,
         setQuantity,
         goBackVisable,
