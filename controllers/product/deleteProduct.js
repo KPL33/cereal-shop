@@ -1,6 +1,4 @@
-import ProductModel from "../../models/Product.js";
-
-const { Product } = ProductModel;
+import Product from "../../models/Product.js";
 
 const deleteProductById = async (productId) => {
   try {

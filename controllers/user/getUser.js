@@ -1,6 +1,4 @@
-import UserModel from "../../models/User.js";
-
-const { User } = UserModel;
+import User from "../../models/User.js";
 
 // Function to retrieve all users
 export const getAllUsers = async () => {

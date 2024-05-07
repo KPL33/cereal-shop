@@ -1,51 +1,35 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection.js";
 import User from "./User.js";
-import Purchase from "./Purchase.js";
+import Product from "./Product.js";
 
 class Cart extends Model {}
 
 Cart.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+    // Define model attributes
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1,
-    },
-    itemTotal: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    cartTotal: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
+    // Add other attributes as needed
   },
   {
     sequelize,
-    modelName: "cart",
-    timestamps: false,
+    timestamps: true,
+    modelName: "Cart",
+    tableName: "carts",
   }
 );
 
-const associate = (models) => {
-  const { User, Purchase } = models;
-
-  // Define associations
-  Cart.belongsTo(User, { foreignKey: "userId", as: "user" }); // Each cart belongs to a user
-  Cart.belongsTo(Purchase, { foreignKey: "purchaseId", as: "purchase" }); // Assuming a Cart is associated with a Purchase
-
-  // Additional associations can be defined based on application needs
+// Define associations
+const associate = () => {
+  // Establish associations
+  Cart.belongsTo(User, { foreignKey: "userId" });
+  Cart.belongsToMany(Product, { through: "CartProduct", foreignKey: "cartId" });
 };
 
-export default { Cart, associate };
+// Call associate function to establish associations
+associate();
+
+export default Cart;

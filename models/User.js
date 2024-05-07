@@ -25,7 +25,23 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    address: {
+    address1: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    address2: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    zip: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    state: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -33,17 +49,18 @@ User.init(
   {
     sequelize,
     timestamps: true,
-    modelName: "user",
+    modelName: "User",
     tableName: "users",
   }
 );
 
 const associate = (models) => {
-  const { Product, Cart, Purchase } = models;
+  const { Cart, Purchase } = models;
 
-  User.belongsToMany(Product, { through: "Cart", foreignKey: "userId" });
-  User.hasMany(Purchase, { foreignKey: "userId" });
-  User.hasOne(Cart, { foreignKey: "userId" });
+  // Define associations
+  User.hasOne(Cart, { foreignKey: "userId" }); // A User has one Cart
+  User.hasMany(Purchase, { foreignKey: "userId" }); // A User has many Purchases
 };
 
-export default { User, associate };
+export { User as default, associate };
+

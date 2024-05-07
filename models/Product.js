@@ -1,19 +1,15 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection.js";
-import Cart from "./Cart.js"; // Import Cart model
-import Purchase from "./Purchase.js"; // Import Purchase model
 
 class Product extends Model {}
 
 Product.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,11 +26,7 @@ Product.init(
       allowNull: true,
       defaultValue: 0,
     },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    value: {
+    productValue: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       defaultValue: 0,
@@ -42,20 +34,27 @@ Product.init(
   },
   {
     sequelize,
-    timestamps: false,
-    modelName: "product",
-    underscored: true,
+    timestamps: true,
+    modelName: "Product",
+    tableName: "products",
   }
 );
 
 const associate = (models) => {
-  const { User } = models;
+  const { Cart, Purchase } = models;
 
-  // Association with Cart model (many-to-many)
-  Product.belongsToMany(User, { through: Cart, foreignKey: "productId" });
+  // Define associations
+  Product.belongsToMany(Cart, {
+    through: "CartProduct",
+    foreignKey: "productId",
+  });
 
-  // Association with Purchase model (many-to-many)
-  Product.belongsToMany(User, { through: Purchase, foreignKey: "productId" });
+  if (Purchase) {
+    Product.belongsToMany(Purchase, {
+      through: "ProductPurchase",
+      foreignKey: "productId",
+    });
+  }
 };
 
-export default { Product, associate };
+export { Product as default, associate };

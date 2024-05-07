@@ -1,28 +1,37 @@
-import UserModel from "../../models/User.js";
-
-const { User } = UserModel;
+import User from "../../models/User.js";
+import Cart from "../../models/Cart.js";
 
 // Function to delete a user by ID
-export const deleteUserById = async (userId) => {
+const deleteUserById = async (userId) => {
   try {
-    // Find the user by ID and delete it
-    const deletedUser = await User.destroy({
+    // Find the user to delete
+    const userToDelete = await User.findByPk(userId);
+
+    if (!userToDelete) {
+      throw new Error("User not found");
+    }
+
+    // Find all carts associated with the user
+    const cartsToDelete = await Cart.findAll({
       where: {
-        id: userId,
+        userId: userId,
       },
     });
 
-    // Check if any user was deleted
-    if (deletedUser === 0) {
-      // No user found with the given ID
-      return { success: false, message: "User not found" };
-    }
+    // Delete all carts associated with the user
+    await Promise.all(cartsToDelete.map((cart) => cart.destroy()));
 
-    // User successfully deleted
-    return { success: true, message: "User deleted successfully" };
+    // Now delete the user
+    await userToDelete.destroy();
+
+    return {
+      success: true,
+      message: "User and associated carts deleted successfully",
+    };
   } catch (error) {
-    // Error handling
     console.error("Error deleting user:", error);
     throw new Error("Internal server error");
   }
 };
+
+export default deleteUserById;

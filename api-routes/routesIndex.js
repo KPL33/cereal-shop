@@ -11,33 +11,42 @@ import editProductRouter from "./products/editProduct.js";
 import getProductRouter from "./products/getProduct.js";
 import deleteProductRouter from "./products/deleteProduct.js";
 
-import createInCart from "./cart/createInCart.js";
-import editInCart from "./cart/editInCart.js";
-import getInCart from "./cart/getInCart.js";
-import deleteInCart from "./cart/deleteInCart.js";
+import createCartRouter from "./carts/createCart.js";
+import editCartRouter from "./carts/editCart.js";
+import getCartRouter from "./carts/getCart.js";
+import deleteCartRouter from "./carts/deleteCart.js";
 
-// Create a router
+import createProdInCartRouter from "./cartProducts/createProdInCart.js";
+import editProdInCartRouter from "./cartProducts/editProdInCart.js";
+import getProdInCartRouter from "./cartProducts/getProdInCart.js";
+import deleteProdInCartRouter from "./cartProducts/deleteProdInCart.js";
+
 const router = express.Router();
 
-// Use user routes
+// routes for interacting with users
 router.use("/users", createUserRouter);
 router.use("/users", loginUserRouter);
 router.use("/users", editUserRouter);
 router.use("/users", getUserRouter);
 router.use("/users", deleteUserRouter);
 
-// Use product routes
+// routes for interacting with products
 router.use("/products", createProductRouter);
 router.use("/products", editProductRouter);
 router.use("/products", getProductRouter);
 router.use("/products", deleteProductRouter);
 
-// Use cart routes
-router.use("/cart", createInCart);
-router.use("/cart", editInCart);
-router.use("/cart", getInCart);
-router.use("/cart", deleteInCart);
+// routes for interacting with cart itself
+router.use("/carts", createCartRouter);
+router.use("/carts", editCartRouter);
+router.use("/carts", getCartRouter);
+router.use("/carts", deleteCartRouter);
 
+// routes for interacting with products in a user's cart
+router.use("/cart/products", createProdInCartRouter);
+router.use("/cart/products", editProdInCartRouter);
+router.use("/cart/products", getProdInCartRouter);
+router.use("/cart/products", deleteProdInCartRouter);
 
 // Export the router
 export default router;

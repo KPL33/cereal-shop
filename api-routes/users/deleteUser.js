@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUserById } from "../../controllers/user/deleteUser.js";
+import deleteUserById from "../../controllers/user/deleteUser.js";
 
 const router = express.Router();
 

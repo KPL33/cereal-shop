@@ -1,10 +1,8 @@
 import bcrypt from "bcrypt";
-import UserModel from "../../models/User.js";
+import User from "../../models/User.js";
+import Cart from "../../models/Cart.js"; // Import the Cart model
 
 import { passwordRegex } from "../../../utils/validation.js"; // Import the password regex
-
-// Function to create a new user
-const { User } = UserModel;
 
 const createUser = async (userData) => {
   try {
@@ -21,9 +19,24 @@ const createUser = async (userData) => {
       ...userData,
       password: hashedPassword,
     });
+
+    // Log a message indicating that the user has been created
+    console.log(`User created with ID ${newUser.id}`);
+
+    // Create a cart for the new user
+    const newCart = await Cart.create({
+      userId: newUser.id,
+    });
+
+    // Log a message indicating that a cart has been created for the user
+    console.log(
+      `Cart created with ID ${newCart.id} for user with ID ${newUser.id}`
+    );
+
     return newUser;
   } catch (error) {
-    // If an error occurs, throw it to be handled by the route
+    // Log any errors that occur during user creation
+    console.error("Error creating user:", error);
     throw error;
   }
 };

@@ -1,6 +1,4 @@
-import ProductModel from "../../models/Product.js";
-
-const { Product } = ProductModel;
+import Product from "../../models/Product.js";
 
 // Function to create a new product
 const createProduct = async (productData) => {
@@ -20,8 +18,19 @@ const createProduct = async (productData) => {
       );
     }
 
-    // Create a new product based on the provided data
-    const newProduct = await Product.create(productData);
+    if (!productData.amountInStock || isNaN(productData.amountInStock)) {
+      throw new Error("Amount in stock must be a valid number.");
+    }
+
+    // Calculate productValue based on price and amountInStock
+    const productValue = productData.price * productData.amountInStock;
+
+    // Create a new product including productValue
+    const newProduct = await Product.create({
+      ...productData,
+      productValue: productValue,
+    });
+
     return newProduct;
   } catch (error) {
     // If an error occurs, throw it to be handled by the route
