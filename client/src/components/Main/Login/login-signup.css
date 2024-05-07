@@ -44,7 +44,6 @@
 
 }
 
-
 .login-signup-form,
 .submit {
   font-size: 4rem;
@@ -79,10 +78,12 @@
 
 .signup-link {
   transform: skew(.15rad);
+  text-decoration: none;
 }
 
 .signup-link:hover {
-  color: var(--3);
+  text-decoration: underline;
+  color: var(--5);
 }
 
 .login-signup-form input {
@@ -117,9 +118,19 @@
   border-radius: .5rem;
 }
 
+.submit:hover {
+  background-color: var(--5);
+  color: var(--1);
+}
+
+.submit:hover, .signup-link:hover {
+  cursor: pointer;
+}
+
 .error-container {
   height: 30px;
 }
+
 .error {
   background-color: var(--1);
   color: var(--3);

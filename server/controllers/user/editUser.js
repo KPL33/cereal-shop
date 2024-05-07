@@ -1,12 +1,11 @@
-import UserModel from "../../models/User.js";
+import User from "../../models/User.js";
 
 import { passwordRegex, emailRegex } from "../../../utils/validation.js"; // Import both regex patterns
 
-const { User } = UserModel;
 // Function to edit an existing user
 const editUser = async (userId, userData) => {
   try {
-    // Validate the password format using regex
+    // Validate the passworxd format using regex
     if (userData.password && !passwordRegex.test(userData.password)) {
       throw new Error("Password does not meet complexity requirements");
     }
