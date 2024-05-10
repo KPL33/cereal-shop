@@ -1,26 +1,22 @@
 import express from "express";
-import createProdInCart from "../../controllers/prodInCart/createProdInCart.js";
+import deleteProdInCart from "../../controllers/prodInCart/deleteProdInCart.js";
 
 // Create a router
 const router = express.Router();
 
-// Route for adding a product to the cart
-router.post("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
+  const cartProductId = req.params.id;
+
   try {
-    const { userId, productId, quantity } = req.body;
+    const result = await deleteProdInCart(cartProductId);
 
-    // Call controller function to add product to cart
-    const newCartProduct = await createProdInCart.addToCart(
-      userId,
-      productId,
-      quantity
-    );
-
-    // Send a success response with the newly created cart product
-    res.status(201).json(newCartProduct);
+    if (result.success) {
+      res.status(200).json({ message: result.message });
+    } else {
+      res.status(404).json({ error: result.message });
+    }
   } catch (error) {
-    // Handle errors
-    console.error("Error adding product to cart:", error);
+    console.error("Error removing product from cart:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

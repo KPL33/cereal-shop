@@ -1,17 +1,25 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection.js";
-import Cart from "./Cart.js"; // Import Cart model
-import Product from "./Product.js"; // Import Product model
+import User from "./User.js";
+import Product from "./Product.js";
 
 class CartProduct extends Model {}
 
 CartProduct.init(
   {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: User,
+        key: "id",
+      },
+    },
     cartId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: Cart,
+        model: "Cart", // Assuming you're using a string reference here to avoid circular dependency
         key: "id",
       },
     },
@@ -23,12 +31,12 @@ CartProduct.init(
         key: "id",
       },
     },
-    quantity: {
+    productQuantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1,
     },
-    price: {
+    productPrice: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
@@ -36,27 +44,30 @@ CartProduct.init(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
-    // Adding column for storing cart total
     cartTotal: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+      defaultValue: 0.0,
     },
   },
   {
     sequelize,
     modelName: "CartProduct",
-    tableName: "cartProducts",
+    tableName: "cartProducts", // Specify the correct table name here
   }
 );
 
-// Define associations
-const associate = () => {
-  // Establish associations with other models
+// Define the 'associate' function to establish associations
+const associate = (models) => {
+  const { User, Cart, Product } = models;
+
+  // Establish associations
+  CartProduct.belongsTo(User, { foreignKey: "userId" });
   CartProduct.belongsTo(Cart, { foreignKey: "cartId" });
   CartProduct.belongsTo(Product, { foreignKey: "productId" });
 };
 
-// Call associate function to establish associations
-associate();
+// Call the 'associate' function to establish associations
+associate(sequelize.models);
 
-export default CartProduct;
+export { CartProduct as default, associate };
