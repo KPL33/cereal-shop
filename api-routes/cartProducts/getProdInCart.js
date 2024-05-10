@@ -1,27 +1,16 @@
 import express from "express";
-import createProdInCart from "../../controllers/prodInCart/createProdInCart.js";
+import getAllProductsInCart from "../../controllers/prodInCart/getProdInCart.js";
 
-// Create a router
 const router = express.Router();
 
-// Route for adding a product to the cart
-router.post("/", async (req, res) => {
+// Endpoint to retrieve all products in a user's cart
+router.get("/", async (req, res) => {
   try {
-    const { userId, productId, quantity } = req.body;
-
-    // Call controller function to add product to cart
-    const newCartProduct = await createProdInCart.addToCart(
-      userId,
-      productId,
-      quantity
-    );
-
-    // Send a success response with the newly created cart product
-    res.status(201).json(newCartProduct);
+    const productsInCart = await getAllProductsInCart();
+    return res.status(200).json(productsInCart); // Return the products in the cart
   } catch (error) {
-    // Handle errors
-    console.error("Error adding product to cart:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Error getting products in cart:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
