@@ -46,7 +46,8 @@ CartProduct.init(
     },
     cartTotal: {
       type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+      allowNull: true,
+      // change back to false, if problems.
       defaultValue: 0.0,
     },
   },
