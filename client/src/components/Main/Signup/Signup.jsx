@@ -28,31 +28,50 @@ const SignUp = () => {
         password,
       });
 
-      const { id: userId } = response.data;
+      if (response.status === 201) {
+        const { id: userId } = response.data;
 
-      setAuthenticated(userId);
+        setAuthenticated(userId);
 
-      console.log("Retrieved userId:", userId);
+        console.log("Retrieved userId:", userId);
 
-      const cartResponse = await axios.get(
-        `http://localhost:3000/carts/${userId}`
-      );
-      const cartId = cartResponse.data.id;
-      console.log("Retrieved cartId:", cartId);
-      localStorage.setItem("cartId", cartId);
+        // Store userId in localStorage
+        localStorage.setItem("userId", userId);
 
-      console.log("User signed up:", response.data);
+        // Fetch currentCartId after storing userId
+        fetchCurrentCartId(userId);
 
-      setLoggedIn(true);
+        setLoggedIn(true);
 
-      // Reset form fields upon successful signup
-      setEmail("");
-      setPassword("");
-      setShowPassword(false);
+        // Reset form fields upon successful signup
+        setEmail("");
+        setPassword("");
+        setShowPassword(false);
+
+        console.log("User signed up:", response.data);
+      } else {
+        console.log("Signup failed:", response.statusText);
+        setError("Error signing up. Please try again.");
+      }
     } catch (error) {
-      console.error("Error signing up:", error.response.data.error);
+      console.error("Error signing up:", error);
       // Handle signup error (e.g., display error message)
-      setError(error.response.data.error);
+      setError(
+        error.response.data.error || "Error signing up. Please try again."
+      );
+    }
+  };
+
+  const fetchCurrentCartId = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/users/${userId}`);
+      console.log("Fetch currentCartId response:", response.data);
+      const { currentCartId } = response.data;
+
+      // Store currentCartId in localStorage
+      localStorage.setItem("currentCartId", currentCartId);
+    } catch (error) {
+      console.error("Error fetching currentCartId:", error);
     }
   };
 

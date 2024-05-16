@@ -1,11 +1,10 @@
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import useAppContext from "../../context/useAppContext";
 
 const ProtectedRoute = ({ element }) => {
-  const { loggedIn } = useAppContext();
+  const isAuthenticated = localStorage.getItem("authenticated") === "true";
 
-  return loggedIn ? element : <Navigate to="/login" replace />;
+  return isAuthenticated ? element : <Navigate to="/login" />;
 };
 
 ProtectedRoute.propTypes = {

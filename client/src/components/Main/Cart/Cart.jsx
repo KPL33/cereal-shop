@@ -1,4 +1,3 @@
-//products now showing in cart.
 import { useEffect, useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 import axios from "axios";
@@ -11,24 +10,26 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/cart/products");
-        const fetchedProducts = response.data;
+        const currentCartId = localStorage.getItem("currentCartId");
 
-        // Fetch product details (name) for each cart product
-        const updatedProducts = await Promise.all(
-          fetchedProducts.map(async (product) => {
-            const productDetailsResponse = await axios.get(
-              `http://localhost:3000/products/${product.productId}`
-            );
-            const productInfo = productDetailsResponse.data;
+        if (!currentCartId) {
+          console.error("No current cart ID found in local storage.");
+          return;
+        }
 
-            // Create an updated product object with the fetched product name
-            return {
-              ...product,
-              productName: productInfo.name,
-            };
-          })
+        const response = await axios.get(
+          `http://localhost:3000/carts/${currentCartId}`
         );
+        const cartData = response.data;
+
+        // Map the data to the format needed for the cart component
+        const updatedProducts = cartData.Products.map((product) => ({
+          id: product.id,
+          productName: product.name,
+          productQuantity: product.CartProduct.productQuantity,
+          productPrice: product.CartProduct.productPrice,
+          productTotal: product.CartProduct.productTotal,
+        }));
 
         setCartProducts(updatedProducts);
       } catch (error) {

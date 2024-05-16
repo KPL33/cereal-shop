@@ -27,18 +27,40 @@ const Login = () => {
         password: password,
       });
 
+      console.log("Backend response:", response.data); // Log the backend response
+
       if (response.status === 200) {
+        const { userId } = response.data; // Extract userId from response
         setLoggedIn(true);
         setAuthenticated();
+
+        // Store userId in localStorage
+        localStorage.setItem("userId", userId);
+
+        // Fetch currentCartId after storing userId
+        fetchCurrentCartId(userId);
+
         console.log("User logged in:", response.data);
       } else {
         console.log("Login failed:", response.statusText);
         setError("Invalid email or password");
       }
     } catch (error) {
-      // Handle server errors
       console.error("Error logging in:", error);
       setError("Invalid email or password.");
+    }
+  };
+
+  const fetchCurrentCartId = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/users/${userId}`);
+      console.log("Fetch currentCartId response:", response.data);
+      const { currentCartId } = response.data;
+
+      // Store currentCartId in localStorage
+      localStorage.setItem("currentCartId", currentCartId);
+    } catch (error) {
+      console.error("Error fetching currentCartId:", error);
     }
   };
 
@@ -70,7 +92,6 @@ const Login = () => {
           <label className="field-title">
             Password:{" "}
             <input
-              // id="password-input" remove if doesn't affect form functionality.
               type={showPassword ? "text" : "password"}
               name="password"
               value={password}

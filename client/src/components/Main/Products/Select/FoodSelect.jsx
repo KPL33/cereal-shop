@@ -55,9 +55,9 @@ const FoodSelect = () => {
         try {
           // Retrieve userId and cartId from localStorage
           const userId = localStorage.getItem("userId");
-          const cartId = localStorage.getItem("cartId");
+          const currentCartId = localStorage.getItem("currentCartId");
 
-          if (!userId || !cartId) {
+          if (!userId || !currentCartId) {
             // Handle case when userId or cartId is not found in localStorage
             console.error("userId or cartId not found in localStorage");
             return;
@@ -75,7 +75,7 @@ const FoodSelect = () => {
           // Prepare the payload for adding to cart
           const payload = {
             userId: userId, 
-            cartId: cartId,
+            cartId: currentCartId,
             productId: selectedFood.value,
             quantity: quantity,
             productPrice: productPrice,
