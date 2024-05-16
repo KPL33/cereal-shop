@@ -17,7 +17,10 @@ const loginUser = async (email, password) => {
     }
 
     // If the password is valid, return success along with the user object
-    return { success: true, user };
+    return {
+      success: true,
+      user: { id: user.id, currentCartId: user.currentCartId },
+    };
   } catch (error) {
     console.error("Error logging in:", error);
     return { success: false, message: "Internal server error" };
