@@ -1,0 +1,39 @@
+.profile-container {
+    width: 90vw;
+    box-shadow: 0px 4px 8px var(--5, 0.4);
+    min-height: 300px;
+    max-height: 800px;
+    background-color: var(--2);
+    border-radius: 2rem;
+}
+
+.profile-container, .current-profile, .edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-profile, .edit-profile {
+    width: 100%;
+}
+
+.user-details {
+    background-color: var(--2);
+    min-height: 100px;
+    height: auto;
+    border: 0.25rem solid var(--3);
+    width: 95%;
+    border-radius: 2rem;
+    background-color: var(--1);
+}
+
+.profile-error {
+  border-color: red;
+}
+
+.profile-error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}

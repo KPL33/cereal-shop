@@ -48,6 +48,14 @@ const Nav = () => {
         </Link>
         {/* Display only when logged in */}
         <Link
+          to="/profile"
+          className="nav-link"
+          style={{ display: loggedIn ? "block" : "none" }}
+          onClick={() => setNavOpen(false)}
+        >
+          My Profile
+        </Link>
+        <Link
           to="/cart"
           className="nav-link"
           style={{ display: loggedIn ? "block" : "none" }}

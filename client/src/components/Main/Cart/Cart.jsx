@@ -43,7 +43,7 @@ const Cart = () => {
   return (
     <section className="cart">
       <div className="cart-container">
-        <h2 className="cart-title">Here is your cart!</h2>
+        <h2 className="title">Here&apos;s your cart!</h2>
 
         <div className="in-cart">
           <div className="category-title-area">

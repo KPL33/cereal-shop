@@ -20,6 +20,16 @@ const AppProvider = ({ children }) => {
   const [userId, setUserId] = useState(null); // State to hold userId
   const [cartId, setCartId] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
+  const [editingProfile, setEditingProfile] = useState(false);
+  const [profileData, setProfileData] = useState({
+    firstName: "",
+    lastName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
   useEffect(() => {
     // Check if the user is authenticated when the component mounts
@@ -66,6 +76,10 @@ const AppProvider = ({ children }) => {
         setSignoutClicked,
         userId,
         cartId,
+        editingProfile,
+        setEditingProfile,
+        profileData,
+        setProfileData,
       }}
     >
       {children}
