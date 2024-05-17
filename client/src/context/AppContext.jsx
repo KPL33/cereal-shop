@@ -17,10 +17,13 @@ const AppProvider = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false);
   const [error, setError] = useState("");
   const [quantityError, setQuantityError] = useState(false);
-  const [userId, setUserId] = useState(null); // State to hold userId
+  const [userId, setUserId] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [cartId, setCartId] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
   const [editingProfile, setEditingProfile] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -76,10 +79,16 @@ const AppProvider = ({ children }) => {
         setSignoutClicked,
         userId,
         cartId,
+        userData,
+        setUserData,
+        loading,
+        setLoading,
         editingProfile,
         setEditingProfile,
         profileData,
         setProfileData,
+        fieldErrors,
+        setFieldErrors,
       }}
     >
       {children}

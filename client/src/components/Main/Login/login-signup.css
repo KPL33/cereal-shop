@@ -47,7 +47,7 @@
 .login-signup-form,
 .submit {
   font-size: 4rem;
-  font-family: "Raleway", cursive;
+  font-family: "Raleway", sans-serif;
 }
 
 .login-signup-form label {

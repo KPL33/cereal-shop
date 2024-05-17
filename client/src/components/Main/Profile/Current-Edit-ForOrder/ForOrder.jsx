@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAppContext from "../../../../context/useAppContext";
-import { useState } from "react"; // Import useState to manage individual field errors
+import PropTypes from "prop-types";
 
 const states = [
   "AL",
@@ -55,9 +55,15 @@ const states = [
   "WY",
 ];
 
-const Edit = () => {
-  const { profileData, setProfileData, error, setError } = useAppContext();
-  const [fieldErrors, setFieldErrors] = useState({}); // State to manage individual field errors
+const ForOrder = ({ onSave }) => {
+  const {
+    profileData,
+    setProfileData,
+    error,
+    setError,
+    fieldErrors,
+    setFieldErrors,
+  } = useAppContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,7 +90,6 @@ const Edit = () => {
     ];
     let errors = {};
 
-    // Check if all required fields are filled
     requiredFields.forEach((field) => {
       if (!profileData[field]) {
         errors[field] = "This field is required.";
@@ -111,6 +116,7 @@ const Edit = () => {
         profileData
       );
       console.log("User information updated:", response.data);
+      onSave(); // Trigger save callback to switch back to current profile view
     } catch (error) {
       console.error("Error updating user information:", error);
       setError("Failed to update user information.");
@@ -132,7 +138,9 @@ const Edit = () => {
             className={fieldErrors.firstName ? "profile-error" : ""}
           />
           {fieldErrors.firstName && (
-            <span className="profile-error-message">{fieldErrors.firstName}</span>
+            <span className="profile-error-message">
+              {fieldErrors.firstName}
+            </span>
           )}
         </label>
         <label>
@@ -145,7 +153,9 @@ const Edit = () => {
             className={fieldErrors.lastName ? "profile-error" : ""}
           />
           {fieldErrors.lastName && (
-            <span className="profile-error-message">{fieldErrors.lastName}</span>
+            <span className="profile-error-message">
+              {fieldErrors.lastName}
+            </span>
           )}
         </label>
         <label>
@@ -158,12 +168,13 @@ const Edit = () => {
             className={fieldErrors.address1 ? "profile-error" : ""}
           />
           {fieldErrors.address1 && (
-            <span className="profile-error-message">{fieldErrors.address1}</span>
+            <span className="profile-error-message">
+              {fieldErrors.address1}
+            </span>
           )}
         </label>
         <label>
-          Address 2:
-          (optional)
+          Address 2: (optional)
           <input
             type="text"
             name="address2"
@@ -227,4 +238,8 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+ForOrder.propTypes = {
+  onSave: PropTypes.func.isRequired,
+};
+
+export default ForOrder;

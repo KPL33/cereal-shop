@@ -1,30 +1,84 @@
+.current-profile {
+  height: auto;
+}
+
+
+.profile-field-container, .user-details {
+  height: auto;
+}
+
 .profile-container {
-    width: 90vw;
-    box-shadow: 0px 4px 8px var(--5, 0.4);
-    min-height: 300px;
-    max-height: 800px;
-    background-color: var(--2);
-    border-radius: 2rem;
+  width: 90vw;
+  box-shadow: 0px 4px 8px var(--5, 0.4);
+  min-height: 300px;
+  max-height: 800px;
+  background-color: var(--2);
+  border-radius: 2rem;
 }
 
-.profile-container, .current-profile, .edit-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.profile-container,
+.current-profile,
+.edit-profile, .user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.current-profile, .edit-profile {
-    width: 100%;
+.current-profile,
+.edit-profile {
+  width: 100%;
 }
 
 .user-details {
-    background-color: var(--2);
-    min-height: 100px;
-    height: auto;
-    border: 0.25rem solid var(--3);
-    width: 95%;
-    border-radius: 2rem;
-    background-color: var(--1);
+  background-color: var(--2);
+  min-height: 100px;
+  border: 0.25rem solid var(--3);
+  width: 95%;
+  border-radius: 2rem;
+  background-color: var(--1);
+  display: flex;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-field-title {
+  font-family: "active", sans-serif;
+  color: var(--3);
+  margin: 0 10px;
+}
+
+.profile-field-value {
+  font-family: "Raleway", sans-serif;
+  color: var(--5);
+}
+
+.profile-field-container {
+  font-size: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 10px;
+  justify-content: space-between;
+}
+
+.contact-pair-container {
+  display: flex;
+  margin: 0 30px;
+}
+
+.profile-edit-button {
+  background-color: var(--2);
+  color: var(--5);
+  margin: 5px;
+  width: 100px;
+  height: 25px;
+  border-radius: 1rem;
+  border: none;
+}
+
+.profile-edit-button:hover {
+  cursor: pointer;
+  background-color: var(--5);
+  color: var(--1);
 }
 
 .profile-error {
