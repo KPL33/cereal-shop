@@ -77,7 +77,7 @@ const Current = ({ onEditClick }) => {
             </div>
           </div>
 
-          <button className="profile-edit-button" onClick={onEditClick}>
+          <button className="edit-profile-button" onClick={onEditClick}>
             Edit
           </button>
         </div>

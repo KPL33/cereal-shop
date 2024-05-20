@@ -41,15 +41,21 @@
   margin-bottom: 20px;
 }
 
-.profile-field-title {
+.profile-field-title, .edit-field-title {
   font-family: "active", sans-serif;
   color: var(--3);
   margin: 0 10px;
 }
 
-.profile-field-value {
+.edit-field-title {
+  text-align: right;
+  width: 200px;
+}
+
+.profile-field-value, input.edit-field-value {
   font-family: "Raleway", sans-serif;
   color: var(--5);
+  font-weight: 600;
 }
 
 .profile-field-container {
@@ -60,34 +66,108 @@
   justify-content: space-between;
 }
 
-.contact-pair-container {
-  display: flex;
-  margin: 0 30px;
+.profile-field-container, .edit-pair-container, .state-pair-container {
+  font-size: 3.5rem;
+} 
+
+.edit-pair-container {
+  width: 50%;
+  padding: 5px 0;
+  color: red;
 }
 
-.profile-edit-button {
+.contact-pair-container, .edit-pair-container, .edit-buttons {
+  display: flex;
+}
+
+.contact-pair-container {
+  align-items: center;
+  margin: 0 30px;
+  
+}
+
+.edit-pair-container {
+  justify-content: space-around;
+  margin-right: 80px;
+}
+
+.edit-field-value.placeholder {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.edit-profile-button {
   background-color: var(--2);
   color: var(--5);
+  border: none;
+}
+
+.edit-profile-button, .cancel-button, .save-button {
   margin: 5px;
   width: 100px;
   height: 25px;
   border-radius: 1rem;
-  border: none;
 }
 
-.profile-edit-button:hover {
+.cancel-button {
+  border: solid 2px var(--4);
+  color: var(--2);
+}
+
+.save-button {
+  border: solid 2px var(--4);
+  background-color: var(--1);
+}
+
+.save-button:hover, .cancel-button:hover, .edit-profile-button:hover {
   cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: var(--5);
+}
+
+.edit-profile-button:hover, .save-button:hover {
   background-color: var(--5);
   color: var(--1);
 }
 
 .profile-error {
-  border-color: red;
+  border-color: var(--3);
 }
 
 .profile-error-message {
-  color: red;
+  color: var(--3);
   font-size: 0.875rem;
   margin-top: 0.25rem;
   margin-left: 0.25rem;
+}
+
+.edit-field-value {
+  height: 4rem;
+  font-size: 3rem;
+  width: 70%;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.edit-field-value::placeholder {
+  color: var(--2);
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 4rem;
+}
+
+.state-pair-container {
+  display: flex;
+  margin-right: 60px;
+  justify-content: center;
+}
+
+.state-list {
+  color: var(--5);
+}
+
+.edit-buttons {
+  margin-left: 90px;
 }
