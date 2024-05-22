@@ -1,13 +1,35 @@
-// Decrement quantity
+// Decrement quantity (before adding to cart)
 export const decrementAtc = (currentQuantity, setQuantity) => {
   if (currentQuantity > 1) {
     setQuantity(currentQuantity - 1);
   }
 };
 
-// Increment quantity
+// Increment quantity (before adding to cart)
 export const incrementAtc = (currentQuantity, setQuantity) => {
   setQuantity(currentQuantity + 1);
+};
+
+// Decrement quantity after it's in the cart.
+export const decrementInCart = (productId, cartProducts, setCartProducts) => {
+  const updatedCartProducts = cartProducts.map((product) => {
+    if (product.id === productId) {
+      return { ...product, productQuantity: product.productQuantity - 1 };
+    }
+    return product;
+  });
+  setCartProducts(updatedCartProducts);
+};
+
+// Increment quantity after it's in the cart.
+export const incrementInCart = (productId, cartProducts, setCartProducts) => {
+  const updatedCartProducts = cartProducts.map((product) => {
+    if (product.id === productId) {
+      return { ...product, productQuantity: product.productQuantity + 1 };
+    }
+    return product;
+  });
+  setCartProducts(updatedCartProducts);
 };
 
 // Handle change in food selection

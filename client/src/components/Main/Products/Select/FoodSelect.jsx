@@ -31,8 +31,15 @@ const options = [
 ];
 
 const FoodSelect = () => {
-  const { quantity, setQuantity, selectedFood, setSelectedFood, loggedIn, quantityError, setQuantityError } =
-    useContext(AppContext);
+  const {
+    quantity,
+    setQuantity,
+    selectedFood,
+    setSelectedFood,
+    loggedIn,
+    quantityError,
+    setQuantityError,
+  } = useContext(AppContext);
 
   const handleOnChange = (values) => {
     handleFoodSelection(values, setSelectedFood, setQuantity);
@@ -74,7 +81,7 @@ const FoodSelect = () => {
 
           // Prepare the payload for adding to cart
           const payload = {
-            userId: userId, 
+            userId: userId,
             cartId: currentCartId,
             productId: selectedFood.value,
             quantity: quantity,
@@ -95,7 +102,6 @@ const FoodSelect = () => {
     }
   };
 
-
   return (
     <div className="action-buttons">
       <Select
@@ -108,7 +114,7 @@ const FoodSelect = () => {
       {selectedFood && (
         <div id="food-quantity">
           <button onClick={handleDecrement}>–</button>
-          
+
           <div className="quantity-container">
             <input
               type="text"
