@@ -90,7 +90,7 @@
 }
 
 .product-name {
-  padding-left: 25%;
+  margin: 5px auto;
 }
 
 .product-name,
@@ -121,7 +121,8 @@
   background-color: var(--2);
   border-radius: 8px;
   padding: 3px;
-
+  transform: scaleX(1.5);
+  margin-left: 10px;
 }
 
 .quantity-column {
@@ -150,7 +151,7 @@
 }
 
 .title,
-.checkout-button, .product-quantity-input {
+.checkout-button, .product-quantity-input, .delete-from-cart-button {
   font-family: "active", sans-serif;
   text-align: center;
   font-optical-sizing: auto;
@@ -209,8 +210,6 @@
   color: var(--1);
   cursor: pointer;
 }
-
-
 
 .product-quantity-input {
   width: 40px;

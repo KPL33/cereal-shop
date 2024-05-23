@@ -1,13 +1,10 @@
 import { useEffect, useContext, useState } from "react";
 import { AppContext } from "../../../context/AppContext";
 import axios from "axios";
-
-import { decrementAtc, incrementAtc } from "../../../../../utils/addToCart.js";
 import "./cart.css";
 
 const Cart = () => {
-  const { cartProducts, setCartProducts, quantity, setQuantity } =
-    useContext(AppContext);
+  const { cartProducts, setCartProducts } = useContext(AppContext);
 
   const [showDefaultZero, setShowDefaultZero] = useState(false);
   const [error, setError] = useState(""); // Error state
@@ -71,12 +68,16 @@ const Cart = () => {
     }
   };
 
-  const handleDecrement = () => {
-    decrementAtc(quantity, setQuantity);
+  const handleDecrement = (productId) => {
+    const product = cartProducts.find((product) => product.id === productId);
+    if (product.productQuantity > 1) {
+      handleQuantityChange(productId, product.productQuantity - 1);
+    }
   };
 
-  const handleIncrement = () => {
-    incrementAtc(quantity, setQuantity);
+  const handleIncrement = (productId) => {
+    const product = cartProducts.find((product) => product.id === productId);
+    handleQuantityChange(productId, product.productQuantity + 1);
   };
 
   useEffect(() => {
@@ -165,7 +166,7 @@ const Cart = () => {
                     className="delete-from-cart-button"
                     onClick={() => handleDeleteProduct(product.id)}
                   >
-                    Delete
+                    Remove
                   </button>
                   <p className="product-name">{product.Product.name}</p>
                 </div>
@@ -174,7 +175,7 @@ const Cart = () => {
               <div className="quantity-column">
                 <div className="product-quantity">
                   <button
-                    onClick={handleDecrement}
+                    onClick={() => handleDecrement(product.id)}
                     className="cart-quantity-button"
                   >
                     –
@@ -189,7 +190,7 @@ const Cart = () => {
                     className="product-quantity-input"
                   />
                   <button
-                    onClick={handleIncrement}
+                    onClick={() => handleIncrement(product.id)}
                     className="cart-quantity-button"
                   >
                     +
