@@ -21,6 +21,8 @@ import editProdInCartRouter from "./cartProducts/editProdInCart.js";
 import getProdInCartRouter from "./cartProducts/getProdInCart.js";
 import deleteProdInCartRouter from "./cartProducts/deleteProdInCart.js";
 
+import sendContactFormEmailRouter from "./sendContactFormEmail.js";
+
 const router = express.Router();
 
 // routes for interacting with users
@@ -47,6 +49,8 @@ router.use("/cart/products", createProdInCartRouter);
 router.use("/cart/products", editProdInCartRouter);
 router.use("/cart/products", getProdInCartRouter);
 router.use("/cart/products", deleteProdInCartRouter);
+
+router.use("/send", sendContactFormEmailRouter);
 
 // Export the router
 export default router;
