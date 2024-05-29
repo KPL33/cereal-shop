@@ -14,6 +14,7 @@ import Products from "./components/Main/Products/Products";
 import Profile from "./components/Main/Profile/Profile";
 import Signup from "./components/Main/Signup/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UserProfile from "./components/Main/Profile/UserProfile";
 
 import "./app.css";
 
@@ -63,6 +64,10 @@ const AppContent = () => {
           <Route
             path="/profile"
             element={<ProtectedRoute element={<Profile />} />}
+          />
+          <Route
+            path="/UserProfile/*"
+            element={<ProtectedRoute element={<UserProfile />} />}
           />
         </Routes>
       </main>
