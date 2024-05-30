@@ -9,14 +9,24 @@
   height: 50px;
 }
 
-.page {
+/* .page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  height: 80vh;
+  height: 90vh;
   width: 100vw;
+  
+} */
+
+.page {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
 }
 
 @keyframes slide {

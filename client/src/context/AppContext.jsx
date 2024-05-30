@@ -13,7 +13,6 @@ const AppProvider = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
-  const [goBackVisable, setGoBackVisable] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [error, setError] = useState("");
   const [quantityError, setQuantityError] = useState(false);
@@ -22,8 +21,10 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [cartId, setCartId] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
+  const [showDefaultZero, setShowDefaultZero] = useState(false);
   const [editingProfile, setEditingProfile] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
+  const [hasEmptyFields, setHasEmptyFields] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -63,14 +64,14 @@ const AppProvider = ({ children }) => {
         setSelectedMerch,
         quantity,
         setQuantity,
-        goBackVisable,
-        setGoBackVisable,
         error,
         setError,
         quantityError,
         setQuantityError,
         cartProducts,
         setCartProducts,
+        showDefaultZero,
+        setShowDefaultZero,
         navOpen,
         setNavOpen,
         loggedIn,
@@ -89,6 +90,8 @@ const AppProvider = ({ children }) => {
         setProfileData,
         fieldErrors,
         setFieldErrors,
+        hasEmptyFields,
+        setHasEmptyFields,
       }}
     >
       {children}

@@ -1,13 +1,28 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
 import axios from "axios";
 import "./cart.css";
 
 const Cart = () => {
-  const { cartProducts, setCartProducts } = useContext(AppContext);
+  const {
+    cartProducts,
+    setCartProducts,
+    error,
+    setError,
+    showDefaultZero,
+    setShowDefaultZero,
+  } = useContext(AppContext);
 
-  const [showDefaultZero, setShowDefaultZero] = useState(false);
-  const [error, setError] = useState(""); // Error state
+  const navigate = useNavigate();
+
+  const handleShopping = () => {
+    navigate("/products"); // Navigate to the checkout page
+  };
+
+  const handleCheckout = () => {
+    navigate("/checkout"); // Navigate to the checkout page
+  };
 
   const handleInputBlur = (productId, currentQuantity) => {
     // If input is empty, set quantity to 0
@@ -214,7 +229,7 @@ const Cart = () => {
           ))}
         </div>
         {error && <div className="error-message">{error}</div>}{" "}
-        <div id="cart-total">
+        <div className="cart-total">
           <h3>Order Total:</h3>
           <p className="price-fineprint">(Pre-tax; Shipping is FREE!)</p>
           <p className="cart-total-dollars">
@@ -230,9 +245,15 @@ const Cart = () => {
             {/* Apply the same replace method */}
           </p>
         </div>
-        <button className="checkout-button">
-          <h4 className="checkout-text">Check out!</h4>
-        </button>
+        
+        <div className="cart-buttons">
+          <button className="cart-button" onClick={handleShopping}>
+            <h4 className="checkout-text">Keep Shopping!</h4>
+          </button>
+          <button className="cart-button" onClick={handleCheckout}>
+            <h4 className="checkout-text">Check out!</h4>
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import useAppContext from "../../../../context/useAppContext";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-const Current = ({ onEditClick }) => {
+const Current = ({ onEditClick, checkFields }) => {
   const { userData, setUserData, loading, setLoading } = useAppContext();
+  const location = useLocation(); // Get the current location
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -28,10 +31,30 @@ const Current = ({ onEditClick }) => {
     fetchUserData();
   }, [setLoading, setUserData]);
 
+  useEffect(() => {
+    if (!loading && checkFields) {
+      const hasEmptyFields = [
+        userData.firstName,
+        userData.lastName,
+        userData.address1,
+        userData.city,
+        userData.state,
+        userData.zip,
+      ].some((field) => !field);
+      checkFields(hasEmptyFields);
+    }
+  }, [loading, checkFields, userData]);
+
+  // Determine the title based on the current pathname
+  const title = location.pathname.includes("/checkout") ? (
+    <span className="ship-to">Ship order to...</span>
+  ) : (
+    "Here’s your profile!"
+  );
+
   return (
     <section className="current-profile">
-      <h1 className="title">Here&apos;s your profile!</h1>
-
+      <h1 className="title">{title}</h1> {/* Render the conditional title */}
       {loading ? (
         <h4>Loading...</h4>
       ) : (
@@ -51,7 +74,7 @@ const Current = ({ onEditClick }) => {
           <div className="profile-field-container">
             <div className="contact-pair-container">
               <h4 className="profile-field-title">Address 1:</h4>
-              <h4 className="profile-field-value"> {userData.address1}</h4>
+              <h4 className="profile-field-value">{userData.address1}</h4>
             </div>
 
             <div className="contact-pair-container">
@@ -88,6 +111,7 @@ const Current = ({ onEditClick }) => {
 
 Current.propTypes = {
   onEditClick: PropTypes.func.isRequired,
+  checkFields: PropTypes.func, // Add checkFields prop
 };
 
 export default Current;

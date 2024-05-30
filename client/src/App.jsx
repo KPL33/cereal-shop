@@ -5,6 +5,7 @@ import useAppContext from "./context/useAppContext";
 import Header from "./components/Header/Header";
 import About from "./components/Main/About/About";
 import Cart from "./components/Main/Cart/Cart";
+import Checkout from "./components/Main/Checkout/Checkout";
 import Contact from "./components/Main/Contact/Contact";
 import Error from "./components/Main/Error/Error";
 import Footer from "./components/Footer/Footer";
@@ -57,18 +58,10 @@ const AppContent = () => {
 
           {/* Private routes */}
           <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
-          <Route
-            path="/history"
-            element={<ProtectedRoute element={<History />} />}
-          />
-          <Route
-            path="/profile"
-            element={<ProtectedRoute element={<Profile />} />}
-          />
-          <Route
-            path="/UserProfile/*"
-            element={<ProtectedRoute element={<UserProfile />} />}
-          />
+          <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
+          <Route path="/history" element={<ProtectedRoute element={<History />} />} />
+          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/UserProfile/*" element={<ProtectedRoute element={<UserProfile />} />} />
         </Routes>
       </main>
       <Footer />
