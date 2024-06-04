@@ -28,64 +28,64 @@ const Nav = () => {
       <nav className={`sidebar-nav ${navOpen ? "open" : ""}`}>
         {/* Navigation Links */}
         <Link to="/" className="nav-link" onClick={() => setNavOpen(false)}>
-          Products
+          <h3>Products</h3>
         </Link>
         <Link
           to="/about"
           className="nav-link"
           onClick={() => setNavOpen(false)}
         >
-          About Us
+          <h3>About Us</h3>
         </Link>
         {/* Conditional Links based on loggedIn state */}
         <Link
           to="/login"
           className="nav-link"
-          style={{ display: loggedIn ? "none" : "block" }}
+          style={{ display: loggedIn ? "none" : "flex" }}
           onClick={() => setNavOpen(false)}
         >
-          Sign-Up/Log-In
+          <h3> Sign-Up/Log-In</h3>
         </Link>
         {/* Display only when logged in */}
         <Link
           to="/profile"
           className="nav-link"
-          style={{ display: loggedIn ? "block" : "none" }}
+          style={{ display: loggedIn ? "flex" : "none" }}
           onClick={() => setNavOpen(false)}
         >
-          My Profile
+          <h3>My Profile</h3>
         </Link>
         <Link
           to="/cart"
           className="nav-link"
-          style={{ display: loggedIn ? "block" : "none" }}
+          style={{ display: loggedIn ? "flex" : "none" }}
           onClick={() => setNavOpen(false)}
         >
-          My Cart
+          <h3>My Cart</h3>
         </Link>
         <Link
           to="/cart"
           className="nav-link"
-          style={{ display: loggedIn ? "block" : "none" }}
+          style={{ display: loggedIn ? "flex" : "none" }}
           onClick={() => setNavOpen(false)}
         >
-          My Past Orders
+          <h3>My Past Orders</h3>
         </Link>
         <Link
           to="/contact"
           className="nav-link"
           onClick={() => setNavOpen(false)}
         >
-          Contact Us
+          <h3>Contact Us</h3>
         </Link>
         {/* Sign Out Link */}
         <Link
           to="/"
           className="nav-link"
-          style={{ display: loggedIn ? "block" : "none" }}
+          style={{ display: loggedIn ? "flex" : "none" }}
           onClick={handleSignOut}
         >
-          Sign Out
+          <h3>Sign Out</h3>
         </Link>
       </nav>
     </div>

@@ -1,15 +1,11 @@
-import { useContext } from "react";
-import { AppContext } from "../../../../context/AppContext";
+import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
-import axios from "axios"; // Import axios for HTTP requests
-
-import {
-  decrementAtc,
-  incrementAtc,
-  handleFoodSelection,
-} from "../../../../../../utils/addToCart.js";
+import Quantity from "./Quantity/Quantity.jsx";
+import AtcButton from "./AtcButton/AtcButton.jsx";
+import AtcError from "./AtcError/AtcError.jsx";
 
 import "./prod-select.css";
+import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
 const options = [
   {
@@ -31,115 +27,30 @@ const options = [
 ];
 
 const FoodSelect = () => {
-  const {
-    quantity,
-    setQuantity,
-    selectedFood,
-    setSelectedFood,
-    loggedIn,
-    quantityError,
-    setQuantityError,
-  } = useContext(AppContext);
+  const { setQuantity, selectedProduct, setSelectedProduct, quantityError } =
+    useAppContext();
 
   const handleOnChange = (values) => {
-    handleFoodSelection(values, setSelectedFood, setQuantity);
-  };
-
-  const handleDecrement = () => {
-    decrementAtc(quantity, setQuantity);
-  };
-
-  const handleIncrement = () => {
-    incrementAtc(quantity, setQuantity);
-  };
-
-  const handleCartClick = async () => {
-    if (loggedIn && selectedFood) {
-      if (quantity < 1 || quantity > 99) {
-        setQuantityError(true);
-      } else {
-        setQuantityError(false);
-        try {
-          // Retrieve userId and cartId from localStorage
-          const userId = localStorage.getItem("userId");
-          const currentCartId = localStorage.getItem("currentCartId");
-
-          if (!userId || !currentCartId) {
-            // Handle case when userId or cartId is not found in localStorage
-            console.error("userId or cartId not found in localStorage");
-            return;
-          }
-
-          // Fetch productPrice from backend based on selectedFood.value (productId)
-          const productInfoResponse = await axios.get(
-            `http://localhost:3000/products/${selectedFood.value}`
-          );
-          const productPrice = productInfoResponse.data.price;
-
-          // Calculate productTotal
-          const productTotal = productPrice * quantity;
-
-          // Prepare the payload for adding to cart
-          const payload = {
-            userId: userId,
-            cartId: currentCartId,
-            productId: selectedFood.value,
-            quantity: quantity,
-            productPrice: productPrice,
-            productTotal: productTotal,
-          };
-
-          // Make the POST request to add the product to the cart
-          const response = await axios.post(
-            "http://localhost:3000/cart/products/",
-            payload
-          );
-          console.log("Item added to cart:", response.data);
-        } catch (error) {
-          console.error("Error adding item to cart:", error);
-        }
-      }
-    }
+    handleProductSelection(values, setSelectedProduct, setQuantity);
   };
 
   return (
-    <div className="action-buttons">
-      <Select
-        className="select-menu"
-        options={options}
-        onChange={handleOnChange}
-        labelField="label"
-        searchable={false}
-      />
-      {selectedFood && (
-        <div id="food-quantity">
-          <button onClick={handleDecrement}>–</button>
+    <div className="prod-select-details">
+      <div className="prod-name-quantity">
+        <Select
+          className="select-menu"
+          options={options}
+          onChange={handleOnChange}
+          labelField="label"
+          searchable={false}
+        />
+        <Quantity />
+      </div>
 
-          <div className="quantity-container">
-            <input
-              type="text"
-              className="count"
-              value={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value, 10) || "")}
-            />
-            <h3
-              className="quantity-error"
-              style={{ display: quantityError ? "block" : "none" }}
-            >
-              Please enter a quantity between 1 and 99.
-            </h3>
-          </div>
-          <button onClick={handleIncrement}>+</button>
-        </div>
-      )}
-      <button
-        className="atc"
-        onClick={handleCartClick}
-        disabled={!loggedIn}
-        style={{ opacity: loggedIn ? 1 : 0.8, fontSize: "2rem" }}
-      >
-        {loggedIn ? "Add to cart" : "Login to add to cart"}
-      </button>
+      <div className="atc-details">
+        <AtcButton />
+        {(!selectedProduct || quantityError) && <AtcError />}
+      </div>
     </div>
   );
 };

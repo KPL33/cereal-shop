@@ -76,29 +76,31 @@ const Login = () => {
         Please log-in to view your cart or make additional orders.
       </h2>
 
-      <div className="fields-container">
-        <div className="form-fields">
-          <label className="field-title">
-            Email:{" "}
-            <input
-              id="email-input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+      <div className="email-row">
+        <label htmlFor="email-input" className="field-title">
+          Email:{" "}
+          <input
+            id="email-input"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
 
-          <label className="field-title">
-            Password:{" "}
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
+        <div className="spacer"></div>
+      </div>
+
+      <div className="password-row">
+        <label htmlFor="password-input" className="field-title">
+          Password:{" "}
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
 
         <span
           className="toggle-password"
@@ -107,7 +109,7 @@ const Login = () => {
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>
-
+      
       <div className="error-container">
         {error && <div className="error">{error}</div>}
       </div>

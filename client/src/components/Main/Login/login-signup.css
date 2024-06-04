@@ -1,67 +1,71 @@
-.login-signup-form, .fields-container, .form-fields, .field-title {
+.login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password, .error-container {
   display: flex;
 }
 
-.fields-container {
-  width: 100%;
-  justify-content: center;
-  background-color: var(--2);
-  height: auto;
-  padding: 20px 0;
-}
-
-.login-signup-form, .form-fields {
+.login-signup-form {
   flex-direction: column;
 }
 
+.confirm-row {
+  z-index: 2;
+}
+
+.email-row, .password-row, .confirm-row {
+  padding: 15px 0;
+}
+
+.email-row, .password-row, .confirm-row, .field-title {
+  width: 100%;
+}
+
 .login-signup-form {
-  width: auto;
-  height: 510px;
+  width: 60vw;
+  height: auto;
   background-color: var(--4);
-  align-items: center;
-  margin-top: 10px;
+  margin-top: 50px;
   border-radius: 2rem;
   box-shadow: 0px 4px 8px  var(--5, 0.4);
-  
 }
 
-#signup-form {
-  height: auto;
-  width: 70%;
+.login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password {
+  align-items: center;
 }
 
-.form-fields {
-  width: 80%;
-  height: 130px;
-  
-  justify-content: space-between;
+.email-row, .password-row, .confirm-row {
+  background-color: var(--2);
+  padding: 0 20px;
+}
+
+.toggle-password, .error-container {
+  justify-content: center;
 }
 
 .field-title {
-  width: 100%;
   justify-content: space-between;
-  align-items: center;
-
+  padding: 10px 0 10px 10px;
 }
 
 .login-signup-form,
 .submit {
-  font-size: 4rem;
   font-family: "Raleway", sans-serif;
-}
-
-.login-signup-form label {
-  width: 100%;
 }
 
 .log-greeting {
   margin: 20px 10px;
 }
 
-.log-greeting, .signup-greeting, .signup-link {
-  font-size: 3rem;
+.log-greeting, .signup-greeting, .signup-link, .submit:hover, .error {
   color: var(--1);
   text-align: center;
+}
+
+.log-greeting, .signup-greeting, .signup-link, .login-signup-form,
+.submit {
+  font-size: 3rem;
+}
+
+.log-sign-error-container {
+  height: 50px;
 }
 
 .submit {
@@ -79,6 +83,7 @@
 .signup-link {
   transform: skew(.15rad);
   text-decoration: none;
+  margin-bottom: 20px;
 }
 
 .signup-link:hover {
@@ -87,7 +92,7 @@
 }
 
 .login-signup-form input {
-  width: 80%;
+  width: 60%;
   height: 40px;
   padding: 10px;
   margin: 0 15px;
@@ -96,11 +101,12 @@
 }
 
 .toggle-password {
-  margin-top: 85px;
-  height: 40px;
+  height: auto;
   color: var(--4);
+}
 
-  
+.toggle-password, .spacer {
+  width: 70px;
 }
 
 .login-signup-form input, .submit {
@@ -120,22 +126,58 @@
 
 .submit:hover {
   background-color: var(--5);
-  color: var(--1);
 }
 
-.submit:hover, .signup-link:hover {
+.toggle-password:hover, .submit:hover, .signup-link:hover {
   cursor: pointer;
 }
 
-.error-container {
-  height: 30px;
+@keyframes slide {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
 
-.error {
-  background-color: var(--1);
-  color: var(--3);
-  font-size: 2.5rem;
-  height: auto;
-  padding: 5px;
-  margin-top: 5px;
+.error-container {
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin: auto;
+}
+
+.signup-error-message {
+   text-align: center;
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--3);
+  font-size: 3rem;
+  font-family: "active", sans-serif;
+  color: var(--1);
+  padding: 10px 40px;
+  animation: slide 5s ease-in-out forwards;
+  transform: scale(1.2, 1);
+  height: 50px;
 }

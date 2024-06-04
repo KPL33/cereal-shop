@@ -1,0 +1,26 @@
+.atc-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.atc {
+  background-color: var(--1);
+  padding: 10px;
+  font-family: "active", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 3rem;
+  border-radius: 1rem;
+  margin: 0 10px;
+  max-width: 90%;
+}
+
+.atc:hover {
+  background-color: var(--3);
+  color: var(--1);
+  cursor: pointer;
+}

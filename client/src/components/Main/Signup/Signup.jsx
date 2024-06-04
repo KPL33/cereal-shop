@@ -15,12 +15,41 @@ const SignUp = () => {
     setEmail,
     password,
     setPassword,
+    confirmPassword,
+    setConfirmPassword,
+    setPasswordMismatch,
     showPassword,
     setShowPassword,
+    showConfirmPassword,
+    setShowConfirmPassword,
   } = useAppContext();
+
+
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleConfirmToggle = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      // Clear the error first to ensure state change is recognized
+      setError("");
+      setPasswordMismatch(true);
+      // Set the error after a short delay to ensure the DOM updates
+      setTimeout(() => {
+        setError("Passwords do not match. Please try again.");
+        console.log("passwordMismatch state after error:", true);
+      }, 0);
+      return;
+    }
+
+    setPasswordMismatch(false);
+    setError("");
 
     try {
       const response = await axios.post("http://localhost:3000/users/", {
@@ -46,7 +75,9 @@ const SignUp = () => {
         // Reset form fields upon successful signup
         setEmail("");
         setPassword("");
+        setConfirmPassword("");
         setShowPassword(false);
+        setShowConfirmPassword(false);
 
         console.log("User signed up:", response.data);
       } else {
@@ -55,9 +86,8 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error("Error signing up:", error);
-      // Handle signup error (e.g., display error message)
       setError(
-        error.response.data.error || "Error signing up. Please try again."
+        error.response?.data?.error || "Error signing up. Please try again."
       );
     }
   };
@@ -87,47 +117,63 @@ const SignUp = () => {
       id="signup-form"
     >
       <h2 className="log-greeting">
-        Welcome to Against the Grains! Please register to start eating healthier
-        today!
+        Welcome to Against the Grains! Please register below!
       </h2>
 
-      <div className="fields-container">
-        <div className="form-fields">
-          <label htmlFor="email-input" className="field-title">
-            Email:
-            <input
-              id="email-input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </label>
+      <div className="email-row">
+        <label htmlFor="email-input" className="field-title">
+          Email:
+          <input
+            id="email-input"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
 
-          <label htmlFor="password-input" className="field-title">
-            Password:
-            <input
-              id="password-input"
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+        <div className="spacer"></div>
+      </div>
 
-        <span
-          className="toggle-password"
-          onClick={() => setShowPassword(!showPassword)}
-        >
+      <div className="password-row">
+        <label htmlFor="password-input" className="field-title">
+          Password:
+          <input
+            id="password-input"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+
+        <span className="toggle-password" onClick={handlePasswordToggle}>
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </span>
       </div>
 
+      <div className="confirm-row">
+        <label htmlFor="confirm-password-input" className="field-title">
+          Confirm Password:
+          <input
+            id="confirm-password-input"
+            type={showConfirmPassword ? "text" : "password"}
+            name="confirm-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </label>
+
+        <span className="toggle-password" onClick={handleConfirmToggle}>
+          {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+
       <div className="error-container">
-        {error && <div className="error">{error}</div>}
+        {error && <div className="signup-error-message">{error}</div>}
       </div>
 
       <button className="submit" type="submit">

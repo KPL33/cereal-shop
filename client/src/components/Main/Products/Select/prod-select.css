@@ -1,108 +1,76 @@
+.prod-select-details {
+  border-top: 1rem dotted var(--5);
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+}
+
 /* .react-dropdown-select-item is the Div for items items on List that appears on-click of 'select' drop-downs. */
 .react-dropdown-select-item {
-    background-color: var(--1);
-    color: var(--5);
-    border-top: 0.3rem dotted var(--5);
-    margin: 4px 0;
+  background-color: var(--1);
+  color: var(--5);
+  border-top: 0.3rem dotted var(--5);
 }
 
 .react-dropdown-select-item:nth-child(1) {
-    border-top: none;
+  border-top: none;
 }
 
 /*Drop-down menu (main'select' box)*/
 .react-dropdown-select {
-    background-color: var(--1);
-    color: var(--3);
-}
-
-#food-quantity button {
-    background-color: var(--2);
-    color: var(--5);
-    cursor: pointer;
-    margin: auto 10px;
-    border-radius: 50%;
-    font-size: 3rem;
-    padding: 0;
-    line-height: 100%;
-    width: 50px;
-    height: 50px;
-}
-
-
-#food-quantity button:hover {
-    background-color: var(--1);
+  background-color: var(--1);
+  color: var(--3);
 }
 
 /* Text in dropdown menus (says "select") */
-.react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0, .react-dropdown-select {
-    font-family: "Raleway", sans-serif;
-    font-size: 1.75rem;
+.react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0,
+.react-dropdown-select {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
 }
 
 /* Box surrounding Arrow in select menu */
 .e1vudypg0 {
-    color: var(--4);
+  color: var(--5);
 }
 
-.action-buttons {
-    grid-area: action-buttons;
-    width: 100%;
-    padding: 0 10px;
-    justify-content: space-evenly;
-    align-items: center;
-    border-top: 1rem dotted var(--5);
+.prod-name-quantity {
+  width: 45%;
+  justify-content: center;
+  gap: 5px;
+  margin-left: 5px;
+  height: 100%;
 }
 
-.action-buttons div {
-    border-radius: 1rem;
+.prod-name-quantity,
+.prod-select-details,
+.quantity-and-cart {
+  display: flex;
 }
 
-.action-buttons, #food-quantity, .quantity-container {
-    display: flex;
+.prod-name-quantity,
+.quantity-and-cart {
+  flex-direction: column;
 }
 
-.quantity-container {
-    flex-direction: column;
-    max-width: 100px;
+.quantity-and-cart {
+  gap: 10px;
 }
 
-#food-quantity {
-    width: 35%;
-    background-color: pink;
+.quantity-and-cart {
+  align-items: center;
 }
 
-.count {
-    margin: auto;
-    max-width: 20%;
-    text-align: center;
+.react-dropdown-select.select-menu {
+  width: 150px;
+  height: auto;
+  border-radius: 1rem;
 }
 
-.count, .atc {
-    background-color: var(--1);
-    height: auto;
-    font-family: "active", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-size: 3rem;
-    border-radius: 1rem;
-}
-
-.quantity-error {
-    color: var(--1);
-    background-color: var(--3);
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Raleway", sans-serif;
-}
-
-.atc {
-    width: 40%;
-    padding: 10px;
-}
-
-.atc:hover {
-    background-color: var(--3);
-    color: var(--1);
-    cursor: pointer;
+@media screen and (max-width: 1250px) {
+  .react-dropdown-select.select-menu {
+    width: 100%; /* Adjust width for smaller screens */
+    max-width: 200px; /* Optionally limit the maximum width */
+  }
 }

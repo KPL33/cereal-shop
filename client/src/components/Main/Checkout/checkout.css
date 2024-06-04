@@ -13,13 +13,13 @@
 
 .checkout-title, .ship-to {
     font-size: 6rem;
-  font-weight: 200;
-  padding: 15px 0;
-  font-family: "active", sans-serif;
-  text-align: center;
-  font-optical-sizing: auto;
-  font-style: normal;
-  color: var(--1);
+    font-weight: 200;
+    padding: 15px 0;
+    font-family: "active", sans-serif;
+    text-align: center;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--1);
 }
 
 .checkout-order {

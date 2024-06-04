@@ -33,17 +33,21 @@ export const incrementInCart = (productId, cartProducts, setCartProducts) => {
 };
 
 // Handle change in food selection
-export const handleFoodSelection = (values, setSelectedFood, setQuantity) => {
-  setSelectedFood(values.length > 0 ? values[0] : null);
+export const handleProductSelection = (
+  values,
+  setSelectedProduct,
+  setQuantity
+) => {
+  setSelectedProduct(values.length > 0 ? values[0] : null);
   setQuantity(1); // Reset quantity to 1 when food selection changes
 };
 
 // Handle adding item to cart
-export const handleAddToCart = (loggedIn, selectedFood) => {
+export const handleAddToCart = (loggedIn, selectedProduct) => {
   if (loggedIn) {
     // Handle adding item to cart (e.g., call an API to add to cart)
-    if (selectedFood) {
-      console.log("Adding to cart:", selectedFood.label);
+    if (selectedProduct) {
+      console.log("Adding to cart:", selectedProduct.label);
       // Add logic to actually add item to cart (e.g., call API)
     }
   } else {

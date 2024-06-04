@@ -1,0 +1,37 @@
+.shirt-sizes, .size-option {
+  display: flex;
+  justify-content: center;
+}
+
+.shirt-sizes {
+  gap: 1rem;
+  margin: 10px 0;
+}
+
+.size-option {
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid var(--3);
+  border-radius: 50%;
+  background-color: var(--1);
+  color: var(--3);
+  font-family: "active", sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  font-optical-sizing: auto;
+  font-style: normal;
+  width: 4.5rem;
+  height: 4.5rem;
+
+}
+
+.size-option:hover {
+  cursor: pointer;
+  background-color: var(--3);
+  color: var(--1);
+}
+
+.size-option.selected {
+  background-color: var(--5);
+  color: var(--1);
+}

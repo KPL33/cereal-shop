@@ -7,6 +7,7 @@
 
 .logged-in-out-container {
   height: 50px;
+  
 }
 
 /* .page {
@@ -21,12 +22,11 @@
 } */
 
 .page {
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px 0;
 }
 
 @keyframes slide {

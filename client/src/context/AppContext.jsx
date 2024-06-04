@@ -6,10 +6,13 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  // atc="add to cart"
-  const [selectedFood, setSelectedFood] = useState(null);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedMerch, setSelectedMerch] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
@@ -25,6 +28,8 @@ const AppProvider = ({ children }) => {
   const [editingProfile, setEditingProfile] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
   const [hasEmptyFields, setHasEmptyFields] = useState(false);
+  const [selectionError, setSelectionError] = useState(false);
+  const [atcClicked, setAtcClicked] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -56,12 +61,20 @@ const AppProvider = ({ children }) => {
         setEmail,
         password,
         setPassword,
-        showPassword, // Expose showPassword state to components
-        setShowPassword, // Expose setShowPassword function to components
-        selectedFood,
-        setSelectedFood,
+        confirmPassword,
+        setConfirmPassword,
+        showPassword,
+        setShowPassword,
+        showConfirmPassword,
+        setShowConfirmPassword,
+        passwordMismatch,
+        setPasswordMismatch,
+        selectedProduct,
+        setSelectedProduct,
         selectedMerch,
         setSelectedMerch,
+        selectedSize,
+        setSelectedSize,
         quantity,
         setQuantity,
         error,
@@ -92,6 +105,10 @@ const AppProvider = ({ children }) => {
         setFieldErrors,
         hasEmptyFields,
         setHasEmptyFields,
+        selectionError,
+        setSelectionError,
+        atcClicked,
+        setAtcClicked,
       }}
     >
       {children}
