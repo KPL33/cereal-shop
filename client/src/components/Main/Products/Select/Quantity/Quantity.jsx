@@ -6,26 +6,28 @@ import {
 } from "../../../../../../../utils/addToCart";
 
 const Quantity = () => {
-  const { quantity, setQuantity, selectedProduct } = useAppContext();
+  const { foodQuantity, setFoodQuantity, selectedFood } = useAppContext();
 
   const handleDecrement = () => {
-    decrementAtc(quantity, setQuantity);
+    decrementAtc(foodQuantity, setFoodQuantity);
   };
 
   const handleIncrement = () => {
-    incrementAtc(quantity, setQuantity);
+    incrementAtc(foodQuantity, setFoodQuantity);
   };
 
   return (
     <section className="quantity-container">
-      {selectedProduct && (
+      {selectedFood && (
         <div id="food-quantity">
           <button onClick={handleDecrement}>–</button>
           <input
             type="text"
             className="count"
-            value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value, 10) || "")}
+            value={foodQuantity}
+            onChange={(e) =>
+              setFoodQuantity(parseInt(e.target.value, 10) || "")
+            }
           />
           <button onClick={handleIncrement}>+</button>
         </div>

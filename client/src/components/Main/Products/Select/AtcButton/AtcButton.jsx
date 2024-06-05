@@ -6,28 +6,28 @@ import "./atc-button.css";
 const AtcButton = () => {
   const {
     loggedIn,
-    selectedProduct,
-    quantity,
-    setQuantityError,
+    selectedFood,
+    foodQuantity,
+    setFoodQuantityError,
     setAtcClicked,
     atcClicked,
     setSelectionError, // Add setSelectionError from context
   } = useAppContext();
 
   const handleCartClick = async () => {
-    if (!selectedProduct) {
+    if (!selectedFood) {
       setAtcClicked(true);
-      setSelectionError(true); // Set selectionError to true when atc is clicked without selecting a product
+      setSelectionError(true); // Set selectionError to true when atc is clicked without selecting a food item
       return;
     }
 
     if (loggedIn) {
-      if (quantity < 1 || quantity > 99) {
-        setQuantityError(true);
+      if (foodQuantity < 1 || foodQuantity > 99) {
+        setFoodQuantityError(true);
         return;
       }
 
-      setQuantityError(false);
+      setFoodQuantityError(false);
       setAtcClicked(true);
       console.log("atcClicked:", atcClicked);
 
@@ -40,20 +40,21 @@ const AtcButton = () => {
           return;
         }
 
-        const productInfoResponse = await axios.get(
-          `http://localhost:3000/products/${selectedProduct.value}`
+        const foodItemInfoResponse = await axios.get(
+          `http://localhost:3000/products/${selectedFood.value}`
         );
 
-        const productPrice = productInfoResponse.data.price;
-        const productTotal = productPrice * quantity;
+        const foodItemPrice = foodItemInfoResponse.data.price;
+        const foodItemTotal = foodItemPrice * foodQuantity;
 
         const payload = {
           userId: userId,
           cartId: currentCartId,
-          productId: selectedProduct.value,
-          quantity: quantity,
-          productPrice: productPrice,
-          productTotal: productTotal,
+          foodItemId: selectedFood.value,
+          productId: selectedFood.value,
+          quantity: foodQuantity,
+          foodItemPrice: foodItemPrice,
+          foodItemTotal: foodItemTotal,
         };
 
         const response = await axios.post(
@@ -61,9 +62,9 @@ const AtcButton = () => {
           payload
         );
 
-        console.log("Item added to cart:", response.data);
+        console.log("Food item added to cart:", response.data);
       } catch (error) {
-        console.error("Error adding item to cart:", error);
+        console.error("Error adding food item to cart:", error);
       }
     }
   };

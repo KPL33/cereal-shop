@@ -2,13 +2,16 @@ import useAppContext from "../../../../../context/useAppContext";
 import "./atc-error.css";
 
 const AtcError = () => {
-  const { quantityError, selectedProduct, atcClicked } = useAppContext();
+  const { foodQuantityError, selectedFood, atcClicked, foodQuantity } =
+    useAppContext();
 
   const errorMessage =
-    (!selectedProduct && atcClicked) || quantityError
-      ? !selectedProduct && atcClicked
+    (!selectedFood && atcClicked) || foodQuantityError
+      ? !selectedFood && atcClicked
         ? "Please select an item before adding to cart."
-        : "Please enter a quantity between 1 and 99."
+        : foodQuantity < 1 || foodQuantity > 99
+        ? "Please enter a quantity between 1 and 99."
+        : ""
       : "";
 
   return (

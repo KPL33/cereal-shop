@@ -10,15 +10,15 @@ const AppProvider = ({ children }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordMismatch, setPasswordMismatch] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedFood, setSelectedFood] = useState(null);
   const [selectedMerch, setSelectedMerch] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [foodQuantity, setFoodQuantity] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [error, setError] = useState("");
-  const [quantityError, setQuantityError] = useState(false);
+  const [foodQuantityError, setFoodQuantityError] = useState(false);
   const [userId, setUserId] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -69,18 +69,18 @@ const AppProvider = ({ children }) => {
         setShowConfirmPassword,
         passwordMismatch,
         setPasswordMismatch,
-        selectedProduct,
-        setSelectedProduct,
+        selectedFood,
+        setSelectedFood,
         selectedMerch,
         setSelectedMerch,
         selectedSize,
         setSelectedSize,
-        quantity,
-        setQuantity,
+        foodQuantity,
+        setFoodQuantity,
         error,
         setError,
-        quantityError,
-        setQuantityError,
+        foodQuantityError,
+        setFoodQuantityError,
         cartProducts,
         setCartProducts,
         showDefaultZero,

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
 import Quantity from "./Quantity/Quantity.jsx";
@@ -27,11 +28,26 @@ const options = [
 ];
 
 const FoodSelect = () => {
-  const { setQuantity, selectedProduct, setSelectedProduct, quantityError } =
-    useAppContext();
+  const {
+    setFoodQuantity,
+    selectedFood,
+    setSelectedFood,
+    foodQuantityError,
+    setSelectionError,
+    setAtcClicked,
+  } = useAppContext();
+
+  useEffect(() => {
+    console.log("Component mounted. Resetting selectedFood and errors.");
+    // Reset selectedFood and selectionError when the component mounts
+    setSelectedFood(null);
+    setSelectionError(false);
+    setAtcClicked(false);
+  }, [setSelectedFood, setSelectionError, setAtcClicked]);
 
   const handleOnChange = (values) => {
-    handleProductSelection(values, setSelectedProduct, setQuantity);
+    console.log("Food selected:", values);
+    handleProductSelection(values, setSelectedFood, setFoodQuantity);
   };
 
   return (
@@ -44,12 +60,12 @@ const FoodSelect = () => {
           labelField="label"
           searchable={false}
         />
-        <Quantity />
+        {selectedFood && <Quantity />}
       </div>
 
       <div className="atc-details">
         <AtcButton />
-        {(!selectedProduct || quantityError) && <AtcError />}
+        {(!selectedFood || foodQuantityError) && <AtcError />}
       </div>
     </div>
   );
