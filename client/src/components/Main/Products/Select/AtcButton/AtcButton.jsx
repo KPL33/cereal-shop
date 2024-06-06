@@ -10,14 +10,13 @@ const AtcButton = () => {
     foodQuantity,
     setFoodQuantityError,
     setAtcClicked,
-    atcClicked,
     setSelectionError, // Add setSelectionError from context
   } = useAppContext();
 
   const handleCartClick = async () => {
     if (!selectedFood) {
       setAtcClicked(true);
-      setSelectionError(true); // Set selectionError to true when atc is clicked without selecting a food item
+      setSelectionError(true);
       return;
     }
 
@@ -29,7 +28,6 @@ const AtcButton = () => {
 
       setFoodQuantityError(false);
       setAtcClicked(true);
-      console.log("atcClicked:", atcClicked);
 
       try {
         const userId = localStorage.getItem("userId");
@@ -40,9 +38,10 @@ const AtcButton = () => {
           return;
         }
 
-        const foodItemInfoResponse = await axios.get(
-          `http://localhost:3000/products/${selectedFood.value}`
-        );
+        const endpoint = `http://localhost:3000/products/${selectedFood.value}`;
+        console.log("GET request endpoint:", endpoint); // Log the endpoint
+
+        const foodItemInfoResponse = await axios.get(endpoint);
 
         const foodItemPrice = foodItemInfoResponse.data.price;
         const foodItemTotal = foodItemPrice * foodQuantity;

@@ -1,3 +1,4 @@
+// Products.jsx
 import useAppContext from "../../../context/useAppContext.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -53,11 +54,11 @@ const Products = () => {
             <img
               className="merch-image"
               src={
-                selectedMerch === "mug"
+                selectedMerch?.value === "mug"
                   ? mug
-                  : selectedMerch === "commuter"
+                  : selectedMerch?.value === "commuter"
                   ? commuter
-                  : selectedMerch === "shirt"
+                  : selectedMerch?.value === "shirt"
                   ? shirt
                   : shirt
               }

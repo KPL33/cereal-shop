@@ -1,30 +1,20 @@
+// FoodSelect.jsx
 import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
-import Quantity from "./Quantity/Quantity.jsx";
+import FoodQuantity from "./Quantity/FoodQuantity.jsx";
 import AtcButton from "./AtcButton/AtcButton.jsx";
-import AtcError from "./AtcError/AtcError.jsx";
+import FoodAtcError from "./AtcError/FoodAtcError.jsx"; // Import FoodAtcError
 
-import "./prod-select.css";
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
+import "./prod-select.css";
+
 const options = [
-  {
-    value: 1,
-    label: "0.5 lbs. cereal - $4.99 ea.",
-  },
-  {
-    value: 2,
-    label: "2.0 lbs. cereal - $8.99 ea.",
-  },
-  {
-    value: 3,
-    label: "5.0 lbs. cereal - $12.99 ea.",
-  },
-  {
-    value: 4,
-    label: "10.0 lbs. cereal - $21.99 ea.",
-  },
+  { value: 1, label: "0.5 lbs. cereal - $4.99 ea." },
+  { value: 2, label: "2.0 lbs. cereal - $8.99 ea." },
+  { value: 3, label: "5.0 lbs. cereal - $12.99 ea." },
+  { value: 4, label: "10.0 lbs. cereal - $21.99 ea." },
 ];
 
 const FoodSelect = () => {
@@ -39,7 +29,6 @@ const FoodSelect = () => {
 
   useEffect(() => {
     console.log("Component mounted. Resetting selectedFood and errors.");
-    // Reset selectedFood and selectionError when the component mounts
     setSelectedFood(null);
     setSelectionError(false);
     setAtcClicked(false);
@@ -60,12 +49,12 @@ const FoodSelect = () => {
           labelField="label"
           searchable={false}
         />
-        {selectedFood && <Quantity />}
+        {selectedFood && <FoodQuantity />}
       </div>
-
       <div className="atc-details">
         <AtcButton />
-        {(!selectedFood || foodQuantityError) && <AtcError />}
+        {(!selectedFood || foodQuantityError) && <FoodAtcError />}{" "}
+        {/* Use FoodAtcError */}
       </div>
     </div>
   );

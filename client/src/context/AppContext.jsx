@@ -14,11 +14,11 @@ const AppProvider = ({ children }) => {
   const [selectedMerch, setSelectedMerch] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [foodQuantity, setFoodQuantity] = useState(1);
+  const [merchQuantity, setMerchQuantity] = useState(1);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [error, setError] = useState("");
-  const [foodQuantityError, setFoodQuantityError] = useState(false);
   const [userId, setUserId] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,8 +28,8 @@ const AppProvider = ({ children }) => {
   const [editingProfile, setEditingProfile] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
   const [hasEmptyFields, setHasEmptyFields] = useState(false);
-  const [selectionError, setSelectionError] = useState(false);
   const [atcClicked, setAtcClicked] = useState(false);
+  const [merchAtcClicked, setMerchAtcClicked] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -39,6 +39,11 @@ const AppProvider = ({ children }) => {
     state: "",
     zip: "",
   });
+
+  const [foodQuantityError, setFoodQuantityError] = useState(false);
+  const [merchQuantityError, setMerchQuantityError] = useState(false);
+  const [selectionError, setSelectionError] = useState(false);
+  const [merchSelectionError, setMerchSelectionError] = useState(false);
 
   useEffect(() => {
     // Check if the user is authenticated when the component mounts
@@ -77,10 +82,14 @@ const AppProvider = ({ children }) => {
         setSelectedSize,
         foodQuantity,
         setFoodQuantity,
+        merchQuantity,
+        setMerchQuantity,
         error,
         setError,
         foodQuantityError,
         setFoodQuantityError,
+        merchQuantityError,
+        setMerchQuantityError,
         cartProducts,
         setCartProducts,
         showDefaultZero,
@@ -107,8 +116,11 @@ const AppProvider = ({ children }) => {
         setHasEmptyFields,
         selectionError,
         setSelectionError,
+        merchSelectionError, setMerchSelectionError,
         atcClicked,
         setAtcClicked,
+        merchAtcClicked,
+        setMerchAtcClicked,
       }}
     >
       {children}

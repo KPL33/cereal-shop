@@ -1,33 +1,57 @@
-import { useState } from "react";
+// MerchSelect.jsx
+import { useEffect } from "react";
+import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
 import PropTypes from "prop-types";
 
 import ShirtSizes from "./ShirtSizes/ShirtSizes.jsx";
-import Quantity from "./Quantity/Quantity.jsx";
-import AtcButton from "./AtcButton/AtcButton.jsx";
-import AtcError from "./AtcError/AtcError.jsx";
+import MerchQuantity from "./Quantity/MerchQuantity.jsx";
+import MerchAtcButton from "./AtcButton/MerchAtcButton.jsx";
+import MerchAtcError from "./AtcError/MerchAtcError.jsx"; // Import MerchAtcError
+
+import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
 import "./prod-select.css";
 
 const options = [
-  { value: "shirt", label: "T-Shirt - $6.99" },
-  { value: "mug", label: "Coffee Mug - $4.99" },
-  { value: "commuter", label: "Commuter Mug - $10.99" },
+  { value: 5, label: "T-Shirt - $6.99" }, // Example: use an ID
+  { value: 9, label: "Coffee Mug - $4.99" },
+  { value: 10, label: "Commuter Mug - $10.99" },
 ];
 
-const MerchSelect = ({ onSelectChange }) => {
-  const [selectedMerch, setSelectedMerch] = useState(null);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [quantityError, setQuantityError] = useState(false);
+const MerchSelect = () => {
+  const {
+    setMerchQuantity,
+    selectedMerch,
+    setSelectedMerch,
+    selectedSize,
+    setSelectedSize,
+    merchQuantityError,
+    setMerchSelectionError,
+    setMerchAtcClicked,
+  } = useAppContext();
+
+  useEffect(() => {
+    console.log("MerchSelect mounted. Resetting selectedMerch and errors.");
+    setSelectedMerch(null);
+    setMerchSelectionError(false);
+    setMerchAtcClicked(false);
+  }, [setSelectedMerch, setMerchSelectionError, setMerchAtcClicked]);
+
 
   const handleOnChange = (values) => {
-    const selectedValue = values.length > 0 ? values[0].value : null;
-    setSelectedMerch(selectedValue);
-    if (typeof onSelectChange === "function") {
-      onSelectChange(selectedValue);
-    }
+    console.log("Merch selected:", values);
+    handleProductSelection(values, setSelectedMerch, setMerchQuantity);
   };
+
+  const handleSizeChange = (size, productId) => {
+    setSelectedSize(size);
+    setSelectedMerch({ value: productId, label: `T-Shirt - ${size}` });
+  };
+
+  useEffect(() => {
+    console.log("selectedMerch changed:", selectedMerch);
+  }, [selectedMerch]);
 
   return (
     <div className="prod-select-details">
@@ -37,23 +61,23 @@ const MerchSelect = ({ onSelectChange }) => {
           options={options}
           onChange={handleOnChange}
           labelField="label"
+          valueField="value"
           searchable={false}
         />
-        <Quantity />
+        {selectedMerch && <MerchQuantity />}
       </div>
+
       <div className="atc-details">
-        {selectedMerch === "shirt" && (
+        {selectedMerch?.label.includes("T-Shirt") && (
           <ShirtSizes
             selectedSize={selectedSize}
-            onSizeChange={setSelectedSize}
+            onSizeChange={handleSizeChange}
           />
         )}
-        <AtcButton
-          selectedProduct={selectedProduct}
-          setSelectedProduct={setSelectedProduct}
-          setQuantityError={setQuantityError}
-        />
-        {(!selectedProduct || quantityError) && <AtcError />}
+        <div className="atc-details">
+          <MerchAtcButton />
+          {(!selectedMerch || merchQuantityError) && <MerchAtcError />}
+        </div>
       </div>
     </div>
   );
