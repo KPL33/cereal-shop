@@ -9,7 +9,7 @@ const FoodAtcError = () => {
   const errorMessage =
     (!selectedFood && atcClicked) || foodQuantityError
       ? !selectedFood && atcClicked
-        ? "Flip select an item before adding to cart."
+        ? "Please select an item before adding to cart."
         : foodQuantity < 1 || foodQuantity > 99
         ? "Please enter a quantity between 1 and 99."
         : ""

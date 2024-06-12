@@ -2,21 +2,17 @@
   justify-content: center; 
 }
 
-#food-quantity {
+#food-quantity, #merch-quantity {
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
 
-/* #food-quantity {
-  flex-grow: 1;
-} */
-
-.quantity-container, #food-quantity, #food-quantity button {
+.quantity-container, #food-quantity, #merch-quantity, #food-quantity button, #merch-quantity button {
   display: flex;
 }
 
-#food-quantity button {
+#food-quantity button, #merch-quantity button {
   background-color: var(--2);
   color: var(--5);
   cursor: pointer;
@@ -27,13 +23,14 @@
   height: 30px;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
-#food-quantity button:first-of-type {
+#food-quantity button:first-of-type, #merch-quantity button:first-of-type {
   padding-bottom: 4px;
 }
 
-#food-quantity button:hover, .count {
+#food-quantity button:hover, #merch-quantity button:hover, .count {
   background-color: var(--1);
 }
 
@@ -55,23 +52,30 @@
     max-width: 200px;
   }
 
-  #food-quantity {
+  #food-quantity, #merch-quantity {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap; /* Prevent wrapping */
   }
 
-  #food-quantity button {
+  #food-quantity button, #merch-quantity button {
     max-width: none; /* Remove maximum width constraint */
     max-height: none; /* Remove maximum height constraint */
     height: 30px; /* Set fixed height equal to the width */
     width: 30px; /* Set fixed width */
+    margin: 10px 0;
   }
 
   .count {
     width: 100%; /* Full width for the input */
-    max-width: 100px; /* Optionally limit the maximum width */
+    max-width: 30px; /* Optionally limit the maximum width */
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 675px) {
+  #food-quantity {
+    justify-content: space-around;
   }
 }
 

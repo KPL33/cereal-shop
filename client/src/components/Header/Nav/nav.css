@@ -1,17 +1,31 @@
-.sidebar {
+.sidebar, .hamburger, .sidebar.open .sidebar-nav, .nav-link {
   display: flex;
+}
+
+.sidebar, .sidebar.open .sidebar-nav {
   flex-direction: column;
+}
+
+.sidebar, .sidebar.open .sidebar-nav {
   align-items: flex-end;
+}
+
+.sidebar, .nav-link {
   position: relative;
-  width: 500px;
+}
+
+.sidebar {
+  width: auto;
+}
+
+.hamburger, .sidebar-nav {
+  height: auto;
 }
 
 .hamburger {
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100px;
-  height: auto;
 }
 
 .hamburger-react > div {
@@ -20,7 +34,6 @@
 
 .sidebar-nav {
   background-color: var(--1);
-  height: auto;
   position: absolute;
   top: 100%;
   width: 400px;
@@ -31,9 +44,6 @@
 }
 
 .sidebar.open .sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   padding-right: 50px;
   opacity: 0.9;
   transition: opacity 2s ease;
@@ -42,19 +52,20 @@
 .nav-link {
   text-decoration: none;
   margin: 15px 0;
-  position: relative;
   width: 100%;
-  display: flex;
   justify-content: flex-end;
+}
+
+.nav-link h3, .nav-link:hover h3 {
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .nav-link h3 {
   color: var(--4);
   font-size: 4rem;
   font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
   display: inline-block;
   transition: transform 0.5s ease, font-size 0.5s ease;
 }
@@ -65,3 +76,30 @@
   transform: scaleX(1.2);
   transition: transform 0.8s ease;
 }
+
+
+@media (max-width: 992px) {
+  .sidebar-nav {
+    width: 300px;
+  }
+  .nav-link h3 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 675px) {
+  .sidebar.open .sidebar-nav {
+    align-items: center; /* Horizontally align center */
+    text-align: center; /* Center text within nav */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-link {
+    justify-content: center; /* Vertically align text */
+  }
+
+  .sidebar.open .sidebar-nav {
+    padding-right: 0;
+  }
+}
+

@@ -28,14 +28,14 @@ const FoodSelect = () => {
   } = useAppContext();
 
   useEffect(() => {
-    console.log("Component mounted. Resetting selectedFood and errors.");
+    
     setSelectedFood(null);
     setSelectionError(false);
     setAtcClicked(false);
   }, [setSelectedFood, setSelectionError, setAtcClicked]);
 
   const handleOnChange = (values) => {
-    console.log("Food selected:", values);
+    
     handleProductSelection(values, setSelectedFood, setFoodQuantity);
   };
 

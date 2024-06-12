@@ -1,9 +1,9 @@
 import "./footer.css";
-// import email from "../../assets/email.svg";
-// import github from "../../assets/github.svg";
-// import linkedin from "../../assets/LI-In-Bug.svg";
-// import leetcode from "../../assets/leetcode_logo.svg";
-// import reactLogo from "../../assets/react.png";
+import email from "../../../src/assets/email.svg";
+import github from "../../../src/assets/github.svg";
+import linkedin from "../../../src/assets/LI-white_clear.png";
+import leetcode from "../../../src/assets/leetcode_logo.svg";
+import reactLogo from "../../../src/assets/react_white.svg";
 
 const Footer = () => {
   const emailAddress = "kevdev@myyahoo.com";
@@ -12,53 +12,42 @@ const Footer = () => {
     window.location.href = `mailto:${emailAddress}`;
   };
   return (
-    <footer id="contact-section" className="footer">
-      <div id="email-container">
+    <footer className="footer">
+      <div className="email-container">
         <a
-          id="email-link"
+          className="email-link"
           href={`mailto:${emailAddress}`}
           onClick={handleEmailClick}
         >
-          <img
-            id="email"
-            className="social-logo"
-            // src={email}
-            alt="Email icon"
-          />
-          <p id="email-address">kevdev@myyahoo.com</p>
+          <img className="social-logo email" src={email} alt="Email icon" />
+          <p>kevdev@myyahoo.com</p>
         </a>
       </div>
       <div className="socials">
         <a href="https://www.linkedin.com/in/kevin-lewis92126">
           <img
-            id="linkedin"
-            className="social-logo"
-            // src={linkedin}
+            className="social-logo linkedin"
+            src={linkedin}
             alt="LinkedIn logo"
           />
         </a>
         <a href="https://github.com/KPL33">
-          <img
-            id="github"
-            className="social-logo"
-            // src={github}
-            alt="GitHub logo"
-          />
+          <img className="social-logo github" src={github} alt="GitHub logo" />
         </a>
         <a href="https://leetcode.com/KPL33/">
           <img
-            id="leetcode"
-            className="social-logo"
-            // src={leetcode}
+            className="social-logo leetcode"
+            src={leetcode}
             alt="LeetCode logo"
           />
         </a>
       </div>
-      <div id="madewith">
+      <div className="made-with">
         <p>
-          {/* This site made with &nbsp; <img id="react-logo" src={reactLogo} alt="React logo" /> */}
-          &nbsp; by Kevin Lewis
+          This site made with <span>React</span>
         </p>
+        <img className="react" src={reactLogo} alt="React logo" />
+        <p>by Kevin Lewis</p>
       </div>
     </footer>
   );

@@ -1,4 +1,3 @@
-// Products.jsx
 import useAppContext from "../../../context/useAppContext.jsx";
 import { useNavigate } from "react-router-dom";
 
@@ -20,6 +19,19 @@ const Products = () => {
 
   const handleCart = () => {
     navigate("/cart"); // Navigate to the checkout page
+  };
+
+  const getMerchImage = (value) => {
+    switch (value) {
+      case 5:
+        return shirt;
+      case 9:
+        return mug;
+      case 10:
+        return commuter;
+      default:
+        return shirt; // Default to shirt if no valid value is found
+    }
   };
 
   return (
@@ -53,15 +65,7 @@ const Products = () => {
           <div className="product-image-container">
             <img
               className="merch-image"
-              src={
-                selectedMerch?.value === "mug"
-                  ? mug
-                  : selectedMerch?.value === "commuter"
-                  ? commuter
-                  : selectedMerch?.value === "shirt"
-                  ? shirt
-                  : shirt
-              }
+              src={getMerchImage(selectedMerch?.value)}
               alt="A picture of merchandise."
             />
           </div>

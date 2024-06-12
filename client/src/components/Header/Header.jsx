@@ -14,7 +14,7 @@ const Header = () => {
           <h1 className="grains">Grains</h1>
         </div>
         <h3 className="subtitle">
-          The best grain-free cereal ever. P<span>eriod.</span>
+          The best grain-free cereal ever.
         </h3>
       </div>
       <Nav id="nav-sidebar" />

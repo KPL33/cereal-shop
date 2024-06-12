@@ -1,52 +1,67 @@
 .header {
+  justify-content: space-between;
+  height: auto;
+  width: 100vw;
+  padding: 10px 40px;
+  z-index: 1;
+}
+
+.header, .title-container {
     align-items: center;
-    justify-content: space-between;
-    height: auto;
-    width: 100vw;
-    flex-shrink: 0;
-    padding: 10px 40px;
-    z-index: 1;
 }
 
-.header, .title-container, .company-title {
-    display: flex;
+.header,
+.title-container,
+.company-title {
+  display: flex;
 }
 
-
-.header, #logo {
-    background-color: var(--5);
+.header,
+#logo {
+  background-color: var(--5);
 }
 
 #logo {
-    height: 200px;
-    width: 200px;
+  height: auto;
+  width: 15vw;
 }
 
 .title-container {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 300px;
+  flex-direction: column;
+  width: auto;
+  flex-shrink: 1;
+}
+
+.against,
+.grains {
+  color: var(--1);
+  font-size: 8rem;
+
+}
+
+.against, .grains, .subtitle, .the {
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-family: "active", sans-serif;
+    font-style: normal;
 }
 
 .against {
-    transform: skew(-.25rad);
+  transform: skew(-0.25rad);
 }
 
 .the {
-    font-size: 6rem;
-    color: var(--3);
-    margin-top: 35px;
+  color: var(--3);
+  margin-top: 28px;
+}
 
+.the, .subtitle {
+    font-size: 5rem;
 }
 
 .grains {
     transform: skew(.25rad);
 }
-
-.against, .grains {
-    color: var(--1);
-}
-
 
 .subtitle {
     color: var(--2);
@@ -54,14 +69,40 @@
     text-align: center;
 }
 
-.subtitle span {
-    text-decoration: underline;
+@media (max-width: 992px) {
+    .header {
+        padding: 10px 15px;
+    }
+    
+    .title-container {
+        width: 70vw;
+    }
+
+
+    .subtitle {
+        font-size: 4rem;
+    }
+    
 }
 
-.company-title, .subtitle {
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-family: "active", sans-serif;
-    font-style: normal;
-    font-size: 5rem;
+@media (max-width: 675px) {
+    .header {
+        flex-direction: column;
+    }
+    
+    #logo {
+        width: 35vw;
+        height: auto;
+    }
+
+    .subtitle, .the {
+        font-size: 4rem;
+    }
 }
+
+@media (max-width: 475px) {
+    .subtitle {
+        font-size: 3rem;
+    }
+}
+    

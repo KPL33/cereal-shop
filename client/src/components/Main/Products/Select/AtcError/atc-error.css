@@ -1,20 +1,23 @@
+.atc-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .quantity-error {
   color: var(--1);
   background-color: var(--3);
   text-align: center;
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: "Raleway", sans-serif;
-  margin: 0 10px 10px 10px;
   height: auto;
   width: auto;
   border-radius: 1rem;
-  padding: 10px;
-
   /* Define the fade-in animation */
   animation: fadeIn 2s ease forwards; /* Changed duration to 2 seconds and added animation-fill-mode */
-
   /* Hide the error message initially */
   opacity: 0;
+  padding: 10px;
 }
 
 /* Define the keyframes for the fade-in animation */
@@ -24,5 +27,24 @@
   }
   to {
     opacity: 1; /* End with 100% opacity */
+  }
+}
+
+@media (max-width: 1100px) {
+  .quantity-error {
+    padding: 4px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .quantity-error {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 675px) {
+  .atc-error-container {
+    margin-top: 10px;
   }
 }
