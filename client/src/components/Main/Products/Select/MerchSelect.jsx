@@ -47,7 +47,6 @@ const MerchSelect = () => {
   const handleSizeChange = (size, productId) => {
     setSelectedSize(size);
     setSelectedMerch({ value: productId, label: `T-Shirt - ${size}` });
-    console.log("Size selected:", size);
   };
 
   useEffect(() => {
@@ -75,10 +74,10 @@ const MerchSelect = () => {
             onSizeChange={handleSizeChange}
           />
         )}
-        
+        <div className="atc-details">
           <MerchAtcButton />
           {(!selectedMerch || merchQuantityError) && <MerchAtcError />}
-        
+        </div>
       </div>
     </div>
   );

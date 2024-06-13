@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [foodQuantity, setFoodQuantity] = useState(1);
   const [merchQuantity, setMerchQuantity] = useState(1);
+  const [merchSizeError, setMerchSizeError] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signoutClicked, setSignoutClicked] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
@@ -84,6 +85,8 @@ const AppProvider = ({ children }) => {
         setFoodQuantity,
         merchQuantity,
         setMerchQuantity,
+        merchSizeError,
+        setMerchSizeError,
         error,
         setError,
         foodQuantityError,
