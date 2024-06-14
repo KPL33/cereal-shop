@@ -1,4 +1,3 @@
-// MerchSelect.jsx
 import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
@@ -29,6 +28,7 @@ const MerchSelect = () => {
     merchQuantityError,
     setMerchSelectionError,
     setMerchAtcClicked,
+    merchAtcClicked,
   } = useAppContext();
 
   useEffect(() => {
@@ -38,15 +38,22 @@ const MerchSelect = () => {
     setMerchAtcClicked(false);
   }, [setSelectedMerch, setMerchSelectionError, setMerchAtcClicked]);
 
-
   const handleOnChange = (values) => {
     console.log("Merch selected:", values);
     handleProductSelection(values, setSelectedMerch, setMerchQuantity);
+    if (merchAtcClicked) {
+      setMerchAtcClicked(false);
+      console.log("handleOnChange reset merchAtcClicked to false");
+    }
   };
 
   const handleSizeChange = (size, productId) => {
     setSelectedSize(size);
     setSelectedMerch({ value: productId, label: `T-Shirt - ${size}` });
+    if (merchAtcClicked) {
+      setMerchAtcClicked(false);
+      console.log("handleSizeChange reset merchAtcClicked to false");
+    }
   };
 
   useEffect(() => {

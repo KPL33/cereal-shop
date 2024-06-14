@@ -11,22 +11,21 @@ const MerchAtcError = () => {
     selectedSize,
   } = useAppContext();
 
-  const errorMessage =
-    (!selectedMerch && merchAtcClicked) ||
-    merchQuantityError ||
-    (!selectedSize &&
-      selectedMerch?.label.includes("T-Shirt") &&
-      merchAtcClicked)
-      ? !selectedMerch && merchAtcClicked
-        ? "Please select an item before adding to cart."
-        : !selectedSize &&
-          selectedMerch?.label.includes("T-Shirt") &&
-          merchAtcClicked
-        ? "Please select a T-Shirt size before adding to cart."
-        : merchQuantity < 1 || merchQuantity > 99
-        ? "Please enter a quantity between 1 and 99."
-        : ""
-      : "";
+  console.log("MerchAtcError rendered. merchAtcClicked:", merchAtcClicked);
+
+  let errorMessage = "";
+
+  if (merchAtcClicked) {
+    if (!selectedMerch) {
+      errorMessage = "Please select an item before adding to cart.";
+    } else if (selectedMerch.label.includes("T-Shirt") && !selectedSize) {
+      errorMessage = "Please select a T-Shirt size before adding to cart.";
+    } else if (merchQuantity < 1 || merchQuantity > 99) {
+      errorMessage = "Please enter a quantity between 1 and 99.";
+    }
+  }
+
+  console.log("Determined errorMessage:", errorMessage);
 
   return (
     <div className="atc-error-container">

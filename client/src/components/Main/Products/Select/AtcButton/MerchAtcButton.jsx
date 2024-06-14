@@ -16,6 +16,7 @@ const MerchAtcButton = () => {
 
   const handleCartClick = async () => {
     setMerchAtcClicked(true);
+    console.log("ATC clicked, setMerchAtcClicked(true)");
 
     if (!selectedMerch) {
       setMerchSelectionError(true);

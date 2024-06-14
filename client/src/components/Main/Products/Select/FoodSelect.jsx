@@ -28,7 +28,6 @@ const FoodSelect = () => {
   } = useAppContext();
 
   useEffect(() => {
-    
     setSelectedFood(null);
     setSelectionError(false);
     setAtcClicked(false);
