@@ -1,4 +1,3 @@
-// MerchAtcButton.jsx
 import useAppContext from "../../../../../context/useAppContext";
 import axios from "axios";
 import "./atc-button.css";
@@ -12,6 +11,7 @@ const MerchAtcButton = () => {
     setMerchQuantityError,
     setMerchAtcClicked,
     setMerchSelectionError,
+    setMerchSizeError, // Add this line to get the setMerchSizeError setter
   } = useAppContext();
 
   const handleCartClick = async () => {
@@ -24,8 +24,11 @@ const MerchAtcButton = () => {
     }
 
     if (selectedMerch?.label.includes("T-Shirt") && !selectedSize) {
+      setMerchSizeError(true); // Set merchSizeError to true
       setMerchSelectionError(true);
       return;
+    } else {
+      setMerchSizeError(false); // Set merchSizeError to false if size is selected
     }
 
     if (loggedIn) {

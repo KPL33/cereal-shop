@@ -1,4 +1,3 @@
-// MerchAtcError.jsx
 import useAppContext from "../../../../../context/useAppContext";
 import "./atc-error.css";
 
@@ -9,6 +8,7 @@ const MerchAtcError = () => {
     merchAtcClicked,
     merchQuantity,
     selectedSize,
+    merchSizeError, // Add this line to get the merchSizeError state
   } = useAppContext();
 
   console.log("MerchAtcError rendered. merchAtcClicked:", merchAtcClicked);
@@ -22,6 +22,9 @@ const MerchAtcError = () => {
       errorMessage = "Please select a T-Shirt size before adding to cart.";
     } else if (merchQuantity < 1 || merchQuantity > 99) {
       errorMessage = "Please enter a quantity between 1 and 99.";
+    } else if (merchSizeError) {
+      // Add this condition to check merchSizeError
+      errorMessage = "Please select a T-Shirt size before adding to cart.";
     }
   }
 

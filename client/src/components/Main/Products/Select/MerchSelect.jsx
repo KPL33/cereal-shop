@@ -29,6 +29,8 @@ const MerchSelect = () => {
     setMerchSelectionError,
     setMerchAtcClicked,
     merchAtcClicked,
+    merchSizeError,
+    setMerchSizeError,
   } = useAppContext();
 
   useEffect(() => {
@@ -36,11 +38,18 @@ const MerchSelect = () => {
     setSelectedMerch(null);
     setMerchSelectionError(false);
     setMerchAtcClicked(false);
-  }, [setSelectedMerch, setMerchSelectionError, setMerchAtcClicked]);
+    setMerchSizeError(false);
+  }, [
+    setSelectedMerch,
+    setMerchSelectionError,
+    setMerchAtcClicked,
+    setMerchSizeError,
+  ]);
 
   const handleOnChange = (values) => {
     console.log("Merch selected:", values);
     handleProductSelection(values, setSelectedMerch, setMerchQuantity);
+    setMerchSizeError(false); // Reset size error on new selection
     if (merchAtcClicked) {
       setMerchAtcClicked(false);
       console.log("handleOnChange reset merchAtcClicked to false");
@@ -58,7 +67,16 @@ const MerchSelect = () => {
 
   useEffect(() => {
     console.log("selectedMerch changed:", selectedMerch);
-  }, [selectedMerch]);
+    if (
+      selectedMerch &&
+      selectedMerch.label.includes("T-Shirt") &&
+      !selectedSize
+    ) {
+      setMerchSizeError(true);
+    } else {
+      setMerchSizeError(false);
+    }
+  }, [selectedMerch, selectedSize, setMerchSizeError]);
 
   return (
     <div className="prod-select-details">
@@ -83,7 +101,9 @@ const MerchSelect = () => {
         )}
         <div className="atc-details">
           <MerchAtcButton />
-          {(!selectedMerch || merchQuantityError) && <MerchAtcError />}
+          {(!selectedMerch || merchQuantityError || merchSizeError) && (
+            <MerchAtcError />
+          )}
         </div>
       </div>
     </div>
