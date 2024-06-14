@@ -42,3 +42,28 @@
     font-size: 2em;
   }
 }
+
+@media (max-width: 992px) {
+  .shirt-sizes {
+    margin: 10px;
+    gap: .25rem;
+  }
+
+  .size-option {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 675px) {
+  .shirt-sizes {
+    gap: 2rem;
+  }
+  
+  .size-option {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2em;
+  }
+}

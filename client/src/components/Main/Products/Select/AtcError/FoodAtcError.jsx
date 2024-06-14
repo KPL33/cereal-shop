@@ -17,7 +17,7 @@ const FoodAtcError = () => {
 
   return (
     <div className="atc-error-container">
-      {errorMessage && <h3 className="quantity-error">{errorMessage}</h3>}
+      {errorMessage && <h3 className="product-error">{errorMessage}</h3>}
     </div>
   );
 };

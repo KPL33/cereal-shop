@@ -100,8 +100,6 @@ const Cart = () => {
       try {
         const currentCartId = localStorage.getItem("currentCartId");
 
-        console.log("Current Cart ID:", currentCartId);
-
         if (!currentCartId) {
           console.error("No current cart ID found in local storage.");
           return;
@@ -110,16 +108,9 @@ const Cart = () => {
         const response = await axios.get(`http://localhost:3000/cart/products`);
         const cartData = response.data;
 
-        console.log("Fetched Cart Products:", cartData);
-
         // Filter CartProducts belonging to the current cart
         const cartProducts = cartData.filter(
           (product) => product.cartId === parseInt(currentCartId)
-        );
-
-        console.log(
-          "CartProducts associated with the cartId in question are:",
-          cartProducts
         );
 
         // Populate the cart component on the frontend with fetched CartProducts

@@ -91,12 +91,13 @@
 
 @media (max-width: 675px) {
     .footer {
-        flex-direction: column;
-        align-items: center;
-        
+        padding: 0;
+        justify-content: space-around;
     }
 
-    
+    .email-container, .socials, .made-with {
+        width: 30%;
+    }
 
     .socials {
         justify-content: center;
@@ -107,7 +108,7 @@
     }
     
     .made-with span {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .email-link, .made-with p {

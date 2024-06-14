@@ -18,8 +18,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
-    console.log("Form Data:", formData);
 
     try {
       const response = await fetch("http://localhost:3000/send", {

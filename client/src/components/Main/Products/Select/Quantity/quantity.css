@@ -65,16 +65,17 @@
     width: 30px; /* Set fixed width */
     margin: 10px 0;
   }
+}
 
-  .count {
-    width: 100%; /* Full width for the input */
-    max-width: 30px; /* Optionally limit the maximum width */
-    font-size: 2rem;
+@media (max-width: 850px) {
+  #food-quantity button, #merch-quantity button {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (max-width: 675px) {
-  #food-quantity {
+  #food-quantity, #merch-quantity {
     justify-content: space-around;
   }
 }

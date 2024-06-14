@@ -27,8 +27,6 @@ const Login = () => {
         password: password,
       });
 
-      console.log("Backend response:", response.data); // Log the backend response
-
       if (response.status === 200) {
         const { userId } = response.data; // Extract userId from response
         setLoggedIn(true);
@@ -40,9 +38,7 @@ const Login = () => {
         // Fetch currentCartId after storing userId
         fetchCurrentCartId(userId);
 
-        console.log("User logged in:", response.data);
       } else {
-        console.log("Login failed:", response.statusText);
         setError("Invalid email or password");
       }
     } catch (error) {

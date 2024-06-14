@@ -78,16 +78,14 @@ const MerchAtcButton = () => {
   };
 
   return (
-    <section className="atc-details">
-      <button
-        className="atc"
-        onClick={handleCartClick}
-        disabled={!loggedIn}
-        style={{ opacity: loggedIn ? 1 : 0.8, fontSize: "2rem" }}
-      >
-        {loggedIn ? "Add to cart" : "Login to add to cart"}
-      </button>
-    </section>
+    <button
+      className="atc"
+      onClick={handleCartClick}
+      disabled={!loggedIn}
+      style={{ opacity: loggedIn ? 1 : 0.8, fontSize: "2rem" }}
+    >
+      {loggedIn ? "Add to cart" : "Login to add to cart"}
+    </button>
   );
 };
 

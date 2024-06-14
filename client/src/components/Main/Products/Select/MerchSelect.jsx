@@ -99,12 +99,12 @@ const MerchSelect = () => {
             onSizeChange={handleSizeChange}
           />
         )}
-        <div className="atc-details">
+        
           <MerchAtcButton />
           {(!selectedMerch || merchQuantityError || merchSizeError) && (
             <MerchAtcError />
           )}
-        </div>
+        
       </div>
     </div>
   );
