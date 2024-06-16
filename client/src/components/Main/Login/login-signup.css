@@ -1,28 +1,31 @@
-.login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password, .error-container {
+.form-rows, .login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password, .error-container {
   display: flex;
 }
 
-.login-signup-form {
+.login-signup-form, .form-rows {
   flex-direction: column;
 }
 
-.confirm-row {
+/* .confirm-row {
   z-index: 2;
-}
+} */
 
-.email-row, .password-row, .confirm-row {
-  padding: 15px 0;
-}
-
-.email-row, .password-row, .confirm-row, .field-title {
+.field-title {
   width: 100%;
 }
 
+.form-rows {
+  background-color: var(--2);
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
 .login-signup-form {
-  width: 60vw;
+  width: 80vw;
   height: auto;
   background-color: var(--4);
-  margin-top: 50px;
+  margin: 50px 10px 0 10;
   border-radius: 2rem;
   box-shadow: 0px 4px 8px  var(--5, 0.4);
 }
@@ -32,8 +35,9 @@
 }
 
 .email-row, .password-row, .confirm-row {
-  background-color: var(--2);
-  padding: 0 20px;
+  padding: 0 100px;
+  width: 100%;
+  
 }
 
 .toggle-password, .error-container {
@@ -45,7 +49,7 @@
   padding: 10px 0 10px 10px;
 }
 
-.login-signup-form,
+.login-signup-form, #email-input,
 .submit {
   font-family: "Raleway", sans-serif;
 }
@@ -64,7 +68,7 @@
   font-size: 3rem;
 }
 
-.log-sign-error-container {
+.error-container {
   height: 50px;
 }
 
@@ -76,7 +80,7 @@
   color: var(--5);
 }
 
-.field-title, .signup-link {
+.field-title, .signup-link, .signup-error-message {
   font-family: "active", sans-serif;
 }
 
@@ -97,7 +101,6 @@
   padding: 10px;
   margin: 0 15px;
   border-radius: 1rem;
-  
 }
 
 .toggle-password {
@@ -164,20 +167,52 @@
 
 .error-container {
   align-items: center;
-  width: 100%;
+  width: 90%;
   height: 50px;
   margin: auto;
 }
 
 .signup-error-message {
-   text-align: center;
+  position: relative;
+  text-align: center;
   border-radius: 0 0 1rem 1rem;
   background-color: var(--3);
   font-size: 3rem;
-  font-family: "active", sans-serif;
   color: var(--1);
   padding: 10px 40px;
   animation: slide 5s ease-in-out forwards;
   transform: scale(1.2, 1);
-  height: 50px;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  #confirm-password-input {
+    margin-left: 0;
+
+  }
+
+  .email-row, .password-row, .confirm-row {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 730px) {
+  .field-title {
+    font-size: 2.5rem;
+  }
+
+  .signup-error-message {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 675px) {
+  .log-greeting, .signup-greeting, .field-title, .signup-error-message {
+    font-size: 1.8rem;
+  }
+
+  .submit {
+  font-size: 1.5rem;
+  }
 }

@@ -2,7 +2,6 @@
   height: auto;
 }
 
-
 .profile-field-container, .user-details {
   height: auto;
 }
@@ -14,6 +13,7 @@
   max-height: 800px;
   background-color: var(--2);
   border-radius: 2rem;
+  margin: 50px 0;
 }
 
 .profile-container,
@@ -41,10 +41,16 @@
   margin-bottom: 20px;
 }
 
+.profile-field-title {
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
 .profile-field-title, .edit-field-title {
   font-family: "active", sans-serif;
   color: var(--3);
   margin: 0 10px;
+  
 }
 
 .edit-field-title {
@@ -59,7 +65,6 @@
 }
 
 .profile-field-container {
-  font-size: 3.5rem;
   display: flex;
   flex-wrap: wrap;
   margin: 20px 10px;
@@ -115,7 +120,7 @@
 }
 
 .cancel-button, .save-button {
-   background-color: var(--1);
+  background-color: var(--1);
 }
 
 .save-button {
@@ -148,8 +153,8 @@
 
 .edit-field-value {
   height: 4rem;
-  font-size: 3rem;
-  width: 70%;
+  font-size: 2rem;
+  width: 100%;
   font-weight: 600;
   padding: 5px;
 }
@@ -161,10 +166,14 @@
   line-height: 4rem;
 }
 
+.state-pair-container, .edit-buttons {
+  justify-content: center;
+}
+
+
 .state-pair-container {
   display: flex;
   margin-right: 60px;
-  justify-content: center;
 }
 
 .state-list {
@@ -172,5 +181,47 @@
 }
 
 .edit-buttons {
-  margin-left: 90px;
+  margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  .profile-field-title {
+    width: 100px;
+    text-align: right;
+  }
+  
+  .profile-field-title, .edit-field-title, .profile-field-value {
+    font-size: 2rem;
+  }
+  
+  .contact-pair-container {
+    padding: 5px 0;
+  }
+
+  .edit-pair-container {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .edit-field-title {
+    width: 100px;
+    margin-left: 0;
+  }
+
+  .edit-field-value {
+    width: 500px;
+    font-size: 1.5rem;
+  }
+
+  .state-pair-container {
+    gap: 70px;
+  }
+
+  .state-field-title {
+    margin-left: 50px;
+  }
+
+  .state-list {
+    margin-right: auto;
+  }
 }

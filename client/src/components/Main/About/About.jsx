@@ -3,7 +3,7 @@ import "./about.css";
 const About = () => {
   return (
     <section className="about">
-      <h1 className="about-title">About</h1>
+      <h1 className="about-title">About Against the Grains</h1>
       <p>
         Start your day on a cheerful note with grain-free cereal! Bursting with
         flavor and wholesome goodness, grain-free cereal is a delicious way to

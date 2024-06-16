@@ -19,24 +19,24 @@ const Footer = () => {
           href={`mailto:${emailAddress}`}
           onClick={handleEmailClick}
         >
-          <img className="social-logo email" src={email} alt="Email icon" />
+          <img className="email" src={email} alt="Email icon" />
           <p>kevdev@myyahoo.com</p>
         </a>
       </div>
       <div className="socials">
         <a href="https://www.linkedin.com/in/kevin-lewis92126">
           <img
-            className="social-logo linkedin"
+            className="linkedin"
             src={linkedin}
             alt="LinkedIn logo"
           />
         </a>
         <a href="https://github.com/KPL33">
-          <img className="social-logo github" src={github} alt="GitHub logo" />
+          <img className="github" src={github} alt="GitHub logo" />
         </a>
         <a href="https://leetcode.com/KPL33/">
           <img
-            className="social-logo leetcode"
+            className="leetcode"
             src={leetcode}
             alt="LeetCode logo"
           />

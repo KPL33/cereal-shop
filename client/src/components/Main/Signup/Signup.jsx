@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { setAuthenticated } from "../../../../../utils/auth.js";
 import axios from "axios";
@@ -24,6 +25,10 @@ const SignUp = () => {
     setShowConfirmPassword,
   } = useAppContext();
 
+  useEffect(() => {
+    setError("");
+    setPasswordMismatch(false);
+  }, []);
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
@@ -120,56 +125,58 @@ const SignUp = () => {
         Welcome to Against the Grains! Please register below!
       </h2>
 
-      <div className="email-row">
-        <label htmlFor="email-input" className="field-title">
-          Email:
-          <input
-            id="email-input"
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
+      <div className="form-rows">
+        <div className="email-row">
+          <label htmlFor="email-input" className="field-title">
+            Email:
+            <input
+              id="email-input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
 
-        <div className="spacer"></div>
-      </div>
+          <div className="spacer"></div>
+        </div>
 
-      <div className="password-row">
-        <label htmlFor="password-input" className="field-title">
-          Password:
-          <input
-            id="password-input"
-            type={showPassword ? "text" : "password"}
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
+        <div className="password-row">
+          <label htmlFor="password-input" className="field-title">
+            Password:
+            <input
+              id="password-input"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
 
-        <span className="toggle-password" onClick={handlePasswordToggle}>
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </span>
-      </div>
+          <span className="toggle-password" onClick={handlePasswordToggle}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
 
-      <div className="confirm-row">
-        <label htmlFor="confirm-password-input" className="field-title">
-          Confirm Password:
-          <input
-            id="confirm-password-input"
-            type={showConfirmPassword ? "text" : "password"}
-            name="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
+        <div className="confirm-row">
+          <label htmlFor="confirm-password-input" className="field-title">
+            Confirm Password:
+            <input
+              id="confirm-password-input"
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
 
-        <span className="toggle-password" onClick={handleConfirmToggle}>
-          {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-        </span>
+          <span className="toggle-password" onClick={handleConfirmToggle}>
+            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
       </div>
 
       <div className="error-container">

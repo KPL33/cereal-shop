@@ -91,11 +91,19 @@
   .react-dropdown-select {
     width: 80px;
   }
+
+  .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 850px) {
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
     width: 80%;
+  }
+
+  .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
+    font-size: .8rem;
   }
 }
 
@@ -106,5 +114,9 @@
 
   .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
     font-size: 1.2rem;
+  }
+
+  .react-dropdown-select.select-menu {
+    margin-left: 0;
   }
 }

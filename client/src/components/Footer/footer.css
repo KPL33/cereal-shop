@@ -10,8 +10,12 @@
     align-items: center;
 }
 
-.email-container, .socials, .made-with {
-    width: 33.3%;
+.email-container, .made-with {
+    width: 30%;
+}
+
+.socials {
+    width: 25%;
 }
 
 .footer {
@@ -30,7 +34,7 @@
 
 
 .socials {  
-    justify-content: center;
+    justify-content: space-around;
     gap: 40px;
     height: auto;
 }
@@ -95,12 +99,12 @@
         justify-content: space-around;
     }
 
-    .email-container, .socials, .made-with {
-        width: 30%;
+    .email-container, .made-with {
+        width: 33%;
     }
 
     .socials {
-        justify-content: center;
+        gap: 5px;
     }
 
     .nav-link {
@@ -131,7 +135,6 @@
 
     .linkedin {
         width: 40px;
-
     }
 
     .react {
@@ -140,6 +143,20 @@
 }
 
 @media (max-width: 475px) {
+
+    .leetcode {
+        width: 25px;
+
+    }
+
+    .github {
+        width: 30px;
+
+    }
+
+    .linkedin {
+        width: 35px;
+    }
     
 }
     

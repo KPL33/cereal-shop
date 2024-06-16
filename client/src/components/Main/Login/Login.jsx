@@ -71,43 +71,40 @@ const Login = () => {
         <br />
         Please log-in to view your cart or make additional orders.
       </h2>
+      <div className="form-rows">
+        <div className="email-row">
+          <label htmlFor="email-input" className="field-title">
+            Email:{" "}
+            <input
+              id="email-input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-      <div className="email-row">
-        <label htmlFor="email-input" className="field-title">
-          Email:{" "}
-          <input
-            id="email-input"
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+          <div className="spacer"></div>
+        </div>
 
-        <div className="spacer"></div>
-      </div>
+        <div className="password-row">
+          <label htmlFor="password-input" className="field-title">
+            Password:{" "}
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
 
-      <div className="password-row">
-        <label htmlFor="password-input" className="field-title">
-          Password:{" "}
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-
-        <span
-          className="toggle-password"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
-        </span>
-      </div>
-      
-      <div className="error-container">
-        {error && <div className="error">{error}</div>}
+          <span
+            className="toggle-password"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
       </div>
 
       <button className="submit" type="submit">

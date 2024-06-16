@@ -78,5 +78,10 @@
   #food-quantity, #merch-quantity {
     justify-content: space-around;
   }
+
+  #food-quantity button, #merch-quantity button {
+    width: 30px;
+    height: 30px;
+  }
 }
 
