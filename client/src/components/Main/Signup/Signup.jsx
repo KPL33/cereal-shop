@@ -125,63 +125,69 @@ const SignUp = () => {
         Welcome to Against the Grains! Please register below!
       </h2>
 
-      <div className="form-rows">
-        <div className="email-row">
-          <label htmlFor="email-input" className="field-title">
-            Email:
-            <input
-              id="email-input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </label>
+      <div className="form-body">
+        <div className="form-rows">
+          <div className="form-row">
+            <h4 className="field-title">Email:</h4>
 
-          <div className="spacer"></div>
-        </div>
+            <label htmlFor="email-input">
+              <input
+                id="email-input"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
 
-        <div className="password-row">
-          <label htmlFor="password-input" className="field-title">
-            Password:
-            <input
-              id="password-input"
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
+            <div className="toggle-password"></div>
+          </div>
 
-          <span className="toggle-password" onClick={handlePasswordToggle}>
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
+          <div className="form-row">
+            <h4 className="field-title">Password:</h4>
+            <label htmlFor="password-input">
+              <input
+                id="password-input"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
 
-        <div className="confirm-row">
-          <label htmlFor="confirm-password-input" className="field-title">
-            Confirm Password:
-            <input
-              id="confirm-password-input"
-              type={showConfirmPassword ? "text" : "password"}
-              name="confirm-password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </label>
+            <span
+              className="toggle-password"
+              onClick={handlePasswordToggle}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
-          <span className="toggle-password" onClick={handleConfirmToggle}>
-            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
+          <div className="form-row">
+            <h4 className="field-title">Confirm Password:</h4>
+
+            <label htmlFor="confirm-password-input" className="field-title">
+              <input
+                id="confirm-password-input"
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirm-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </label>
+
+            <span className="toggle-password" onClick={handleConfirmToggle}>
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="error-container">
+      
         {error && <div className="signup-error-message">{error}</div>}
-      </div>
+      
 
       <button className="submit" type="submit">
         Submit

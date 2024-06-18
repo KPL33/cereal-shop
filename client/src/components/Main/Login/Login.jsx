@@ -71,39 +71,44 @@ const Login = () => {
         <br />
         Please log-in to view your cart or make additional orders.
       </h2>
-      <div className="form-rows">
-        <div className="email-row">
-          <label htmlFor="email-input" className="field-title">
-            Email:{" "}
-            <input
-              id="email-input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
 
-          <div className="spacer"></div>
-        </div>
+      <div className="form-body">
+        <div className="form-rows">
+          <div className="form-row">
+            <h4 className="field-title">Email: </h4>
 
-        <div className="password-row">
-          <label htmlFor="password-input" className="field-title">
-            Password:{" "}
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+            <label htmlFor="email-input">
+              <input
+                id="email-input"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
 
-          <span
-            className="toggle-password"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
+            <div className="toggle-password"></div>
+          </div>
+
+          <div className="form-row">
+            <h4 className="field-title">Password:</h4>
+
+            <label htmlFor="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+
+            <span
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -111,7 +116,7 @@ const Login = () => {
         Submit
       </button>
 
-      <h4 className="signup-greeting">New around here?</h4>
+      <h4 className="log-greeting">New around here?</h4>
 
       <Link className="signup-link" to="/signup">
         <h4>Sign-Up!</h4>

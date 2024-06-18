@@ -1,138 +1,110 @@
-.form-rows, .login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password, .error-container {
-  display: flex;
-}
-
-.login-signup-form, .form-rows {
-  flex-direction: column;
-}
-
-/* .confirm-row {
-  z-index: 2;
-} */
-
-.field-title {
-  width: 100%;
-}
-
-.form-rows {
-  background-color: var(--2);
-  align-items: center;
-  width: 100%;
-  z-index: 2;
-}
-
 .login-signup-form {
-  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
   height: auto;
   background-color: var(--4);
-  margin: 50px 10px 0 10;
   border-radius: 2rem;
   box-shadow: 0px 4px 8px  var(--5, 0.4);
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px 0;
 }
 
-.login-signup-form, .email-row, .password-row, .confirm-row, .field-title, .toggle-password {
-  align-items: center;
+.log-greeting, .field-title, .signup-link, .signup-error-message {
+  font-size: 3rem;
 }
 
-.email-row, .password-row, .confirm-row {
-  padding: 0 100px;
-  width: 100%;
-  
+.toggle-password:hover, .submit:hover, .signup-link:hover {
+  cursor: pointer;
 }
 
-.toggle-password, .error-container {
-  justify-content: center;
-}
-
-.field-title {
-  justify-content: space-between;
-  padding: 10px 0 10px 10px;
-}
-
-.login-signup-form, #email-input,
-.submit {
+.log-greeting, .form-row input, .submit {
   font-family: "Raleway", sans-serif;
 }
 
 .log-greeting {
-  margin: 20px 10px;
-}
-
-.log-greeting, .signup-greeting, .signup-link, .submit:hover, .error {
   color: var(--1);
-  text-align: center;
+  margin: 10px;
 }
 
-.log-greeting, .signup-greeting, .signup-link, .login-signup-form,
-.submit {
-  font-size: 3rem;
+.form-body {
+  display: flex;
+  background-color: var(--2);
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
 }
 
-.error-container {
-  height: 50px;
+.form-rows {
+  margin: 20px 0;  
 }
 
-.submit {
-  font-size: 2rem;
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+  margin: 15px 0;
 }
 
-.field-title, .submit {
-  color: var(--5);
-}
-
-.field-title, .signup-link, .signup-error-message {
+.field-title, .signup-error-message, .signup-link {
   font-family: "active", sans-serif;
+}
+
+.form-row input {
+  width: 100%;
+  height: 3rem;
+  margin: 0 15px;
+  border-radius: 1rem;
+  padding: 0 10px;
+}
+
+.form-row input, .submit {
+  border: 1px solid var(--5);
+}
+
+.toggle-password {
+  width: 30px;
+  height: auto;
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: auto;
+  margin: 5px 0 0 20px;
+}
+
+.toggle-password:hover, .submit:hover, .signup-link:hover {
+  cursor: pointer;
+}
+
+.signup-error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border-radius: 0 0 1rem 1rem;
+  padding: 5px 20px;
+  margin: auto;
+  background-color: var(--3);
+  color: var(--1);
+  animation: slide 5s ease-in-out forwards;
+  transform: scale(1.2, 1);
 }
 
 .signup-link {
   transform: skew(.15rad);
   text-decoration: none;
   margin-bottom: 20px;
+  color: var(--1);
 }
 
 .signup-link:hover {
   text-decoration: underline;
   color: var(--5);
-}
-
-.login-signup-form input {
-  width: 60%;
-  height: 40px;
-  padding: 10px;
-  margin: 0 15px;
-  border-radius: 1rem;
-}
-
-.toggle-password {
-  height: auto;
-  color: var(--4);
-}
-
-.toggle-password, .spacer {
-  width: 70px;
-}
-
-.login-signup-form input, .submit {
-  border: 1px solid var(--5);
-}
-
-.submit {
-  width: 20%;
-  height: 50px;
-  margin: 20px 0;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  box-shadow: 0px 2px 4px  var(--5, 0.4);
-  border-radius: .5rem;
-}
-
-.submit:hover {
-  background-color: var(--5);
-}
-
-.toggle-password:hover, .submit:hover, .signup-link:hover {
-  cursor: pointer;
 }
 
 @keyframes slide {
@@ -165,54 +137,44 @@
   }
 }
 
-.error-container {
-  align-items: center;
-  width: 90%;
+.submit {
+  width: 20%;
   height: 50px;
-  margin: auto;
+  margin: 10px auto 0 auto;
+  font-size: 2rem;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  box-shadow: 0px 2px 4px  var(--5, 0.4);
+  border-radius: .5rem;
 }
 
-.signup-error-message {
-  position: relative;
-  text-align: center;
-  border-radius: 0 0 1rem 1rem;
-  background-color: var(--3);
-  font-size: 3rem;
+.submit:hover {
+  background-color: var(--5);
   color: var(--1);
-  padding: 10px 40px;
-  animation: slide 5s ease-in-out forwards;
-  transform: scale(1.2, 1);
-  height: auto;
 }
 
-@media (max-width: 992px) {
-  #confirm-password-input {
-    margin-left: 0;
-
+@media (max-width: 850px) {
+  .login-signup-form {
+    width: 80vw;
   }
-
-  .email-row, .password-row, .confirm-row {
-    width: 100%;
-    padding: 0;
-  }
-}
-
-@media (max-width: 730px) {
   .field-title {
-    font-size: 2.5rem;
-  }
-
-  .signup-error-message {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 675px) {
-  .log-greeting, .signup-greeting, .field-title, .signup-error-message {
-    font-size: 1.8rem;
+  .login-signup-form {
+    width: 90vw;
+    margin-top: 20px;
   }
 
-  .submit {
-  font-size: 1.5rem;
+  .log-greeting, .signup-error-message {
+    font-size: 2rem;
+  }
+
+  .toggle-password svg {
+    width: 15px;
   }
 }
+
