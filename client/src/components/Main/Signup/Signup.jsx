@@ -4,7 +4,7 @@ import { setAuthenticated } from "../../../../../utils/auth.js";
 import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../Login/login-signup.css";
+import "../Login/forms.css";
 
 const SignUp = () => {
   const {
@@ -186,7 +186,7 @@ const SignUp = () => {
       </div>
 
       
-        {error && <div className="signup-error-message">{error}</div>}
+        {error && <div className="form-message">{error}</div>}
       
 
       <button className="submit" type="submit">

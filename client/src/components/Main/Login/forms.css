@@ -8,10 +8,10 @@
   box-shadow: 0px 4px 8px  var(--5, 0.4);
   text-align: center;
   margin-top: 100px;
-  padding: 20px 0;
+  
 }
 
-.log-greeting, .field-title, .signup-link, .signup-error-message {
+.log-greeting, .field-title, .signup-link, .form-message, .back-contact-link {
   font-size: 3rem;
 }
 
@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.log-greeting, .form-row input, .submit {
+.log-greeting, .form-row input, #message, .submit {
   font-family: "Raleway", sans-serif;
 }
 
@@ -34,7 +34,7 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  z-index: 1;
 }
 
 .form-rows {
@@ -49,19 +49,19 @@
   margin: 15px 0;
 }
 
-.field-title, .signup-error-message, .signup-link {
+.field-title, .form-message, .signup-link {
   font-family: "active", sans-serif;
 }
 
-.form-row input {
+.form-row input, #message {
   width: 100%;
   height: 3rem;
   margin: 0 15px;
   border-radius: 1rem;
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 
-.form-row input, .submit {
+.form-row input, #message, .submit {
   border: 1px solid var(--5);
 }
 
@@ -80,7 +80,17 @@
   cursor: pointer;
 }
 
-.signup-error-message {
+#name, #email, #message {
+  width: 600px;
+}
+
+#message {
+  min-height: 100px;
+  resize: none;
+  height: auto;
+}
+
+.form-message {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,9 +112,13 @@
   color: var(--1);
 }
 
-.signup-link:hover {
+.signup-link:hover, .back-contact-link:hover {
   text-decoration: underline;
   color: var(--5);
+}
+
+.back-contact-link {
+  margin-top: 20px;
 }
 
 @keyframes slide {
@@ -137,13 +151,16 @@
   }
 }
 
+.submit, .form-row input, #message {
+  font-weight: 600;
+}
+
 .submit {
   width: 20%;
   height: 50px;
   margin: 10px auto 0 auto;
   font-size: 2rem;
   font-optical-sizing: auto;
-  font-weight: 600;
   font-style: normal;
   box-shadow: 0px 2px 4px  var(--5, 0.4);
   border-radius: .5rem;
@@ -154,12 +171,24 @@
   color: var(--1);
 }
 
+@media (max-width: 1500px) {
+  #name, #email, #message {
+  width: 400px;
+  }
+}
+
+@media (max-width: 1080px) {
+  #name, #email, #message {
+  width: 300px;
+}
+}
+
 @media (max-width: 850px) {
   .login-signup-form {
     width: 80vw;
   }
   .field-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -169,12 +198,18 @@
     margin-top: 20px;
   }
 
-  .log-greeting, .signup-error-message {
+  .log-greeting, .form-message {
     font-size: 2rem;
   }
 
   .toggle-password svg {
     width: 15px;
   }
+}
+
+@media (max-width: 500px) {
+  #name, #email, #message {
+  width: 220px;
+}
 }
 

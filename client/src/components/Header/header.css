@@ -3,7 +3,7 @@
   height: auto;
   width: 100vw;
   padding: 10px 40px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header, .title-container {
@@ -23,7 +23,7 @@
 
 #logo {
   height: auto;
-  width: 15vw;
+  width: 13vw;
 }
 
 .title-container {
@@ -87,16 +87,16 @@
 
 @media (max-width: 675px) {
     .header {
-        flex-direction: column;
+      flex-direction: column;
     }
     
     #logo {
-        width: 35vw;
-        height: auto;
+      width: 35vw;
+      height: auto;
     }
 
     .subtitle, .the {
-        font-size: 4rem;
+      font-size: 4rem;
     }
 }
 

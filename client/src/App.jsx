@@ -34,7 +34,6 @@ const AppContent = () => {
     <div className="app-wrapper">
       <Header />
       <main className="page">
-        <div className="logged-in-out-container">
           {loggedIn && !signoutClicked && (
             <div className="logged-in-out">
               <h3 className="logged-in-out-message">You are now logged in!</h3>
@@ -45,7 +44,6 @@ const AppContent = () => {
               <h3 className="logged-in-out-message">You are now signed out!</h3>
             </div>
           )}
-        </div>
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<Products />} />

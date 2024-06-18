@@ -1,5 +1,6 @@
-import { useState } from "react";
-import "./contact.css";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import "../Login/forms.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,9 @@ const Contact = () => {
     email: "",
     message: "",
   });
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showBackToHomeLink, setShowBackToHomeLink] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,54 +36,91 @@ const Contact = () => {
         throw new Error("Failed to send email");
       }
 
+      // Show success message
+      setShowSuccessMessage(true);
+
+      // Optionally show back to home link after success message timeout
+      setTimeout(() => {
+        setShowSuccessMessage(false); // Reset success message state after delay
+        setShowBackToHomeLink(true); // Show back to home link
+      }, 6000); // Reset after 6 seconds (adjust as needed)
+
       const result = await response.text();
       console.log("Server Response:", result);
-      
     } catch (error) {
       console.error("Error:", error);
-      
     }
   };
 
+  // Reset back to home link state on formData change
+  useEffect(() => {
+    setShowBackToHomeLink(false);
+  }, [formData]);
+
   return (
-    <section className="contact">
-      <h1 className="contact-title">Contact</h1>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+    <form name="contact" onSubmit={handleSubmit} className="login-signup-form">
+      <h2 className="log-greeting">Contact Us!</h2>
+
+      <div className="form-body">
+        <div className="form-rows">
+          <div className="form-row">
+            <h4 className="field-title">Name:</h4>
+            <label htmlFor="name-field">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="form-row">
+            <h4 className="field-title">Email:</h4>
+            <label htmlFor="email-field">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+
+          <div className="form-row">
+            <h4 className="field-title">Message:</h4>
+            <label htmlFor="message-field">
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </label>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </section>
+      </div>
+
+      {showSuccessMessage && (
+        <div className="form-message">Message sent successfully!</div>
+      )}
+
+      {showBackToHomeLink && (
+        <Link className="signup-link back-contact-link" to="/">
+          <span>{"\u21E6"}</span>
+          <h4>Back to Home Page</h4>
+        </Link>
+      )}
+
+      <button className="submit" type="submit">
+        Submit
+      </button>
+    </form>
   );
 };
 

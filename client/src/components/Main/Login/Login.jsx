@@ -3,13 +3,12 @@ import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
 import { setAuthenticated } from "../../../../../utils/auth.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./login-signup.css";
+import "./forms.css";
 
 const Login = () => {
   const {
     loggedIn,
     setLoggedIn,
-    error,
     setError,
     email,
     setEmail,
@@ -37,7 +36,6 @@ const Login = () => {
 
         // Fetch currentCartId after storing userId
         fetchCurrentCartId(userId);
-
       } else {
         setError("Invalid email or password");
       }
@@ -75,7 +73,7 @@ const Login = () => {
       <div className="form-body">
         <div className="form-rows">
           <div className="form-row">
-            <h4 className="field-title">Email: </h4>
+            <h4 className="field-title">Email:</h4>
 
             <label htmlFor="email-input">
               <input
