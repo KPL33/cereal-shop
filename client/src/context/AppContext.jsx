@@ -31,6 +31,7 @@ const AppProvider = ({ children }) => {
   const [hasEmptyFields, setHasEmptyFields] = useState(false);
   const [atcClicked, setAtcClicked] = useState(false);
   const [merchAtcClicked, setMerchAtcClicked] = useState(false);
+  const [showFoodAtcMessageBox, setShowFoodAtcMessageBox] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -111,6 +112,8 @@ const AppProvider = ({ children }) => {
         setLoading,
         editingProfile,
         setEditingProfile,
+        showFoodAtcMessageBox,
+        setShowFoodAtcMessageBox,
         profileData,
         setProfileData,
         fieldErrors,

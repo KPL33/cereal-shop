@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
 import Select from "react-dropdown-select";
 import FoodQuantity from "./Quantity/FoodQuantity.jsx";
-import AtcButton from "./AtcButton/AtcButton.jsx";
-import FoodAtcError from "./AtcError/FoodAtcError.jsx"; // Import FoodAtcError
+import FoodAtc from "./AtcButtons/FoodAtc.jsx";
+
 
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
@@ -48,13 +48,11 @@ const FoodSelect = () => {
           labelField="label"
           searchable={false}
         />
+
         {selectedFood && <FoodQuantity />}
       </div>
-      <div className="atc-details">
-        <AtcButton />
-        {(!selectedFood || foodQuantityError) && <FoodAtcError />}{" "}
-        {/* Use FoodAtcError */}
-      </div>
+
+      <FoodAtc />
     </div>
   );
 };

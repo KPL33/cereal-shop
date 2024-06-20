@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import ShirtSizes from "./ShirtSizes/ShirtSizes.jsx";
 import MerchQuantity from "./Quantity/MerchQuantity.jsx";
-import MerchAtcButton from "./AtcButton/MerchAtcButton.jsx";
+import MerchAtcButton from "./AtcButtons/MerchAtcButton.jsx";
 import MerchAtcError from "./AtcError/MerchAtcError.jsx"; // Import MerchAtcError
 
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
