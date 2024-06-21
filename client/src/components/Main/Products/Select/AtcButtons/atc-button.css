@@ -22,7 +22,8 @@
 .atc-button {
   width: 60%;
   font-size: 3rem;
-  height: 60px;
+  height: 70px;
+  line-height: .95;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,13 +31,19 @@
   padding: 10px;
   position: relative;
   z-index: 1;
+
+  &:not([disabled]):hover {
+    background-color: var(--3);
+    color: var(--1);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    color: var(--2);
+    cursor: not-allowed;
+  }
 }
 
-.atc-button:hover {
-  background-color: var(--3);
-  color: var(--1);
-  cursor: pointer;
-}
 
 .message-box-wrapper {
   position: relative;
@@ -62,11 +69,11 @@
   }
 
   10% {
-    transform: translateY(0);
+    transform: translateY(-10%);
   }
 
   90% {
-    transform: translateY(0);
+    transform: translateY(-10%);
   }
 
   100% {
@@ -80,6 +87,11 @@
 
 .positive {
   background-color: var(--5);
+}
+
+.negative {
+  color: var(--3);
+  background-color: var(--1);
 }
 
 @media (max-width: 1250px) {

@@ -152,7 +152,7 @@
 
   .product-card {
     width: 75%;
-    height: auto;
+    height: 800px;
   }
 
   .product-card-title, .product-card-description {

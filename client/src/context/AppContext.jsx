@@ -44,7 +44,7 @@ const AppProvider = ({ children }) => {
 
   const [foodQuantityError, setFoodQuantityError] = useState(false);
   const [merchQuantityError, setMerchQuantityError] = useState(false);
-  const [selectionError, setSelectionError] = useState(false);
+  const [foodSelectionError, setFoodSelectionError] = useState(false);
   const [merchSelectionError, setMerchSelectionError] = useState(false);
 
   useEffect(() => {
@@ -120,8 +120,8 @@ const AppProvider = ({ children }) => {
         setFieldErrors,
         hasEmptyFields,
         setHasEmptyFields,
-        selectionError,
-        setSelectionError,
+        foodSelectionError,
+        setFoodSelectionError,
         merchSelectionError, setMerchSelectionError,
         atcClicked,
         setAtcClicked,

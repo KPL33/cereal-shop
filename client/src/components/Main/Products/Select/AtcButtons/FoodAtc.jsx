@@ -11,37 +11,54 @@ const FoodAtc = () => {
     foodQuantity,
     setFoodQuantityError,
     setAtcClicked,
-    setSelectionError,
+    setFoodSelectionError,
     setShowFoodAtcMessageBox,
     showFoodAtcMessageBox,
   } = useAppContext();
 
   const [showAnimation, setShowAnimation] = useState(false);
+  const [messageType, setMessageType] = useState("");
+  const [messageContent, setMessageContent] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // State for button disabled
 
   useEffect(() => {
     if (showFoodAtcMessageBox) {
       setShowAnimation(true);
+      setIsButtonDisabled(true); // Disable button when message appears
+
       const timer = setTimeout(() => {
         setShowAnimation(false);
         setShowFoodAtcMessageBox(false);
-      }, 5000); // Adjust the duration to match the animation duration
+        setIsButtonDisabled(false); // Re-enable button after message disappears
+        setFoodSelectionError(false); // Reset food selection error
+        setFoodQuantityError(false); // Reset food quantity error
+      }, 7000); // Extend to 7 seconds to match your requirement
 
       return () => clearTimeout(timer);
     }
-  }, [showFoodAtcMessageBox, setShowFoodAtcMessageBox]);
+  }, [
+    showFoodAtcMessageBox,
+    setShowFoodAtcMessageBox,
+    setFoodSelectionError,
+    setFoodQuantityError,
+  ]);
 
   const handleCartClick = async () => {
     if (!selectedFood) {
       setAtcClicked(true);
-      setSelectionError(true);
-      setShowFoodAtcMessageBox(false); // Ensure message box is hidden on error
+      setFoodSelectionError(true);
+      setMessageType("negative");
+      setMessageContent("Please select food.");
+      setShowFoodAtcMessageBox(true); // Show the message box
       return;
     }
 
     if (loggedIn) {
       if (foodQuantity < 1 || foodQuantity > 99) {
         setFoodQuantityError(true);
-        setShowFoodAtcMessageBox(false); // Ensure message box is hidden on error
+        setMessageType("negative");
+        setMessageContent("Qty. must be less than 99.");
+        setShowFoodAtcMessageBox(true); // Show the message box
         return;
       }
 
@@ -54,7 +71,9 @@ const FoodAtc = () => {
 
         if (!userId || !currentCartId) {
           console.error("userId or cartId not found in localStorage");
-          setShowFoodAtcMessageBox(false); // Ensure message box is hidden on error
+          setMessageType("negative");
+          setMessageContent("User ID or Cart ID not found.");
+          setShowFoodAtcMessageBox(true); // Show the message box
           return;
         }
 
@@ -83,10 +102,14 @@ const FoodAtc = () => {
 
         console.log("Food item added to cart:", response.data);
 
+        setMessageType("positive");
+        setMessageContent("Added to cart!");
         setShowFoodAtcMessageBox(true); // Set to true after successful addition
       } catch (error) {
         console.error("Error adding food item to cart:", error);
-        setShowFoodAtcMessageBox(false); // Ensure message box is hidden on error
+        setMessageType("negative");
+        setMessageContent("Error adding food item to cart.");
+        setShowFoodAtcMessageBox(true); // Ensure message box is shown on error
       }
     }
   };
@@ -96,14 +119,13 @@ const FoodAtc = () => {
       <button
         className="atc-button"
         onClick={handleCartClick}
-        disabled={!loggedIn}
-        style={{ opacity: loggedIn ? 1 : 0.8 }}
+        disabled={!loggedIn || isButtonDisabled}
       >
         {loggedIn ? "Add to cart" : "Login to add to cart"}
       </button>
       <div className="message-box-wrapper">
         {showAnimation && (
-          <MessageBox message="Added to cart!" type="positive" />
+          <MessageBox message={messageContent} type={messageType} />
         )}
       </div>
     </div>

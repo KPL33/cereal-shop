@@ -4,8 +4,6 @@
   justify-content: space-between;
   align-items: center;
   height: 25%;
-  padding-top: 10px;
-  gap: 10px;
   
 }
 
@@ -46,10 +44,9 @@
 }
 
 .prod-name-quantity {
-  width: 40%;
+  width: 100%;
   justify-content: center;
   gap: 5px;
-  margin-left: 5px;
   height: 100%;
 }
 
@@ -63,7 +60,7 @@
 }
 
 .react-dropdown-select.select-menu {
-  width: 200px;
+  
   height: auto;
   border-radius: 1rem;
   margin-left: 15px;
@@ -73,7 +70,6 @@
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
     font-size: 1.5rem;
     height: 50px;
-    width: 150px;
   }
 
 
