@@ -17,16 +17,17 @@
 }
 
 .header,
-#logo {
+.logo {
   background-color: var(--5);
 }
 
-#logo {
+.logo {
   height: auto;
   width: 13vw;
 }
 
 .title-container {
+  text-align: center;
   flex-direction: column;
   width: auto;
   flex-shrink: 1;
@@ -60,28 +61,28 @@
 }
 
 .grains {
-    transform: skew(.25rad);
+  transform: skew(.25rad);
 }
 
 .subtitle {
-    color: var(--2);
-    transform: skew(-.25rad);
-    text-align: center;
+  color: var(--2);
+  transform: skew(-.25rad);
+  text-align: center;
 }
 
 @media (max-width: 992px) {
-    .header {
-        padding: 10px 15px;
-    }
+  .header {
+    padding: 10px 15px;
+  }
     
-    .title-container {
-        width: 70vw;
-    }
+  .title-container {
+    width: 70vw;
+  }
 
 
-    .subtitle {
-        font-size: 4rem;
-    }
+  .subtitle {
+    font-size: 4rem;
+  }
     
 }
 
@@ -90,7 +91,7 @@
       flex-direction: column;
     }
     
-    #logo {
+    .logo {
       width: 35vw;
       height: auto;
     }

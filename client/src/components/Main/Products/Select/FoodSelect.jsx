@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
+
 import Select from "react-dropdown-select";
+
 import FoodQuantity from "./Quantity/FoodQuantity.jsx";
 import FoodAtc from "./AtcButtons/FoodAtc.jsx";
 
@@ -21,14 +23,14 @@ const FoodSelect = () => {
     selectedFood,
     setSelectedFood,
     setFoodSelectionError,
-    setAtcClicked,
+    setFoodAtcClicked,
   } = useAppContext();
 
   useEffect(() => {
     setSelectedFood(null);
     setFoodSelectionError(false);
-    setAtcClicked(false);
-  }, [setSelectedFood, setFoodSelectionError, setAtcClicked]);
+    setFoodAtcClicked(false);
+  }, [setSelectedFood, setFoodSelectionError, setFoodAtcClicked]);
 
   const handleOnChange = (values) => {
     handleProductSelection(values, setSelectedFood, setFoodQuantity);
@@ -44,6 +46,7 @@ const FoodSelect = () => {
           labelField="label"
           searchable={false}
         />
+        
         {selectedFood && <FoodQuantity />}
       </div>
       

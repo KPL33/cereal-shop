@@ -11,8 +11,7 @@
   position: relative;
 }
 
-.atc-button,
-.message-box {
+.atc-button {
   font-family: "active", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -44,97 +43,29 @@
   }
 }
 
-
-.message-box-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.message-box {
-  font-size: calc(0.8 * 3rem);
-  border-radius: 0 0 1rem 1rem;
-  padding: 5px;
-  color: var(--1);
-  text-align: center;
-  position: absolute;
-  height: auto;
-  animation: prod-slide 4s ease-in-out forwards;
-}
-
-@keyframes prod-slide {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  10% {
-    transform: translateY(-10%);
-  }
-
-  90% {
-    transform: translateY(-10%);
-  }
-
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-.positive, .negative {
-  width: 55%;
-}
-
-.positive {
-  background-color: var(--5);
-}
-
-.negative {
-  color: var(--3);
-  background-color: var(--1);
-}
-
 @media (max-width: 1250px) {
   .atc-button {
     font-size: 2.5rem;
     padding: 1px;
-  }
-  .message-box {
-    font-size: calc(0.8 * 2.5rem);
+    height: 100px;
   }
 }
 
 @media (max-width: 975px) {
   .atc-button {
-    height: 50px;
+    height: 75px;
     font-size: 2rem;
   }
-
-  .message-box {
-    font-size: calc(0.8 * 2rem);
-  }
-
-  .positive, .negative {
-  width: 50%;
-}
 }
 
 @media (max-width: 850px) {
   .atc-button {
     font-size: 1.6rem;
   }
-  
-  .message-box {
-    font-size: calc(0.8 * 1.6rem);
-  }
 }
 
 @media (max-width: 675px) {
   .atc-button {
     font-size: 3rem;
-  }
-
-  .message-box {
-    font-size: calc(0.8 * 2.5rem);
   }
 }

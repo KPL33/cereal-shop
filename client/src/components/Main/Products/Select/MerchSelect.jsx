@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
-import Select from "react-dropdown-select";
 import PropTypes from "prop-types";
 
-import ShirtSizes from "./ShirtSizes/ShirtSizes.jsx";
+import Select from "react-dropdown-select";
+
+
 import MerchQuantity from "./Quantity/MerchQuantity.jsx";
-import MerchAtcButton from "./AtcButtons/MerchAtcButton.jsx";
-import MerchAtcError from "./AtcError/MerchAtcError.jsx"; // Import MerchAtcError
+import MerchAtc from "./AtcButtons/MerchAtc.jsx";
 
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
 import "./prod-select.css";
 
 const options = [
-  { value: 5, label: "T-Shirt - $6.99" }, // Example: use an ID
+  { value: 5, label: "T-Shirt - $6.99" },
   { value: 9, label: "Coffee Mug - $4.99" },
   { value: 10, label: "Commuter Mug - $10.99" },
 ];
@@ -23,18 +23,15 @@ const MerchSelect = () => {
     setMerchQuantity,
     selectedMerch,
     setSelectedMerch,
+    setMerchSelectionError,
+    merchAtcClicked,
+    setMerchAtcClicked,
     selectedSize,
     setSelectedSize,
-    merchQuantityError,
-    setMerchSelectionError,
-    setMerchAtcClicked,
-    merchAtcClicked,
-    merchSizeError,
     setMerchSizeError,
   } = useAppContext();
 
   useEffect(() => {
-    console.log("MerchSelect mounted. Resetting selectedMerch and errors.");
     setSelectedMerch(null);
     setMerchSelectionError(false);
     setMerchAtcClicked(false);
@@ -47,9 +44,8 @@ const MerchSelect = () => {
   ]);
 
   const handleOnChange = (values) => {
-    console.log("Merch selected:", values);
     handleProductSelection(values, setSelectedMerch, setMerchQuantity);
-    setMerchSizeError(false); // Reset size error on new selection
+    setMerchSizeError(false);
     if (merchAtcClicked) {
       setMerchAtcClicked(false);
       console.log("handleOnChange reset merchAtcClicked to false");
@@ -66,7 +62,6 @@ const MerchSelect = () => {
   };
 
   useEffect(() => {
-    console.log("selectedMerch changed:", selectedMerch);
     if (
       selectedMerch &&
       selectedMerch.label.includes("T-Shirt") &&
@@ -89,23 +84,11 @@ const MerchSelect = () => {
           valueField="value"
           searchable={false}
         />
+        
         {selectedMerch && <MerchQuantity />}
       </div>
 
-      <div className="atc-details">
-        {selectedMerch?.label.includes("T-Shirt") && (
-          <ShirtSizes
-            selectedSize={selectedSize}
-            onSizeChange={handleSizeChange}
-          />
-        )}
-        
-          <MerchAtcButton />
-          {(!selectedMerch || merchQuantityError || merchSizeError) && (
-            <MerchAtcError />
-          )}
-        
-      </div>
+      <MerchAtc />        
     </div>
   );
 };

@@ -45,7 +45,7 @@ const Checkout = () => {
 
   return (
     <section className="checkout">
-      <h1
+      {/* <h1
         className="checkout-title"
         style={{ display: editingProfile ? "none" : "block" }}
       >
@@ -58,7 +58,6 @@ const Checkout = () => {
           <Current onEditClick={handleEditClick} checkFields={checkFields} />
         )}
       </div>
-
       <div className="checkout-order">
         <Order />
         <div className="cart-buttons">
@@ -71,14 +70,16 @@ const Checkout = () => {
             id="finalize-button"
             //   onClick={handleFinalize}
           >
-            <h4 className="finalize-text"
-            >Looks good!</h4>
+            <h4 className="finalize-text">Looks good!</h4>
           </button>
 
           <button className="cart-button" onClick={handleShopping}>
             <h4 className="checkout-text">Keep Shopping!</h4>
           </button>
         </div>
+      </div> */}
+      <div className="coming-soon">
+        <h1>Checkout with &ldquo;Stripe&rdquo;, coming soon!</h1>
       </div>
     </section>
   );

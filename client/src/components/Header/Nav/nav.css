@@ -25,7 +25,7 @@
 .hamburger {
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 13vw;
 }
 
 .hamburger-react > div {

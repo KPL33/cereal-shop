@@ -6,7 +6,7 @@ import Nav from "./Nav/Nav.jsx";
 const Header = () => {
   return (
     <header className="header">
-      <img id="logo" src={atgLogo}></img>
+      <img className="logo" src={atgLogo}></img>
       <div className="title-container">
         <div className="company-title">
           <h1 className="against">Against</h1>

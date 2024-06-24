@@ -1,8 +1,10 @@
 import useAppContext from "../../../../../context/useAppContext";
-import axios from "axios";
-import MessageBox from "../../../MessageBox/MessageBox";
-import "./atc-button.css";
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+import MessageBox from "../../../MessageBox/MessageBox";
+
+import "./atc-button.css";
 
 const FoodAtc = () => {
   const {
@@ -10,29 +12,30 @@ const FoodAtc = () => {
     selectedFood,
     foodQuantity,
     setFoodQuantityError,
-    setAtcClicked,
+    setFoodAtcClicked,
     setFoodSelectionError,
     setShowFoodAtcMessageBox,
     showFoodAtcMessageBox,
+    isAtcDisabled,
+    setIsAtcDisabled,
   } = useAppContext();
 
   const [showAnimation, setShowAnimation] = useState(false);
   const [messageType, setMessageType] = useState("");
   const [messageContent, setMessageContent] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // State for button disabled
 
   useEffect(() => {
     if (showFoodAtcMessageBox) {
       setShowAnimation(true);
-      setIsButtonDisabled(true); // Disable button when message appears
+      setIsAtcDisabled(true);
 
       const timer = setTimeout(() => {
         setShowAnimation(false);
         setShowFoodAtcMessageBox(false);
-        setIsButtonDisabled(false); // Re-enable button after message disappears
-        setFoodSelectionError(false); // Reset food selection error
-        setFoodQuantityError(false); // Reset food quantity error
-      }, 7000); // Extend to 7 seconds to match your requirement
+        setIsAtcDisabled(false);
+        setFoodSelectionError(false);
+        setFoodQuantityError(false);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -41,15 +44,16 @@ const FoodAtc = () => {
     setShowFoodAtcMessageBox,
     setFoodSelectionError,
     setFoodQuantityError,
+    setIsAtcDisabled,
   ]);
 
   const handleCartClick = async () => {
     if (!selectedFood) {
-      setAtcClicked(true);
+      setFoodAtcClicked(true);
       setFoodSelectionError(true);
       setMessageType("negative");
       setMessageContent("Please select food.");
-      setShowFoodAtcMessageBox(true); // Show the message box
+      setShowFoodAtcMessageBox(true);
       return;
     }
 
@@ -58,34 +62,32 @@ const FoodAtc = () => {
         setFoodQuantityError(true);
         setMessageType("negative");
         setMessageContent("Qty. must be less than 99.");
-        setShowFoodAtcMessageBox(true); // Show the message box
+        setShowFoodAtcMessageBox(true);
         return;
       }
 
       setFoodQuantityError(false);
-      setAtcClicked(true);
+      setFoodAtcClicked(true);
 
       try {
         const userId = localStorage.getItem("userId");
         const currentCartId = localStorage.getItem("currentCartId");
 
         if (!userId || !currentCartId) {
-          console.error("userId or cartId not found in localStorage");
           setMessageType("negative");
-          setMessageContent("User ID or Cart ID not found.");
-          setShowFoodAtcMessageBox(true); // Show the message box
+          setShowFoodAtcMessageBox(true);
           return;
         }
 
         const endpoint = `http://localhost:3000/products/${selectedFood.value}`;
-        console.log("GET request endpoint:", endpoint);
 
         const foodItemInfoResponse = await axios.get(endpoint);
 
         const foodItemPrice = foodItemInfoResponse.data.price;
+
         const foodItemTotal = foodItemPrice * foodQuantity;
 
-        const payload = {
+        await axios.post("http://localhost:3000/cart/products/", {
           userId: userId,
           cartId: currentCartId,
           foodItemId: selectedFood.value,
@@ -93,23 +95,17 @@ const FoodAtc = () => {
           quantity: foodQuantity,
           foodItemPrice: foodItemPrice,
           foodItemTotal: foodItemTotal,
-        };
-
-        const response = await axios.post(
-          "http://localhost:3000/cart/products/",
-          payload
-        );
-
-        console.log("Food item added to cart:", response.data);
+        });
 
         setMessageType("positive");
         setMessageContent("Added to cart!");
-        setShowFoodAtcMessageBox(true); // Set to true after successful addition
+        setShowFoodAtcMessageBox(true);
       } catch (error) {
         console.error("Error adding food item to cart:", error);
+
         setMessageType("negative");
         setMessageContent("Error adding food item to cart.");
-        setShowFoodAtcMessageBox(true); // Ensure message box is shown on error
+        setShowFoodAtcMessageBox(true);
       }
     }
   };
@@ -119,7 +115,7 @@ const FoodAtc = () => {
       <button
         className="atc-button"
         onClick={handleCartClick}
-        disabled={!loggedIn || isButtonDisabled}
+        disabled={!loggedIn || isAtcDisabled}
       >
         {loggedIn ? "Add to cart" : "Login to add to cart"}
       </button>

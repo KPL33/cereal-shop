@@ -3,12 +3,18 @@ import useAppContext from "../../../context/useAppContext";
 import "./message-box.css";
 
 const MessageBox = ({ message, type }) => {
-  const { showFoodAtcMessageBox } = useAppContext();
+  const { showFoodAtcMessageBox, showMerchAtcMessageBox } = useAppContext();
 
   return (
-    showFoodAtcMessageBox && (
-      <div className={`message-box ${type}`}>{message}</div>
-    )
+    <div className="message-box-container">
+      {showFoodAtcMessageBox && (
+        <div className={`message-box ${type}`}>{message}</div>
+      )}
+
+      {showMerchAtcMessageBox && (
+        <div className={`message-box ${type}`}>{message}</div>
+      )}
+    </div>
   );
 };
 

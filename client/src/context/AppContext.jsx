@@ -29,9 +29,11 @@ const AppProvider = ({ children }) => {
   const [editingProfile, setEditingProfile] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
   const [hasEmptyFields, setHasEmptyFields] = useState(false);
-  const [atcClicked, setAtcClicked] = useState(false);
+  const [foodAtcClicked, setFoodAtcClicked] = useState(false);
   const [merchAtcClicked, setMerchAtcClicked] = useState(false);
+  const [isAtcDisabled, setIsAtcDisabled] = useState(false);
   const [showFoodAtcMessageBox, setShowFoodAtcMessageBox] = useState(false);
+  const [showMerchAtcMessageBox, setShowMerchAtcMessageBox] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -114,6 +116,8 @@ const AppProvider = ({ children }) => {
         setEditingProfile,
         showFoodAtcMessageBox,
         setShowFoodAtcMessageBox,
+        showMerchAtcMessageBox,
+        setShowMerchAtcMessageBox,
         profileData,
         setProfileData,
         fieldErrors,
@@ -122,11 +126,14 @@ const AppProvider = ({ children }) => {
         setHasEmptyFields,
         foodSelectionError,
         setFoodSelectionError,
-        merchSelectionError, setMerchSelectionError,
-        atcClicked,
-        setAtcClicked,
+        merchSelectionError,
+        setMerchSelectionError,
+        foodAtcClicked,
+        setFoodAtcClicked,
         merchAtcClicked,
         setMerchAtcClicked,
+        isAtcDisabled,
+        setIsAtcDisabled,
       }}
     >
       {children}
