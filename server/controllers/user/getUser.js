@@ -1,6 +1,5 @@
 import User from "../../models/User.js";
-import Cart from "../../models/Cart.js";
-
+import Cart from "../../models/cart.js";
 
 // Helper function to construct user data with currentCartId
 const buildUserResponse = (user, cart) => {
