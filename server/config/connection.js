@@ -1,5 +1,5 @@
 import path from "path";
-import { config } from "dotenv";
+import { config as dotenvConfig } from "dotenv";
 import { Sequelize } from "sequelize";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
@@ -9,35 +9,37 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Load environment variables from .env file
-config({ path: path.resolve(__dirname, "../../.env") });
+dotenvConfig({ path: path.resolve(__dirname, "../../.env") });
 
-// Extract environment variables or use defaults
+// Extract environment variables
 const {
-  DATABASE_URL,
   DB_NAME,
   DB_USER,
   DB_PASSWORD,
   DB_HOST,
   DB_PORT,
-  DB_DIALECT = "mysql",
+  DB_DIALECT,
+  DATABASE_URL,
 } = process.env;
 
 // Create Sequelize instance
-const sequelize = DATABASE_URL
-  ? new Sequelize(DATABASE_URL, {
-      dialect: DB_DIALECT,
-      protocol: "mysql",
-      dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      },
-    })
-  : new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-      host: DB_HOST,
-      port: DB_PORT,
-      dialect: DB_DIALECT || "mysql",
-    });
+let sequelize;
+
+if (DATABASE_URL) {
+  // Use Heroku's DATABASE_URL
+  sequelize = new Sequelize(DATABASE_URL, {
+    dialect: "postgres", // Adjust dialect if necessary
+    ssl: {
+      rejectUnauthorized: false, // Disable SSL certificate validation temporarily
+    },
+  });
+} else {
+  // Use local environment variables
+  sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+    host: DB_HOST,
+    port: DB_PORT,
+    dialect: DB_DIALECT || "mysql", // Default to MySQL if not specified
+  });
+}
 
 export default sequelize;
