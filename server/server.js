@@ -30,6 +30,17 @@ app.use(
 // Use routes from routesIndex.js
 app.use("/", routes);
 
+app.get("/*", function (req, res) {
+  res.sendFile(
+    path.join(__dirname, "..client/build/index.html"),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  )
+});
+
 const port = process.env.PORT || 3000;
 
 sequelize.sync().then(() => {

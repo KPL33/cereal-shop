@@ -19,7 +19,6 @@ import UserProfile from "./components/Main/Profile/UserProfile";
 
 import "./app.css";
 
-
 const App = () => {
   return (
     <AppProvider>
