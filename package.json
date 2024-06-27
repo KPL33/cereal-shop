@@ -1,20 +1,46 @@
 {
-  "name": "cereal-shop",
+  "name": "your-project-name",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "express": "^4.19.2",
-    "nodemailer": "^6.9.13",
-    "retry-as-promised": "^7.0.4",
-    "sequelize": "^6.37.3"
-  },
+  "description": "Description of your project",
+  "main": "server.js",
+  "private": true,
   "scripts": {
-    "start": "cd server && node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.3",
+    "nodemailer": "^6.9.13",
+    "query-string": "^9.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropdown-select": "^4.11.2",
+    "react-icons": "^5.1.0",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.23.1",
+    "retry-as-promised": "^7.0.4",
+    "sequelize": "^6.37.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "vite": "^5.2.0"
+  }
 }
