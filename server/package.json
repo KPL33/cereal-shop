@@ -21,7 +21,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.3",
     "nodemailer": "^6.9.13",
-    "retry-as-promised": "7.0.4",
+    "retry-as-promised": "^7.0.4",
     "sequelize": "^6.37.1"
   }
 }
