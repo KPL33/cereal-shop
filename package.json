@@ -1,0 +1,17 @@
+{
+  "name": "cereal-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "cd server && node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
