@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "debug": "^4.3.5",
     "nodemailer": "^6.9.13"
   },
+  "devDependencies": {},
   "scripts": {
     "start": "cd server && node server",
     "test": "echo \"Error: no test specified\" && exit 1"
