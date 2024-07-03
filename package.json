@@ -25,11 +25,15 @@
     "nodemailer": "^6.9.13",
     "sequelize": "^6.37.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "cd server && node server",
+    "prebuild": "cd client && npm install --include=dev",
     "build": "cd client && npm run build",
+    "start": "cd server && node server",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
   },
   "keywords": [],
   "author": "",
