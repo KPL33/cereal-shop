@@ -17,7 +17,7 @@ import Signup from "./components/Main/Signup/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UserProfile from "./components/Main/Profile/UserProfile";
 
-import "./app.css";
+import "./main.css";
 
 const App = () => {
   return (
