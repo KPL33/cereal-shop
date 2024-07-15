@@ -35,14 +35,12 @@
     "start": "cd server && node server",
     "install": "cd server && npm i && cd ../client && npm i",
     "postinstall": "cd server && npm install",
-    "heroku-postbuild": "rm -f package-lock.json && rm -rf node_modules && npm install --legacy-peer-deps && npm run build --prefix client",
+    "heroku-postbuild": "cd client && npm install && npm run build && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "node": "14.21.3",
     "npm": "6.14.18"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC"
 }
