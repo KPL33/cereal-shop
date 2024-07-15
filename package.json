@@ -23,6 +23,7 @@
     "react-icons": "^5.1.0",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.23.1",
+    "retry-as-promised": "^7.0.4",
     "sequelize": "^6.37.1"
   },
   "devDependencies": {
