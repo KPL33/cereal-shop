@@ -32,6 +32,7 @@
     "prebuild": "cd client && npm install --include=dev",
     "build": "cd client && vite build",
     "start": "cd server && node server",
+    "install": "cd server && npm i && cd ../client && npm i",
     "heroku-postbuild": "rm -f package-lock.json && rm -rf node_modules && npm install --legacy-peer-deps && npm run build --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
