@@ -25,9 +25,6 @@
     "react-router-dom": "^6.23.1",
     "sequelize": "^6.37.1"
   },
-  "optionalDependencies": {
-    "retry-as-promised": "^7.0.4"
-  },
   "devDependencies": {
     "vite": "^5.3.3"
   },
