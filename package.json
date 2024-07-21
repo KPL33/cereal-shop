@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.mjs",
     "build": "cd client && npm install && npm run build",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build",
+    "dev": "concurrently \"nodemon server.mjs\" \"cd client && npm start\""
   },
   "keywords": [],
   "author": "",
