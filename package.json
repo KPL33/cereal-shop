@@ -1,20 +1,22 @@
 {
   "name": "cereal-shop",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && cd client && npm start",
-    "build": "cd client && npm run build",
-    "test": "cd client && npm test"
+    "start": "npm run build",
+    "build": "cd client && npm install && npm run build",
+    "install": "cd client && npm install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "20.x",
