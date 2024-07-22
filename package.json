@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.mjs",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd server && npm install && cd .. && node server.mjs",
     "heroku-postbuild": "npm install && npm run build",
     "dev": "concurrently \"nodemon server.mjs\" \"cd client && npm start\""
   },
