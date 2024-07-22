@@ -34,7 +34,11 @@ const port = process.env.PORT || 3000;
 
 sequelize.sync().then(() => {
   app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    if (process.env.NODE_ENV === "production") {
+      console.log(`Server is running on port ${port} (Heroku)`);
+    } else {
+      console.log(`Server is running on http://localhost:${port}`);
+    }
   });
 });
 
