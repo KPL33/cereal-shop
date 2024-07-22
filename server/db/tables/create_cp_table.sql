@@ -9,7 +9,7 @@ CREATE TABLE cartProducts (
     cartTotal DECIMAL(10, 2) NOT NULL,
     createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (userId) REFERENCES Users(id),
-    FOREIGN KEY (cartId) REFERENCES Carts(id),
-    FOREIGN KEY (productId) REFERENCES Products(id)
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (cartId) REFERENCES carts(id),
+    FOREIGN KEY (productId) REFERENCES products(id)
 );
