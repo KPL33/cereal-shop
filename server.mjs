@@ -1,45 +1,20 @@
 import express from "express";
-import session from "express-session";
-import sequelize from "./server/config/connection.mjs";
-import routes from "./server/api-routes/routesIndex.js";
-import cors from "cors";
-import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// Set up session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === "production", // Set secure flag based on environment
-      httpOnly: true,
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-      sameSite: "lax", // Adjust as needed
-    },
-  })
-);
-
-// Use routes from routesIndex.js
-app.use("/", routes);
-
 const port = process.env.PORT || 3000;
 
-sequelize.sync().then(() => {
-  app.listen(port, () => {
-    if (process.env.NODE_ENV === "production") {
-      console.log(`Server is running on port ${port} (Heroku)`);
-    } else {
-      console.log(`Server is running on http://localhost:${port}`);
-    }
-  });
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
 });
 
-export default app;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
