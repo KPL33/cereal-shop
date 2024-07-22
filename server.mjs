@@ -1,46 +1,16 @@
 import express from "express";
-import session from "express-session";
-import sequelize from "./server/config/database.js";
-import routes from "./server/api-routes/routesIndex.js";
-import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
-console.log(
-  process.env.SESSION_SECRET,
-  process.env.DB_PORT,
-  process.env.NODE_ENV
-);
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
-
-// Set up session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === "production", // Set secure flag based on environment
-      httpOnly: true,
-      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-      sameSite: "lax", // Adjust as needed
-    },
-  })
-);
-
-// Use routes from routesIndex.js
-app.use(routes);
-
-const port = process.env.PORT || 3000;
-
-sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
+// Define a route for the root path
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-export default app;
+// Handle other routes or API endpoints here
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
