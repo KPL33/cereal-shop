@@ -6,6 +6,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
+console.log(
+  process.env.SESSION_SECRET,
+  process.env.DB_PORT,
+  process.env.NODE_ENV
+);
 
 const app = express();
 
