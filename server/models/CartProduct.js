@@ -2,6 +2,7 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/connection.mjs";
 import User from "./User.js";
 import Product from "./Product.js";
+import Cart from "./Cart.js";
 
 class CartProduct extends Model {}
 
@@ -19,7 +20,7 @@ CartProduct.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Cart", // Assuming you're using a string reference here to avoid circular dependency
+        model: Cart,
         key: "id",
       },
     },
