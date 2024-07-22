@@ -2,12 +2,13 @@
   "name": "cereal-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.mjs",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install && npm run build && npm run dev",
     "heroku-postbuild": "cd client && npm install && npm run build",
+    "postinstall": "cd server && npm install",
     "dev": "concurrently \"nodemon server.mjs\" \"cd client && npm start\""
   },
   "keywords": [],
