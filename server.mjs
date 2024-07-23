@@ -3,6 +3,12 @@ import path from "path";
 
 const app = express();
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+
 // Calculate paths relative to the module location
 const clientDistPath = path.join("client", "dist");
 const indexPath = path.join(clientDistPath, "index.html");
@@ -18,7 +24,9 @@ app.get("/", (req, res) => {
 console.log(`Serving static files from ${clientDistPath}`);
 console.log(`Serving index.html from ${indexPath}`);
 
-// Handle other routes or API endpoints here
+// Import and use routes from routesIndex
+import routes from "./server/api-routes/routesIndex.js";
+app.use("/api", routes); // Assuming all routes are prefixed with /api
 
 // Start the server
 const PORT = process.env.PORT || 3000;

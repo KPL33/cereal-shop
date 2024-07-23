@@ -1,4 +1,3 @@
-// createUser.js
 import bcrypt from "bcrypt";
 import User from "../../models/User.js";
 import Cart from "../../models/Cart.js"; // Import the Cart model

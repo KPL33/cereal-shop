@@ -63,3 +63,4 @@ const associate = (models) => {
 };
 
 export { User as default, associate };
+
