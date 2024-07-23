@@ -13,8 +13,12 @@ app.use(express.static(path.join(__dirname, "client/dist")));
 
 // Define a route for the root path
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "client/incorrect", "index.html"));
 });
+console.log(`Serving static files from ${path.join(__dirname, "client/dist")}`);
+console.log(
+  `Serving index.html from ${path.join(__dirname, "client/dist", "index.html")}`
+);
 
 // Handle other routes or API endpoints here
 
