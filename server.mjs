@@ -1,11 +1,29 @@
 import express from "express";
+import session from "express-session";
 import path from "path";
-import routesIndex from "./server/api-routes/routesIndex.js"; // Import routesIndex
+import dotenv from "dotenv";
+import routesIndex from "./server/api-routes/routesIndex.js";
+
+dotenv.config();
 
 const app = express();
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Set secure flag based on environment
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      sameSite: "lax", // Adjust as needed
+    },
+  })
+);
 
 // Serve static files from the dist directory
 const clientDistPath = path.join("client", "dist");
