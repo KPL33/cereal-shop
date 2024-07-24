@@ -79,15 +79,15 @@ const FoodAtc = () => {
           return;
         }
 
-        const endpoint = `http://localhost:3000/products/${selectedFood.value}`;
+        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        const productEndpoint = `${apiUrl}/products/${selectedFood.value}`;
+        const cartEndpoint = `${apiUrl}/cart/products/`;
 
-        const foodItemInfoResponse = await axios.get(endpoint);
-
+        const foodItemInfoResponse = await axios.get(productEndpoint);
         const foodItemPrice = foodItemInfoResponse.data.price;
-
         const foodItemTotal = foodItemPrice * foodQuantity;
 
-        await axios.post("http://localhost:3000/cart/products/", {
+        await axios.post(cartEndpoint, {
           userId: userId,
           cartId: currentCartId,
           foodItemId: selectedFood.value,
@@ -102,7 +102,6 @@ const FoodAtc = () => {
         setShowFoodAtcMessageBox(true);
       } catch (error) {
         console.error("Error adding food item to cart:", error);
-
         setMessageType("negative");
         setMessageContent("Error adding food item to cart.");
         setShowFoodAtcMessageBox(true);
