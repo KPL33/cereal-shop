@@ -5,6 +5,9 @@ import { setAuthenticated } from "../../../../../utils/auth.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./forms.css";
 
+// Get the API URL from environment variables
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Login = () => {
   const {
     loggedIn,
@@ -21,7 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3000/users/login`, {
+      const response = await axios.post(`${apiUrl}/users/login`, {
         email: email,
         password: password,
       });
@@ -47,7 +50,7 @@ const Login = () => {
 
   const fetchCurrentCartId = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/${userId}`);
+      const response = await axios.get(`${apiUrl}/users/${userId}`);
       console.log("Fetch currentCartId response:", response.data);
       const { currentCartId } = response.data;
 
