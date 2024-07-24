@@ -221,7 +221,7 @@ const Cart = () => {
         {error && <div className="error-message">{error}</div>}{" "}
         <div className="cart-total">
           <h3>Order Total:</h3>
-          <p className="price-fineprint">(Pre-tax; Shipping is FREE!)</p>
+          <p className="price-fineprint">(Total is pre-tax; Shipping is FREE!)</p>
           <p className="cart-total-dollars">
             $
             {cartProducts

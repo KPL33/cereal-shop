@@ -97,19 +97,22 @@ const MerchAtc = () => {
           return;
         }
 
-        const endpoint = `http://localhost:3000/products/${selectedMerch.value}`;
-        const response = await axios.get(endpoint);
-        const merchItemPrice = response.data.price;
+        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        const productEndpoint = `${apiUrl}/products/${selectedMerch.value}`;
+        const cartEndpoint = `${apiUrl}/cart/products/`;
+
+        const merchItemInfoResponse = await axios.get(productEndpoint);
+        const merchItemPrice = merchItemInfoResponse.data.price;
         const merchItemTotal = merchItemPrice * merchQuantity;
 
-        await axios.post("http://localhost:3000/cart/products/", {
-          userId,
+        await axios.post(cartEndpoint, {
+          userId: userId,
           cartId: currentCartId,
           merchItemId: selectedMerch.value,
           productId: selectedMerch.value,
           quantity: merchQuantity,
-          merchItemPrice,
-          merchItemTotal,
+          merchItemPrice: merchItemPrice,
+          merchItemTotal: merchItemTotal,
         });
 
         setMessageType("positive");
