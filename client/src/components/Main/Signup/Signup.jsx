@@ -6,6 +6,9 @@ import useAppContext from "../../../context/useAppContext.jsx";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../Login/forms.css";
 
+// Get the API URL from environment variables
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const SignUp = () => {
   const {
     loggedIn,
@@ -28,7 +31,7 @@ const SignUp = () => {
   useEffect(() => {
     setError("");
     setPasswordMismatch(false);
-  }, []);
+  }, [setError, setPasswordMismatch]);
 
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
@@ -57,7 +60,7 @@ const SignUp = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:3000/users/", {
+      const response = await axios.post(`${apiUrl}/users/`, {
         email,
         password,
       });
@@ -99,7 +102,7 @@ const SignUp = () => {
 
   const fetchCurrentCartId = async (userId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/${userId}`);
+      const response = await axios.get(`${apiUrl}/users/${userId}`);
       console.log("Fetch currentCartId response:", response.data);
       const { currentCartId } = response.data;
 
@@ -157,9 +160,7 @@ const SignUp = () => {
               />
             </label>
 
-            <span
-              className="toggle-password"
-              onClick={handlePasswordToggle}>
+            <span className="toggle-password" onClick={handlePasswordToggle}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
@@ -185,9 +186,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      
-        {error && <div className="form-message">{error}</div>}
-      
+      {error && <div className="form-message">{error}</div>}
 
       <button className="submit" type="submit">
         Submit
