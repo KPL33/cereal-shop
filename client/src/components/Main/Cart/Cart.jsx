@@ -4,6 +4,9 @@ import { AppContext } from "../../../context/AppContext";
 import axios from "axios";
 import "./cart.css";
 
+// Get the API URL from environment variables
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Cart = () => {
   const {
     cartProducts,
@@ -34,7 +37,7 @@ const Cart = () => {
     }
   };
 
-  const handleQuantityChange = (productId, newQuantity) => {
+  const handleQuantityChange = async (productId, newQuantity) => {
     // Convert empty string to 0
     if (newQuantity === "") {
       newQuantity = 0;
@@ -68,13 +71,10 @@ const Cart = () => {
     const currentCartId = localStorage.getItem("currentCartId");
     if (currentCartId) {
       try {
-        axios.put(
-          `http://localhost:3000/cart/products/${productId}`, // Corrected path
-          {
-            cartId: currentCartId,
-            quantity: newQuantity,
-          }
-        );
+        await axios.put(`${apiUrl}/cart/products/${productId}`, {
+          cartId: currentCartId,
+          quantity: newQuantity,
+        });
         // Handle success if needed
       } catch (error) {
         console.error("Error updating quantity:", error);
@@ -105,7 +105,7 @@ const Cart = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:3000/cart/products`);
+        const response = await axios.get(`${apiUrl}/cart/products`);
         const cartData = response.data;
 
         // Filter CartProducts belonging to the current cart
@@ -123,13 +123,12 @@ const Cart = () => {
     fetchCartProducts();
   }, [setCartProducts]);
 
-  // Inside the Cart component
   const handleDeleteProduct = async (productId) => {
     try {
       const currentCartId = localStorage.getItem("currentCartId");
       if (currentCartId) {
         // Send DELETE request to backend API
-        await axios.delete(`http://localhost:3000/cart/products/${productId}`, {
+        await axios.delete(`${apiUrl}/cart/products/${productId}`, {
           data: { cartId: currentCartId },
         });
 
@@ -233,10 +232,8 @@ const Cart = () => {
               .toFixed(2)
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-            {/* Apply the same replace method */}
           </p>
         </div>
-        
         <div className="cart-buttons">
           <button className="cart-button" onClick={handleShopping}>
             <h4 className="checkout-text">Keep Shopping!</h4>
