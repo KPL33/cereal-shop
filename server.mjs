@@ -2,11 +2,22 @@ import express from "express";
 import session from "express-session";
 import path from "path";
 import dotenv from "dotenv";
+import cors from "cors";
 import routesIndex from "./server/api-routes/routesIndex.js";
 
 dotenv.config();
 
 const app = express();
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "*", // Adjust this to specify allowed origins
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // If your server supports cookies and sessions
+};
+
+app.use(cors(corsOptions));
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
