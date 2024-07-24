@@ -1,6 +1,6 @@
 import express from "express";
 import { sendWelcome } from "../../../utils/emailer.mjs";
-import createUser from "../../controllers/users/createUser.js";
+import createUser from "../../controllers/user/createUser.js";
 
 const router = express.Router();
 
