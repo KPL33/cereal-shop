@@ -1,11 +1,9 @@
+import "./utils/config.js";
 import express from "express";
 import session from "express-session";
 import path from "path";
-import dotenv from "dotenv";
 import cors from "cors";
 import routesIndex from "./server/api-routes/routesIndex.js";
-
-dotenv.config();
 
 const app = express();
 

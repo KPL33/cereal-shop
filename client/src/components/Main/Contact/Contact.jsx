@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "../Login/forms.css";
 
-const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -26,7 +24,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${apiUrl}/send`, {
+      const response = await fetch("http://localhost:3000/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
