@@ -36,7 +36,7 @@
   background-color: var(--1);
   position: absolute;
   top: 100%;
-  width: 400px;
+  width: 300px;
   display: none;
   border-radius: 5rem;
   padding: 15px;
@@ -45,7 +45,7 @@
 
 .sidebar.open .sidebar-nav {
   padding-right: 50px;
-  opacity: 0.9;
+  opacity: 0.95;
   transition: opacity 2s ease;
 }
 
@@ -65,27 +65,17 @@
 .nav-link h3 {
   color: var(--4);
   font-size: 4rem;
-  font-family: "Raleway", sans-serif;
+  font-family: "active", sans-serif;
   display: inline-block;
   transition: transform 0.5s ease, font-size 0.5s ease;
 }
 
 .nav-link:hover h3 {
   color: var(--5);
-  font-family: "active", sans-serif;
   transform: scaleX(1.2);
   transition: transform 0.8s ease;
 }
 
-
-@media (max-width: 992px) {
-  .sidebar-nav {
-    width: 300px;
-  }
-  .nav-link h3 {
-    font-size: 3rem;
-  }
-}
 
 @media (max-width: 675px) {
   .sidebar.open .sidebar-nav {

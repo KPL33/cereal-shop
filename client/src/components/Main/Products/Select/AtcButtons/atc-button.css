@@ -66,6 +66,12 @@
 
 @media (max-width: 675px) {
   .atc-button {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 475px) {
+  .atc-button {
+    font-size: 2rem;
   }
 }

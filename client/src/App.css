@@ -83,3 +83,10 @@ html {
   padding: 10px 40px;
   transform: scale(1.2, 1);
 }
+
+/* @media (max-width: 675px) {
+  .page {
+    height: 10%;
+    background-color: black;
+  }
+} */

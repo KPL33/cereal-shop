@@ -57,7 +57,7 @@
 }
 
 .the, .subtitle {
-    font-size: 5rem;
+  font-size: 5rem;
 }
 
 .grains {
@@ -96,14 +96,20 @@
       height: auto;
     }
 
-    .subtitle, .the {
+    .against, .grains {
+  color: var(--1);
+  font-size: 6rem;
+
+}
+
+    .the {
       font-size: 4rem;
     }
 }
 
 @media (max-width: 475px) {
     .subtitle {
-        font-size: 3rem;
+      font-size: 3rem;
     }
 }
     

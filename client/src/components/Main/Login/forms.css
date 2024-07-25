@@ -151,9 +151,9 @@
   }
 }
 
-.submit, .form-row input, #message {
+/* .submit, .form-row input, #message {
   font-weight: 600;
-}
+} */
 
 .submit {
   width: 20%;
@@ -164,6 +164,7 @@
   font-style: normal;
   box-shadow: 0px 2px 4px  var(--5, 0.4);
   border-radius: .5rem;
+  background-color: var(--1);
 }
 
 .submit:hover {
@@ -205,11 +206,19 @@
   .toggle-password svg {
     width: 15px;
   }
+
+  .form-row {
+    margin: 5px;
+  }
+
+  .field-title {
+    font-size: 1.75rem;
+  }
 }
 
 @media (max-width: 500px) {
   #name, #email, #message {
   width: 220px;
-}
+  }
 }
 
