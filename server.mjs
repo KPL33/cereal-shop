@@ -1,4 +1,4 @@
-import "./utils/config.js";
+import "./utils/config.mjs";
 import express from "express";
 import session from "express-session";
 import path from "path";
