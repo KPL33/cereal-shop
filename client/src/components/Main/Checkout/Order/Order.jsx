@@ -16,7 +16,8 @@ const Order = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:3000/cart/products`);
+        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        const response = await axios.get(`${apiUrl}/cart/products`);
         const cartData = response.data;
 
         // Filter CartProducts belonging to the current cart
@@ -83,7 +84,6 @@ const Order = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

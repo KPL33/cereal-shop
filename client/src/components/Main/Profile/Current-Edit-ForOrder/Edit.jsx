@@ -56,6 +56,8 @@ const states = [
   "WY",
 ];
 
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Edit = ({ onSave }) => {
   const {
     profileData,
@@ -113,7 +115,7 @@ const Edit = ({ onSave }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/users/${userId}`,
+        `${apiUrl}/users/${userId}`,
         updatedFields
       );
       console.log("User information updated:", response.data);

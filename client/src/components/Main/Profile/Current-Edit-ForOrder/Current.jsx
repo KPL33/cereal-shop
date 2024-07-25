@@ -4,6 +4,8 @@ import useAppContext from "../../../../context/useAppContext";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Current = ({ onEditClick, checkFields }) => {
   const { userData, setUserData, loading, setLoading } = useAppContext();
   const location = useLocation(); // Get the current location
@@ -18,7 +20,7 @@ const Current = ({ onEditClick, checkFields }) => {
         }
 
         const response = await axios.get(
-          `http://localhost:3000/users/${userId}`
+          `${apiUrl}/users/${userId}`
         );
         setUserData(response.data);
         setLoading(false);
