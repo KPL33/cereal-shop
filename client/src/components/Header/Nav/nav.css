@@ -72,8 +72,6 @@
 
 .nav-link:hover h3 {
   color: var(--5);
-  transform: scaleX(1.2);
-  transition: transform 0.8s ease;
 }
 
 

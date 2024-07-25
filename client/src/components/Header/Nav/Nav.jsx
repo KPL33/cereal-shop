@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { clearAuthenticated } from "../../../../../utils/auth.js";
 import useAppContext from "../../../context/useAppContext.jsx";
@@ -7,6 +8,7 @@ import "./nav.css";
 const Nav = () => {
   const { loggedIn, setLoggedIn, navOpen, setNavOpen, setSignoutClicked } =
     useAppContext();
+  const navRef = useRef(null);
 
   const handleSignOut = () => {
     clearAuthenticated();
@@ -20,8 +22,25 @@ const Nav = () => {
     }, 6000); // Adjust the delay time (in milliseconds) as needed
   };
 
+  // Function to handle clicks outside of the nav
+  const handleClickOutside = (event) => {
+    if (navOpen && navRef.current && !navRef.current.contains(event.target)) {
+      setNavOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener on mount
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up event listener on unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [navOpen]);
+
   return (
-    <div className={`sidebar ${navOpen ? "open" : ""}`}>
+    <div ref={navRef} className={`sidebar ${navOpen ? "open" : ""}`}>
       <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
         <Hamburger toggled={navOpen} toggle={setNavOpen} />
       </div>
