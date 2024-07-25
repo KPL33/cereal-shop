@@ -1,7 +1,8 @@
-import "./header.css";
 import atgLogo from "../../../src/assets/atg_logo.svg";
 
 import Nav from "./Nav/Nav.jsx";
+
+import "./header.css";
 
 const Header = () => {
   return (
