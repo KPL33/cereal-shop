@@ -48,6 +48,11 @@ app.get("/", (req, res) => {
 // Use the routes defined in routesIndex.js
 app.use("/", routesIndex); // Prefix routes with /api
 
+app.get("*", (req, res) => {
+  res.sendFile(indexPath, { root: "." });
+});
+
+
 console.log(`Serving static files from ${clientDistPath}`);
 console.log(`Serving index.html from ${indexPath}`);
 
