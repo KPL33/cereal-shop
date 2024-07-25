@@ -209,6 +209,10 @@
   .field-title {
     font-size: 1.75rem;
   }
+
+  .submit {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 500px) {

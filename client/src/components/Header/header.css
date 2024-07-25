@@ -41,10 +41,10 @@
 }
 
 .against, .grains, .subtitle, .the {
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-family: "active", sans-serif;
-    font-style: normal;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-family: "active", sans-serif;
+  font-style: normal;
 }
 
 .against {
@@ -79,9 +79,12 @@
     width: 70vw;
   }
 
-
   .subtitle {
-    font-size: 4rem;
+    font-size: 2.5rem;
+  }
+
+  .the {
+    margin-top: 20px;
   }
     
 }
