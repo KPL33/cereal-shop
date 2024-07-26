@@ -182,7 +182,7 @@ const Cart = () => {
                   <button
                     onClick={() => handleDecrement(product.id)}
                     className="cart-quantity-button"
-                    disabled={product.productQuantity === 1}
+                    disabled={product.productQuantity <= 1}
                   >
                     –
                   </button>
@@ -198,7 +198,7 @@ const Cart = () => {
                   <button
                     onClick={() => handleIncrement(product.id)}
                     className="cart-quantity-button"
-                    disabled={product.productQuantity === 99}
+                    disabled={product.productQuantity >= 99}
                   >
                     +
                   </button>

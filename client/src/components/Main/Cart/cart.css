@@ -136,7 +136,6 @@
 }
 
 .delete-from-cart-button:hover,
-.cart-quantity-button:hover,
 .cart-button:hover {
   background-color: var(--3);
 }
