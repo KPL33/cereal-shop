@@ -94,8 +94,8 @@
   }
     
   .logo {
-      width: 20vw;
-      height: auto;
+    width: 20vw;
+    height: auto;
   }
 
   .against, .grains {
@@ -110,6 +110,6 @@
 
 @media (max-width: 475px) {
   .subtitle {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }

@@ -66,7 +66,6 @@
   font-size: 4rem;
   font-family: "active", sans-serif;
   display: inline-block;
-  transition: transform 0.5s ease, font-size 0.5s ease;
 }
 
 .nav-link:hover h3 {
@@ -87,5 +86,11 @@
 
   .sidebar.open .sidebar-nav {
     padding: 0;
+  }
+}
+
+@media (max-width: 675px)  {
+  .nav-link h3 {
+    font-size: 3rem;
   }
 }
