@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useAppContext from "../../../../context/useAppContext";
 import axios from "axios";
-import "./order.css";
+// import "./order.css";
 
 const Order = () => {
   const { cartProducts, setCartProducts } = useAppContext();

@@ -10,7 +10,7 @@ import MerchAtc from "./AtcButtons/MerchAtc.jsx";
 
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
-import "./prod-select.css";
+// import "./prod-select.css";
 
 const options = [
   { value: 5, label: "T-Shirt - $6.99" },

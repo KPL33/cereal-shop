@@ -3,8 +3,10 @@ import { Navigate } from "react-router-dom";
 import { setAuthenticated } from "../../../../../utils/auth.js";
 import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "../Login/forms.css";
+
+// import "../Login/forms.css";
 
 // Get the API URL from environment variables
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

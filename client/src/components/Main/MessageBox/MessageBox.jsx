@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import useAppContext from "../../../context/useAppContext";
-import "./message-box.css";
+// import "./message-box.css";
 
 const MessageBox = ({ message, type }) => {
   const { showFoodAtcMessageBox, showMerchAtcMessageBox } = useAppContext();

@@ -1,4 +1,4 @@
-import "./error.css";
+// import "./error.css";
 
 const Error = () => {
   return (

@@ -1,4 +1,4 @@
-import "./history.css";
+// import "./history.css";
 
 const History = () => {
   return (

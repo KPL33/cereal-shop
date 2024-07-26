@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { clearAuthenticated } from "../../../../../utils/auth.js";
 import useAppContext from "../../../context/useAppContext.jsx";
@@ -23,11 +23,14 @@ const Nav = () => {
   };
 
   // Function to handle clicks outside of the nav
-  const handleClickOutside = (event) => {
-    if (navOpen && navRef.current && !navRef.current.contains(event.target)) {
-      setNavOpen(false);
-    }
-  };
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (navOpen && navRef.current && !navRef.current.contains(event.target)) {
+        setNavOpen(false);
+      }
+    },
+    [navOpen, setNavOpen]
+  );
 
   useEffect(() => {
     // Add event listener on mount
@@ -37,7 +40,7 @@ const Nav = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [navOpen]);
+  }, [handleClickOutside]);
 
   return (
     <div ref={navRef} className={`sidebar ${navOpen ? "open" : ""}`}>

@@ -208,7 +208,7 @@ const Cart = () => {
               </div>
 
               <div className="prod-total-column">
-                <p className="prod-total-price">
+                <p className="product-total-price">
                   $
                   {product.productTotal
                     .toString()

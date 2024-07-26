@@ -10,7 +10,7 @@ import whiteCart from "../../../../src/assets/cart_w.svg";
 import FoodSelect from "./Select/FoodSelect.jsx";
 import MerchSelect from "./Select/MerchSelect.jsx";
 
-import "./products.css";
+// import "./products.css";
 
 const Products = () => {
   const { selectedMerch } = useAppContext();

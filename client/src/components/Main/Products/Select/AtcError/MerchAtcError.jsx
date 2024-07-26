@@ -1,9 +1,8 @@
 import useAppContext from "../../../../../context/useAppContext";
-import "./atc-error.css";
+// import "./atc-error.css";
 
 const MerchAtcError = () => {
   const {
-    merchQuantityError,
     selectedMerch,
     merchAtcClicked,
     merchQuantity,

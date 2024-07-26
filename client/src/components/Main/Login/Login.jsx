@@ -3,7 +3,7 @@ import axios from "axios";
 import useAppContext from "../../../context/useAppContext.jsx";
 import { setAuthenticated } from "../../../../../utils/auth.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import "./forms.css";
+// import "./forms.css";
 
 // Get the API URL from environment variables
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

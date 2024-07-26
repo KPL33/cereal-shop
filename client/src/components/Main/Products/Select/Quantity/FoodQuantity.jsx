@@ -1,5 +1,7 @@
 import useAppContext from "../../../../../context/useAppContext";
-import "./quantity.css";
+
+// import "./quantity.css";
+
 import {
   decrementAtc,
   incrementAtc,
