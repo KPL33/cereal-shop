@@ -182,6 +182,7 @@ const Cart = () => {
                   <button
                     onClick={() => handleDecrement(product.id)}
                     className="cart-quantity-button"
+                    disabled={product.productQuantity === 1}
                   >
                     –
                   </button>
@@ -197,6 +198,7 @@ const Cart = () => {
                   <button
                     onClick={() => handleIncrement(product.id)}
                     className="cart-quantity-button"
+                    disabled={product.productQuantity === 99}
                   >
                     +
                   </button>
@@ -221,7 +223,9 @@ const Cart = () => {
         {error && <div className="error-message">{error}</div>}{" "}
         <div className="cart-total">
           <h3>Order Total:</h3>
-          <p className="price-fineprint">(Total is pre-tax; Shipping is FREE!)</p>
+          <p className="price-fineprint">
+            (Total is pre-tax; Shipping is FREE!)
+          </p>
           <p className="cart-total-dollars">
             $
             {cartProducts
