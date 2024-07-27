@@ -80,7 +80,7 @@
   }
 
   .subtitle {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .the {
@@ -105,11 +105,5 @@
 
   .the {
     font-size: 4rem;
-  }
-}
-
-@media (max-width: 475px) {
-  .subtitle {
-    font-size: 2rem;
   }
 }

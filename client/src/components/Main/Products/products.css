@@ -85,11 +85,6 @@
   justify-content: center;
 }
 
-/* .food-image,
-.merch-image, .product-image-container {
-  max-width: 100%;
-} */
-
 .product-image-container {
   max-height: 900px;
   border: 2px solid var(--5);

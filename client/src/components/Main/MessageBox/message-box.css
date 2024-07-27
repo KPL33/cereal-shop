@@ -56,19 +56,19 @@
 }
 
 @media (max-width: 975px) {
-    .message-box {
-        font-size: calc(0.8 * 2rem);
-    }
+  .message-box {
+    font-size: calc(0.8 * 2rem);
+  }
 }
 
 @media (max-width: 850px) {
-    .message-box {
-        font-size: calc(0.8 * 1.6rem);
-    }
+  .message-box {
+    font-size: calc(0.8 * 1.6rem);
+  }
 }
 
 @media (max-width: 675px) {
-    .message-box {
-        font-size: calc(0.8 * 2.5rem);
-    }
+  .message-box {
+    font-size: calc(0.8 * 2.5rem);
+  }
 }

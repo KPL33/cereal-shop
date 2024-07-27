@@ -1,18 +1,16 @@
-/* .checkout {
-    background: radial-gradient(circle, var(--1) 0%, var(--3) 30%, var(--5) 90%);
+.checkout {
+    background: radial-gradient(circle, var(--3) 0%, var(--5) 90%);
     border-radius: 3rem;
     border: 2px solid var(--3);
     height: 400px;
     height: auto;
     width: 80vw;
-    padding: 0 50px;
 }
 
 .coming-soon {
     font-family: "active", sans-serif;
-    color: var(--3);
+    color: var(--1);
     text-align: center;
-    margin-top: 10%;
     font-size: 6rem;
 }
 
@@ -54,4 +52,4 @@
     cursor: pointer;
     background-color: var(--3);
     color: var(--1);
-} */
+}
