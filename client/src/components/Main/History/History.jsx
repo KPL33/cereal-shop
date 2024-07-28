@@ -1,9 +1,11 @@
-// import "./history.css";
+import "./history.css";
 
 const History = () => {
   return (
     <section className="history">
-      <h1 className="history-title">History</h1>
+      <h1 className="history-title">
+        Order History, coming soon!
+      </h1>
     </section>
   );
 };

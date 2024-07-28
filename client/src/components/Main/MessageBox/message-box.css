@@ -1,5 +1,5 @@
 .message-box-wrapper {
-    width: 50%;
+  width: 50%;
 }
 
 .message-box-container, .message-box {
@@ -47,6 +47,7 @@
 .negative {
   color: var(--3);
   background-color: var(--1);
+  border: solid .15rem var(--3);
 }
 
 @media (max-width: 1250px) {

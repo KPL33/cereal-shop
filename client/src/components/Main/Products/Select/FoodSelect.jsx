@@ -8,7 +8,7 @@ import FoodAtc from "./AtcButtons/FoodAtc.jsx";
 
 import { handleProductSelection } from "../../../../../../utils/addToCart.js";
 
-// import "./prod-select.css";
+import "./prod-select.css";
 
 const options = [
   { value: 1, label: "0.5 lbs. cereal - $4.99 ea." },

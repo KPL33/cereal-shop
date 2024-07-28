@@ -86,7 +86,7 @@ const Nav = () => {
           <h3>My Cart</h3>
         </Link>
         <Link
-          to="/cart"
+          to="/history"
           className="nav-link"
           style={{ display: loggedIn ? "flex" : "none" }}
           onClick={() => setNavOpen(false)}

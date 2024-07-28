@@ -51,7 +51,7 @@
 
 .product-card {
   background-color: var(--2);
-  height: auto;
+  min-height: 600px;
   width: 35vw;
   max-height: 950px;
   padding: 0 10px 10px 10px;

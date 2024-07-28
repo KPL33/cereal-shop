@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-// import "./shirt-sizes.css";
+import "./shirt-sizes.css";
 
 const sizeToProductId = {
   SM: 5,

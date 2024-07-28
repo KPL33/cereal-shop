@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   height: 25%;
-  
+  padding-top: 20px;
 }
 
 /* .react-dropdown-select-item is the Div for items items on List that appears on-click of 'select' drop-downs. */

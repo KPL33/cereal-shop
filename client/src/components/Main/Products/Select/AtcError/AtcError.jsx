@@ -1,5 +1,5 @@
 import useAppContext from "../../../../../context/useAppContext";
-// import "./atc-error.css";
+import "./atc-error.css";
 
 const AtcError = () => {
   const { foodQuantityError, selectedFood, atcClicked, foodQuantity } =

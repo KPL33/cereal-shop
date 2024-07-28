@@ -1,3 +1,15 @@
-/* .history {
-    background-color: var(--2);
-} */
+.history {
+    background: radial-gradient(circle, var(--3) 0%, var(--5) 90%);
+    border-radius: 3rem;
+    border: 2px solid var(--3);
+    height: 400px;
+    height: auto;
+    width: 80vw;
+}
+
+.history-title {
+    font-family: "active", sans-serif;
+    color: var(--1);
+    text-align: center;
+    font-size: 6rem;
+}
