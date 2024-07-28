@@ -19,7 +19,7 @@ html {
 }
 
 .app-wrapper, .page, .logged-in-out {
-  display: flex; 
+  display: flex;
 }
 
 .app-wrapper, .page {
@@ -27,45 +27,34 @@ html {
 }
 
 .page, .logged-in-out {
-  
   justify-content: center;
   align-items: center;
 }
 
 .app-wrapper {
-  min-height: 100vh;
   background-color: var(--1);
+  min-height: 100vh;
 }
-
-/* .page {
-  background-color: blue;
-  height: 80vh;
-} */
 
 @keyframes slide {
   0% {
     transform: translateY(-100%);
     opacity: 0;
   }
-
   10% {
     opacity: 0.5;
   }
-
   25% {
     opacity: 1;
     transform: translateY(0);
   }
-
   75% {
     opacity: 1;
     transform: translateY(0);
   }
-
   90% {
     opacity: 0.5;
   }
-
   100% {
     transform: translateY(-100%);
     opacity: 0;
@@ -73,17 +62,33 @@ html {
 }
 
 .logged-in-out {
+  height: 60px;
+  width: 100vw;
+  position: relative;
+}
+
+.logged-in-out-message {
   background-color: var(--3);
   text-align: center;
   border-radius: 0 0 1rem 1rem;
   width: auto;
+  height: 60px;
   margin: auto;
-  animation: slide 5s ease-in-out forwards;
-}
-
-.logged-in-out-message {
   font-size: 3rem;
   font-family: "active", sans-serif;
   color: var(--1);
-  padding: 10px 40px;
+  padding: 10px 20px;
+  animation: slide 5s ease-in-out forwards;
+  position: absolute;
+}
+
+@media (max-width: 475px) {
+  .logged-in-out-message, .logged-in-out {
+    height: 45px;
+  }
+  
+  .logged-in-out-message {
+    font-size: 2rem;
+    padding: 8px;
+  }
 }
