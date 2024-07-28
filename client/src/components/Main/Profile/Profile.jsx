@@ -2,7 +2,7 @@ import useAppContext from "../../../context/useAppContext";
 import Current from "./Current-Edit-ForOrder/Current";
 import Edit from "./Current-Edit-ForOrder/Edit";
 
-// import "./profile.css";
+import "./userProfile.css";
 
 const Profile = () => {
   const { editingProfile, setEditingProfile } = useAppContext();

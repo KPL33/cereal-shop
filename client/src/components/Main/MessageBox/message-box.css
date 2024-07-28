@@ -10,7 +10,7 @@
 
 .message-box {
   font-family: "active", sans-serif;
-  font-optical-sizing: auto;
+  /* font-optical-sizing: auto; */
   font-weight: 500;  font-size: calc(0.8 * 3rem);
   border-radius: 0 0 1rem 1rem;
   padding: 5px;

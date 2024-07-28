@@ -1,14 +1,18 @@
 import { useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { clearAuthenticated } from "../../../../../utils/auth.js";
 import useAppContext from "../../../context/useAppContext.jsx";
 import Hamburger from "hamburger-react";
 import "./nav.css";
 
 const Nav = () => {
-  const { loggedIn, setLoggedIn, navOpen, setNavOpen, setSignoutClicked } =
-    useAppContext();
+  const { loggedIn, setLoggedIn, navOpen, setNavOpen, setSignoutClicked } = useAppContext();
+  
   const navRef = useRef(null);
+
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const handleSignOut = () => {
     clearAuthenticated();
@@ -49,57 +53,78 @@ const Nav = () => {
       </div>
       <nav className={`sidebar-nav ${navOpen ? "open" : ""}`}>
         {/* Navigation Links */}
-        <Link to="/" className="nav-link" onClick={() => setNavOpen(false)}>
-          <h3>Products</h3>
-        </Link>
-        <Link
-          to="/about"
-          className="nav-link"
-          onClick={() => setNavOpen(false)}
-        >
-          <h3>About Us</h3>
-        </Link>
+        {currentPath !== "/" && currentPath !== "/products" && (
+          <Link to="/" className="nav-link" onClick={() => setNavOpen(false)}>
+            <h3>Products</h3>
+          </Link>
+        )}
+
+        {currentPath !== "/about" && (
+          <Link
+            to="/about"
+            className="nav-link"
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>About Us</h3>
+          </Link>
+        )}
+
         {/* Conditional Links based on loggedIn state */}
-        <Link
-          to="/login"
-          className="nav-link"
-          style={{ display: loggedIn ? "none" : "flex" }}
-          onClick={() => setNavOpen(false)}
-        >
-          <h3> Sign-Up/Log-In</h3>
-        </Link>
+        {currentPath !== "/login" && (
+          <Link
+            to="/login"
+            className="nav-link"
+            style={{ display: loggedIn ? "none" : "flex" }}
+            onClick={() => setNavOpen(false)}
+          >
+            <h3> Sign-Up/Log-In</h3>
+          </Link>
+        )}
+
         {/* Display only when logged in */}
-        <Link
-          to="/profile"
-          className="nav-link"
-          style={{ display: loggedIn ? "flex" : "none" }}
-          onClick={() => setNavOpen(false)}
-        >
-          <h3>My Profile</h3>
-        </Link>
-        <Link
-          to="/cart"
-          className="nav-link"
-          style={{ display: loggedIn ? "flex" : "none" }}
-          onClick={() => setNavOpen(false)}
-        >
-          <h3>My Cart</h3>
-        </Link>
-        <Link
-          to="/history"
-          className="nav-link"
-          style={{ display: loggedIn ? "flex" : "none" }}
-          onClick={() => setNavOpen(false)}
-        >
-          <h3>My Past Orders</h3>
-        </Link>
-        <Link
-          to="/contact"
-          className="nav-link"
-          onClick={() => setNavOpen(false)}
-        >
-          <h3>Contact Us</h3>
-        </Link>
+        {currentPath !== "/profile" && (
+          <Link
+            to="/profile"
+            className="nav-link"
+            style={{ display: loggedIn ? "flex" : "none" }}
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>My Profile</h3>
+          </Link>
+        )}
+
+        {currentPath !== "/cart" && (
+          <Link
+            to="/cart"
+            className="nav-link"
+            style={{ display: loggedIn ? "flex" : "none" }}
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>My Cart</h3>
+          </Link>
+        )}
+
+        {currentPath !== "/history" && (
+          <Link
+            to="/history"
+            className="nav-link"
+            style={{ display: loggedIn ? "flex" : "none" }}
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>My Past Orders</h3>
+          </Link>
+        )}
+
+        {currentPath !== "/contact" && (
+          <Link
+            to="/contact"
+            className="nav-link"
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>Contact Us</h3>
+          </Link>
+        )}
+
         {/* Sign Out Link */}
         <Link
           to="/"

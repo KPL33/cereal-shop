@@ -48,7 +48,7 @@
     padding: 15px 0;
     font-family: "raleway", sans-serif;
     text-align: center;
-    font-optical-sizing: auto;
+    /* font-optical-sizing: auto; */
     font-style: normal;
     color: var(--1);
 }

@@ -154,7 +154,7 @@
   padding: 5px;
   margin: 5px;
   font-size: 2rem;
-  font-optical-sizing: auto;
+  /* font-optical-sizing: auto; */
   font-style: normal;
   box-shadow: 0px 2px 4px  var(--5, 0.4);
   border-radius: .5rem;
@@ -190,12 +190,11 @@
 
 @media (max-width: 675px) {
   .login-signup-form {
-    width: 90vw;
-    margin-top: 20px;
+    max-height: 400px;
   }
 
   .log-greeting, .form-message {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .toggle-password svg {

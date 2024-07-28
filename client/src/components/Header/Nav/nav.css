@@ -90,6 +90,11 @@
 }
 
 @media (max-width: 675px)  {
+  .sidebar-nav {
+    width: 200px;
+    border-radius: 2.5rem;
+  }
+
   .nav-link h3 {
     font-size: 2.5rem;
   }

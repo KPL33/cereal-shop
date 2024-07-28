@@ -40,7 +40,7 @@
   text-align: center;
   height: auto;
   font-family: "active", sans-serif;
-  font-optical-sizing: auto;
+  /* font-optical-sizing: auto; */
   font-weight: 500;
   font-size: 3rem;
   border-radius: 1rem;
