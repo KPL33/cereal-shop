@@ -7,7 +7,7 @@
 }
 
 .profile-container {
-  width: 90vw;
+  width: 50vw;
   box-shadow: 0px 4px 8px var(--5, 0.4);
   min-height: 300px;
   max-height: 800px;
@@ -30,7 +30,6 @@
 }
 
 .user-details {
-  background-color: var(--2);
   min-height: 100px;
   border: 0.25rem solid var(--3);
   width: 95%;
@@ -46,22 +45,28 @@
   flex-shrink: 0;
 }
 
-.profile-field-title, .edit-field-title {
+.title, .profile-field-title, .edit-field-title {
   font-family: "active", sans-serif;
+}
+
+.profile-field-container, .edit-pair-container, .state-pair-container {
+  font-size: 3.5rem;
+} 
+
+.profile-field-title, .edit-field-title {
   color: var(--3);
   margin: 0 10px;
   
-}
-
-.edit-field-title {
-  text-align: right;
-  width: 200px;
 }
 
 .profile-field-value, input.edit-field-value {
   font-family: "Raleway", sans-serif;
   color: var(--5);
   font-weight: 600;
+}
+
+.title {
+  font-size: 5rem;
 }
 
 .profile-field-container {
@@ -71,13 +76,13 @@
   justify-content: space-between;
 }
 
-.profile-field-container, .edit-pair-container, .state-pair-container {
-  font-size: 3.5rem;
-} 
-
 .edit-pair-container {
-  width: 50%;
   padding: 5px 0;
+}
+
+.edit-field-title {
+  text-align: right;
+  width: 200px;
 }
 
 .contact-pair-container, .edit-pair-container, .edit-buttons {
@@ -93,6 +98,7 @@
 .edit-pair-container {
   justify-content: space-around;
   margin-right: 80px;
+  align-items: center;
 }
 
 .edit-field-value.placeholder {
@@ -101,29 +107,25 @@
 }
 
 .edit-profile-button {
-  background-color: var(--2);
+  background-color: var(--1);
   color: var(--5);
-  border: none;
 }
 
 .edit-profile-button, .cancel-button, .save-button {
-  margin: 5px;
-  width: 100px;
-  height: 25px;
-  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  font-family: "Raleway", sans-serif;
+  border-radius: 0.5rem;
+  margin: 0 10px;
+  border: 1px solid var(--5);
 }
 
 .cancel-button {
-  border: solid 2px var(--4);
-  color: var(--2);
-}
-
-.cancel-button, .save-button {
+  color: var(--3);
   background-color: var(--1);
-}
-
-.save-button {
-  border: solid 2px var(--4);
 }
 
 .save-button:hover, .cancel-button:hover, .edit-profile-button:hover {
@@ -132,6 +134,7 @@
 
 .cancel-button:hover {
   background-color: var(--5);
+  color: var(--1);
 }
 
 .edit-profile-button:hover, .save-button:hover {
@@ -153,7 +156,7 @@
 .edit-field-value {
   height: 4rem;
   font-size: 2rem;
-  width: 100%;
+  width: 80%;
   font-weight: 600;
   padding: 5px;
 }
@@ -176,7 +179,10 @@
 }
 
 .state-list {
-  color: var(--5);
+  color: var(--3);
+  height: auto;
+  padding: 5px 0;
+  border-radius: 0.4rem;
 }
 
 .edit-buttons {
@@ -184,13 +190,17 @@
 }
 
 @media (max-width: 1000px) {
+
+  .profile-container {
+    width: 70vw;
+  }
   .profile-field-title {
     width: 100px;
     text-align: right;
   }
   
   .profile-field-title, .edit-field-title, .profile-field-value {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   .contact-pair-container {
@@ -208,7 +218,6 @@
   }
 
   .edit-field-value {
-    width: 500px;
     font-size: 1.5rem;
   }
 
@@ -221,6 +230,15 @@
   }
 
   .state-list {
-    margin-right: auto;
+    margin-right: 20%;
+  }
+}
+
+@media (max-width: 675px) {
+  .title {
+    font-size: 4rem;
+  }
+  .profile-field-title, .edit-field-title, .profile-field-value {
+    font-size: 1.5rem;
   }
 }

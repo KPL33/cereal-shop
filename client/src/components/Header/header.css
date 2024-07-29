@@ -80,7 +80,7 @@
   }
 
   .subtitle {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
   }
 
   .the {
@@ -109,5 +109,9 @@
 
   .the {
     font-size: 4rem;
+  }
+
+  .subtitle {
+    margin-top: 10px;
   }
 }

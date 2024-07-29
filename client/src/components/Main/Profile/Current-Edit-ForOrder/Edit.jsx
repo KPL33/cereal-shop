@@ -281,15 +281,16 @@ const Edit = ({ onSave }) => {
         {error && <p className="profile-error">{error}</p>}
 
         <section className="edit-buttons">
-          <button className=" save-button" type="submit">
-            Save
-          </button>
           <button
             className="cancel-button"
             type="button"
             onClick={onSave}
           >
             Cancel
+          </button>
+
+          <button className=" save-button" type="submit">
+            Save
           </button>
         </section>
       </form>

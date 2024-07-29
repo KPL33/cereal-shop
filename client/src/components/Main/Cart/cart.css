@@ -62,7 +62,6 @@
 .product-quantity-input,
 .delete-from-cart-button {
   font-family: "active", sans-serif;
-  /* font-optical-sizing: auto; */
 }
 
 .column-title,
@@ -183,7 +182,7 @@
   box-shadow: 0px 4px 8px var(--5, 0.4);
   min-height: 300px;
   max-height: 800px;
-  margin: 100px 0 200px 0;
+  margin: 100px 0 100px 0;
 }
 
 .title {
