@@ -93,8 +93,6 @@
   }
 }
 
-
-
 @media screen and (max-width: 700px) {
   .prod-name:nth-child(1) {
     width: 100px;

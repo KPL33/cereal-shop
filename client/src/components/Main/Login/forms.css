@@ -61,7 +61,7 @@
 #name,
 #email,
 #message {
-  width: 600px;
+  width: 400px;
 }
 
 .form-row input,
@@ -70,8 +70,7 @@
   border: 1px solid var(--5);
 }
 
-.form-row input,
-#message {
+.form-row input, textarea {
   width: 100%;
   height: 3rem;
   margin: 0 15px;
@@ -103,7 +102,7 @@
 .login-signup-form {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 40vw;
   height: auto;
   background-color: var(--4);
   border-radius: 2rem;
@@ -125,7 +124,8 @@
 }
 
 #message {
-  min-height: 100px;
+  margin-top: 20px;
+  min-height: 200px;
   resize: none;
   height: auto;
 }
