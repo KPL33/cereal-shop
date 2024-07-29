@@ -19,7 +19,7 @@
   border-top: none;
 }
 
-/*Drop-down menu (main'select' box)*/
+/*Actual items that appear within the drop-down menu (main 'select' box)*/
 .react-dropdown-select {
   background-color: var(--1);
 }
@@ -29,18 +29,17 @@
 .react-dropdown-select {
   font-family: "Raleway", sans-serif;
   font-size: 1.5rem;
-  
 }
 
 /*targets entire select menu, including arrow */
-.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-  width: 200px;
+.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-item {
+  width: 250px;
 }
 
 
 /* Box surrounding Arrow in select menu */
 .e1vudypg0 {
-  color: var(--5);
+  color: var(--3);
 }
 
 .prod-name-quantity {
@@ -60,16 +59,14 @@
 }
 
 .react-dropdown-select.select-menu {
-  
   height: auto;
   border-radius: 1rem;
-  margin-left: 15px;
 }
 
 @media screen and (max-width: 1300px) {
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    font-size: 1.5rem;
-    height: 50px;
+    font-size: 1.3rem;
+    width: 180px;
   }
 }
 
@@ -77,11 +74,14 @@
   .prod-select-details {
     padding-top: 0;
   }
+
+  
 }
 
 @media screen and (max-width: 975px) {
-  .react-dropdown-select.select-menu {
-    font-size: 1.1rem;
+  span.react-dropdown-select-item {
+  height: auto;
+  width: auto;
   }
 
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
@@ -91,32 +91,26 @@
   .react-dropdown-select {
     width: 80px;
   }
-
-  .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
-    font-size: 1rem;
-  }
 }
 
 @media screen and (max-width: 850px) {
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 80%;
-  }
-
-  .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
-    font-size: .8rem;
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 700px) {
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 100%;
+    width: 140px;
   }
 
   .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
     font-size: 1.2rem;
   }
+}
 
-  .react-dropdown-select.select-menu {
-    margin-left: 0;
+@media screen and (max-width: 675px) {
+  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
+    width: 200px;
   }
 }

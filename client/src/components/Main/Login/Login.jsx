@@ -120,7 +120,7 @@ const Login = () => {
       <h4 className="log-greeting">New around here?</h4>
 
       <Link className="signup-link" to="/signup">
-        <h4>Sign-Up!</h4>
+        <h4>Click here to Sign-Up!</h4>
       </Link>
     </form>
   );

@@ -68,7 +68,6 @@
 .product-card-description {
   color: var(--5);
   text-align: center;
-  /* font-optical-sizing: auto; */
   font-weight: 500;
   font-style: normal;
 }
@@ -79,7 +78,7 @@
 }
 
 .product-card-title {
-  font-size: calc(4vw + 2rem);
+  font-size: 7rem;
 }
 
 .cart-icon-container {
@@ -135,11 +134,7 @@
 
 @media (max-width: 992px) {
   .product-card-title {
-    font-size: calc(4vw + 1rem); /* Reduce font size gradually at smaller screen widths */
-  }
-
-  .product-card-description {
-    font-size: 2.75rem;
+    font-size: 6rem;
   }
 }
 
@@ -171,5 +166,11 @@
 
   .product-card-description {
     font-size: 3.5rem;
+  }
+
+  .cart-icon-container {
+    width: 90px;
+    height: 90px;
+    margin: 30px;
   }
 }

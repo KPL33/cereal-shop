@@ -167,6 +167,18 @@ const SignUp = () => {
             </span>
           </div>
 
+          <div>
+            <p className="pwd-fine-print">
+              (Minimum password length is 8 characters.
+            </p>
+          </div>
+
+          <div>
+            <p className="pwd-fine-print">
+              Must include 1 each: Uppercase, Lowercase, Numeral & Special).
+            </p>
+          </div>
+          
           <div className="form-row">
             <h4 className="field-title">Confirm Password:</h4>
 

@@ -26,7 +26,7 @@
 }
 
 .logo {
-  width: 13vw;
+  width: 180px;
 }
 
 .title-container {
@@ -85,6 +85,10 @@
 
   .the {
     margin-top: 20px;
+  }
+
+  .logo {
+    width: 120px;
   }
 }
 

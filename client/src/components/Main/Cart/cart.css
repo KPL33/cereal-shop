@@ -78,9 +78,6 @@
   font-family: "Raleway", sans-serif;
 }
 
-.column-title,
-.cart-total h3,
-.error-message,
 .cart-total-dollars {
   font-weight: 600;
 }
@@ -165,6 +162,10 @@
 .product-column,
 .price-column {
   text-align: left;
+}
+
+.product-price, .product-total-price {
+  font-size: 1rem;
 }
 
 .cart-total-dollars,

@@ -45,18 +45,17 @@
 
 .sidebar.open .sidebar-nav {
   padding-right: 50px;
-  opacity: 0.95;
-  transition: opacity 2s ease;
+  opacity: 0.9;
 }
 
 .nav-link {
   text-decoration: none;
-  margin: 15px 0;
+  margin: 7px 0;
   width: 100%;
   justify-content: flex-end;
 }
 
-.nav-link h3, .nav-link:hover h3 {
+.nav-link h3 {
   /* font-optical-sizing: auto; */
   font-weight: 100;
 }
@@ -87,11 +86,9 @@
   .sidebar.open .sidebar-nav {
     padding: 0;
   }
-}
 
-@media (max-width: 675px)  {
   .sidebar-nav {
-    width: 200px;
+    width: 150px;
     border-radius: 2.5rem;
   }
 

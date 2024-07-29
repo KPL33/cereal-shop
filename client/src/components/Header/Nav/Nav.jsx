@@ -51,21 +51,12 @@ const Nav = () => {
       <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
         <Hamburger toggled={navOpen} toggle={setNavOpen} />
       </div>
+
       <nav className={`sidebar-nav ${navOpen ? "open" : ""}`}>
         {/* Navigation Links */}
         {currentPath !== "/" && currentPath !== "/products" && (
           <Link to="/" className="nav-link" onClick={() => setNavOpen(false)}>
             <h3>Products</h3>
-          </Link>
-        )}
-
-        {currentPath !== "/about" && (
-          <Link
-            to="/about"
-            className="nav-link"
-            onClick={() => setNavOpen(false)}
-          >
-            <h3>About Us</h3>
           </Link>
         )}
 
@@ -112,6 +103,16 @@ const Nav = () => {
             onClick={() => setNavOpen(false)}
           >
             <h3>My Past Orders</h3>
+          </Link>
+        )}
+
+        {currentPath !== "/about" && (
+          <Link
+            to="/about"
+            className="nav-link"
+            onClick={() => setNavOpen(false)}
+          >
+            <h3>About Us</h3>
           </Link>
         )}
 
