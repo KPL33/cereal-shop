@@ -85,7 +85,7 @@
   }
 
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 90%;
+    width: 95%;
   }
 
   .react-dropdown-select {
@@ -93,19 +93,12 @@
   }
 }
 
-@media screen and (max-width: 850px) {
-  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 100%;
-  }
-}
+
 
 @media screen and (max-width: 700px) {
-  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 140px;
-  }
-
-  .react-dropdown-select-content.react-dropdown-select-type-single.css-jznujr-ContentComponent.e1gn6jc30 {
-    font-size: 1.2rem;
+  .prod-name:nth-child(1) {
+    width: 100px;
+    font-size: 2.2rem;
   }
 }
 
