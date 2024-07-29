@@ -48,7 +48,7 @@
   .atc-button {
     font-size: 2rem;
     padding: 1px;
-    height: 40px;
+    /* height: 40px; */
     width: 100px;
   }
 }
