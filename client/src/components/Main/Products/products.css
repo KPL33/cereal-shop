@@ -26,7 +26,7 @@
   margin: 20px 10px 40px 10px;
 }
 
-.products-title, .product-card-description {
+.products-title {
   font-size: 6rem;
 }
 
@@ -96,6 +96,10 @@
   border: 2px solid var(--5);
 }
 
+.product-card-description {
+  font-size: 4.5rem;
+}
+
 .food-image, .merch-image, .cart-icon-container img {
   height: auto;
 }
@@ -143,6 +147,10 @@
   .product-card-title {
     font-size: 6rem;
   }
+
+  .product-card-description {
+    font-size: 3.5rem;
+  }
 }
 
 @media (max-width: 850px) {
@@ -155,20 +163,24 @@
   .product-card-title {
     font-size: 5.2rem;
   }
-}
 
-@media (max-width: 675px) {
-  .products-title {
-  font-size: 3.5rem;
-  margin: 0 10px 20px 10px;
-}
   .product-card-container {
     flex-direction: column;
     align-items: space-between;
   }
-
   .product-card {
-    width: 90%;
+    width: 70%;
+  }
+}
+
+@media (max-width: 675px) {
+  .products-title {
+    font-size: 3.5rem;
+    margin: 0 10px 20px 10px;
+  }
+  
+  .product-card {
+    width: 95%;
     height: 700px;
   }
 
@@ -178,10 +190,6 @@
 
   .product-card-title {
     font-size: 5rem;
-  }
-
-  .product-card-description {
-    font-size: 3.5rem;
   }
 
   .cart-icon-container {

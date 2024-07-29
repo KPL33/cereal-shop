@@ -33,7 +33,7 @@
 }
 
 /*targets entire select menu, including arrow */
-.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
+.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0 {
   width: 100%;
 }
 
@@ -104,6 +104,6 @@
 
 @media screen and (max-width: 675px) {
   .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0 {
-    width: 200px;
+    width: 150px;
   }
 }
