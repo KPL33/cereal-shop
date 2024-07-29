@@ -33,7 +33,7 @@
 
 /*targets entire select menu, including arrow */
 .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-item {
-  width: 250px;
+  width: 100%;
 }
 
 

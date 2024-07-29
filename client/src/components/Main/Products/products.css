@@ -22,11 +22,11 @@
 
 .products-title {
   font-family: "Raleway";
-  margin: 20px 0 40px 0;
+  margin: 20px 10px 40px 10px;
 }
 
 .products-title, .product-card-description {
-  font-size: 4rem;
+  font-size: 6rem;
 }
 
 .products,
