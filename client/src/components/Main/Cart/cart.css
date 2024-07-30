@@ -185,11 +185,25 @@
   margin: 100px 0 100px 0;
 }
 
+.cart-empty {
+  background-color: var(--1);
+}
+
 .title {
   font-size: 6rem;
   font-weight: 200;
   padding: 15px 0;
 }
+
+.to-prods {
+  color: var(--3);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--5);
+  transform: skew(0.15rad);
+  display: inline-block;
+}
+
 
 .in-cart {
   height: auto;
