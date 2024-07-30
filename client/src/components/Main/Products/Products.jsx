@@ -1,5 +1,5 @@
 import useAppContext from "../../../context/useAppContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import bowl from "../../../../src/assets/bowl.jpg";
 import commuter from "../../../../src/assets/commuter_mug.jpg";
@@ -13,7 +13,8 @@ import MerchSelect from "./Select/MerchSelect.jsx";
 import "./products.css";
 
 const Products = () => {
-  const { selectedMerch } = useAppContext();
+  const { selectedMerch, loggedIn } = useAppContext();
+
 
   const navigate = useNavigate();
 
@@ -56,9 +57,23 @@ const Products = () => {
           <FoodSelect />
         </div>
 
-        <button className="cart-icon-container" onClick={handleCart}>
-          <img src={whiteCart} alt="Cart" />
-        </button>
+        {loggedIn ? (
+          <button className="cart-icon-container" onClick={handleCart}>
+            <img src={whiteCart} alt="Cart" />
+          </button>
+        ) : (
+          <div className="log-signup">
+            <h2 className="log-signup-text">
+              Login/
+              <br />
+              Signup
+              <br />
+              <Link className="to-log" to="/log-in">
+                Here!
+              </Link>
+            </h2>
+          </div>
+        )}
 
         <div className="product-card">
           <h2 className="product-card-title">Merchandise</h2>

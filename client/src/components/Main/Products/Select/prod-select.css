@@ -11,7 +11,11 @@
 .react-dropdown-select-item {
   color: var(--5);
   border-top: 0.3rem dotted var(--5);
-  width: 150px;
+  
+}
+
+.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-item {
+  width: 200px;
 }
 
 .react-dropdown-select-item:nth-child(1) {
@@ -32,9 +36,9 @@
 }
 
 /*targets entire select menu, including arrow */
-.react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0 {
+/* .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-input.css-1ux6m6-InputComponent.e11wid6y0 {
   width: 100%;
-}
+} */
 
 /* Box surrounding Arrow in select menu */
 .e1vudypg0 {
@@ -63,7 +67,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-item {
+  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-dropdown, .react-dropdown-select-item {
     font-size: 1.3rem;
     width: 180px;
   }
@@ -74,6 +78,9 @@
     padding-top: 0;
   }
 
+  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-dropdown, .react-dropdown-select-item {
+    width: 150px;
+  }
   
 }
 
@@ -81,10 +88,6 @@
   span.react-dropdown-select-item {
   height: auto;
   width: auto;
-  }
-
-  .react-dropdown-select.select-menu.css-wmy1p7-ReactDropdownSelect.e1gzf2xs0, .react-dropdown-select-item {
-    width: 95%;
   }
 
   .react-dropdown-select {

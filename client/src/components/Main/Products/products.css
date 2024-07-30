@@ -2,7 +2,7 @@
 .product-card-container,
 .product-card,
 .product-image-container,
-.cart-icon-container {
+.cart-icon-container, .log-signup {
   display: flex;
 }
 
@@ -41,7 +41,7 @@
 .product-card-container,
 .product-card,
 .product-image-container,
-.cart-icon-container {
+.cart-icon-container, .log-signup {
   align-items: center;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .product-card-title,
-.product-card-description {
+.product-card-description, .log-signup, .to-log {
   font-family: "active", san-serif;
 }
 
@@ -82,8 +82,25 @@
   font-size: 7rem;
 }
 
-.cart-icon-container {
+.cart-icon-container, .log-signup {
   justify-content: center;
+}
+
+.log-signup {
+  text-align: center;
+  border: 0.75rem dotted var(--5);
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+}
+
+.to-log {
+  color: var(--3);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--5);
+  transform: skew(0.15rad);
+  display: inline-block;
 }
 
 .product-card-container {
@@ -96,8 +113,12 @@
   border: 2px solid var(--5);
 }
 
-.product-card-description {
+.product-card-description, .log-signup-text, .to-log {
   font-size: 4.5rem;
+}
+
+.log-signup-text, .to-log {
+  font-size: 3.5rem;
 }
 
 .food-image, .merch-image, .cart-icon-container img {
@@ -117,14 +138,23 @@
   margin: 0 50px;
 }
 
-.cart-icon-container:hover {
+.cart-icon-container:hover, .log-signup:hover {
   cursor: pointer;
 }
 
-.cart-icon-container:hover {
+.cart-icon-container:hover, .log-signup:hover {
   background-color: var(--3);
   box-shadow: 0px 4px 8px var(--5, 0.4);
 }
+
+.log-signup:hover {
+  border: none;
+  
+  .to-log {
+    color: var(--1);
+  }
+}
+
 
 .cart-icon-container img {
   width: 70%;
