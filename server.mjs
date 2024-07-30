@@ -3,7 +3,12 @@ import express from "express";
 import session from "express-session";
 import path from "path";
 import cors from "cors";
+import { fileURLToPath } from "url";
 import routesIndex from "./server/api-routes/routesIndex.js";
+
+// Resolve __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -35,23 +40,23 @@ app.use(
 );
 
 // Serve static files from the dist directory
-const clientDistPath = path.join("client", "dist");
+const clientDistPath = path.join(__dirname, "client", "dist");
 const indexPath = path.join(clientDistPath, "index.html");
 
 app.use(express.static(clientDistPath));
 
 // Define a route for the root path
 app.get("/", (req, res) => {
-  res.sendFile(indexPath, { root: "." });
+  res.sendFile(indexPath);
 });
 
 // Use the routes defined in routesIndex.js
 app.use("/", routesIndex); // Prefix routes with /api
 
+// Serve index.html for all other routes
 app.get("*", (req, res) => {
-  res.sendFile(indexPath, { root: "." });
+  res.sendFile(indexPath);
 });
-
 
 console.log(`Serving static files from ${clientDistPath}`);
 console.log(`Serving index.html from ${indexPath}`);
