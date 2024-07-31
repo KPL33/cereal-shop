@@ -96,12 +96,11 @@
 
 .to-log {
   color: var(--3);
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  text-decoration: none;
   text-decoration-color: var(--5);
-  transform: skew(0.15rad);
   display: inline-block;
 }
+
 
 .product-card-container {
   justify-content: space-evenly;
@@ -113,13 +112,15 @@
   border: 2px solid var(--5);
 }
 
-.product-card-description, .log-signup-text, .to-log {
+.product-card-description {
   font-size: 4.5rem;
 }
 
 .log-signup-text, .to-log {
   font-size: 3.5rem;
 }
+/* .log-signup-text span { transform: skew(0.15rad);
+} */
 
 .food-image, .merch-image, .cart-icon-container img {
   height: auto;
@@ -206,6 +207,10 @@
     margin: 20px 0;
     height: 150px;
     width: 150px;
+  }
+
+  .log-signup-text {
+    font-size: 2.75rem;
   }
 }
 

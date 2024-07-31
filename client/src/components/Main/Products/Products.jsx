@@ -69,7 +69,7 @@ const Products = () => {
                 <br />
                 Signup
                 <br />
-                Here!
+                <span>Here!</span>
               </h2>
             </Link>
           </div>
