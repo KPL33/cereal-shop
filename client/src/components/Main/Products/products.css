@@ -201,6 +201,12 @@
   .product-card {
     width: 70%;
   }
+
+  .log-signup {
+    margin: 20px 0;
+    height: 150px;
+    width: 150px;
+  }
 }
 
 @media (max-width: 675px) {
