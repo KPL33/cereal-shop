@@ -63,7 +63,7 @@ const Products = () => {
           </button>
         ) : (
           <div className="log-signup">
-            <Link className="to-log" to="/login">
+            <Link to="/login">
               <h2 className="log-signup-text">
                 Login/
                 <br />
