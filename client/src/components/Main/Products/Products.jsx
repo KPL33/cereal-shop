@@ -63,15 +63,15 @@ const Products = () => {
           </button>
         ) : (
           <div className="log-signup">
-            <h2 className="log-signup-text">
-              Login/
-              <br />
-              Signup
-              <br />
-              <Link className="to-log" to="/log-in">
+            <Link className="to-log" to="/login">
+              <h2 className="log-signup-text">
+                Login/
+                <br />
+                Signup
+                <br />
                 Here!
-              </Link>
-            </h2>
+              </h2>
+            </Link>
           </div>
         )}
 
