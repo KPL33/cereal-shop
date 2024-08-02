@@ -7,7 +7,8 @@ import axios from "axios";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const Current = ({ onEditClick, checkFields }) => {
-  const { userData, setUserData, loading, setLoading } = useAppContext();
+  const { userData, setUserData, loading, setLoading, addressTwoEmpty } =
+    useAppContext();
   const location = useLocation(); // Get the current location
 
   useEffect(() => {
@@ -19,9 +20,7 @@ const Current = ({ onEditClick, checkFields }) => {
           throw new Error("User ID not found.");
         }
 
-        const response = await axios.get(
-          `${apiUrl}/users/${userId}`
-        );
+        const response = await axios.get(`${apiUrl}/users/${userId}`);
         setUserData(response.data);
         setLoading(false);
       } catch (error) {
@@ -79,10 +78,12 @@ const Current = ({ onEditClick, checkFields }) => {
               <h4 className="profile-field-value">{userData.address1}</h4>
             </div>
 
-            <div className="contact-pair-container">
-              <h4 className="profile-field-title">Address 2:</h4>
-              <h4 className="profile-field-value">{userData.address2}</h4>
-            </div>
+            {!addressTwoEmpty && (
+              <div className="contact-pair-container">
+                <h4 className="profile-field-title">Address 2:</h4>
+                <h4 className="profile-field-value">{userData.address2}</h4>
+              </div>
+            )}
           </div>
 
           <div className="profile-field-container">

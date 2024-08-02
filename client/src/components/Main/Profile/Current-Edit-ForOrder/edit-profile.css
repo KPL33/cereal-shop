@@ -1,0 +1,143 @@
+.edit-profile,
+.edit-user-details,
+.edit-title-column,
+.edit-value-column {
+  display: flex;
+}
+
+.edit-profile,
+.edit-title-column,
+.edit-value-column,
+.edit-buttons {
+  justify-content: center;
+}
+
+.edit-profile,
+.edit-title-column,
+.edit-value-column {
+  flex-direction: column;
+}
+
+.edit-title-column label,
+.edit-value-column input,
+.edit-value-column select {
+  margin-bottom: 10px;
+}
+
+.edit-field-title,
+.edit-field-value,
+.state-list {
+  height: 4rem;
+}
+
+.edit-profile {
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.edit-field-title {
+  font-family: "active", sans-serif;
+  text-align: right;
+  color: var(--3);
+  margin: 0 10px;
+  font-size: 3.5rem;
+}
+
+.edit-field-value {
+  font-family: "Raleway", sans-serif;
+  color: var(--5);
+  font-weight: 600;
+  font-size: 2rem;
+  width: 100%;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.state-list,
+.cancel-button,
+.save-button {
+  border-radius: 0.5rem;
+}
+
+.cancel-button,
+.save-button {
+  height: auto;
+}
+
+.cancel-button,
+.save-button {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: auto;
+  padding: 10px 20px;
+  font-family: "Raleway", sans-serif;
+  margin: 0 10px;
+  border: 1px solid var(--5);
+  background-color: var(--1);
+}
+
+.save-button:hover,
+.cancel-button:hover {
+  cursor: pointer;
+  background-color: var(--5);
+  color: var(--1);
+}
+
+.save-button {
+  color: var(--3);
+}
+
+.cancel-button {
+  color: var(--4);
+}
+
+.edit-field-value::placeholder {
+  color: var(--2);
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 4rem;
+}
+
+.state-list {
+  color: var(--3);
+
+  width: 100px;
+}
+
+.edit-buttons {
+  margin-top: 10px;
+}
+
+@media (max-width: 525px) {
+  .edit-profile {
+    padding: 20px 10px;
+  }
+
+  .edit-field-title,
+  .edit-field-value,
+  .state-list {
+    height: 3.5rem;
+  }
+
+  .edit-field-title {
+    font-size: 2.5rem;
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 475px) {
+  .edit-field-title,
+  .edit-field-value,
+  .state-list {
+    height: 3rem;
+  }
+
+  .edit-field-title {
+    font-size: 2rem;
+  }
+
+  .edit-field-value {
+    font-size: 1.5rem;
+  }
+}

@@ -49,6 +49,8 @@ const AppProvider = ({ children }) => {
   const [foodSelectionError, setFoodSelectionError] = useState(false);
   const [merchSelectionError, setMerchSelectionError] = useState(false);
 
+  const [addressTwoEmpty, setAddressTwoEmpty] = useState(true);
+
   useEffect(() => {
     // Check if the user is authenticated when the component mounts
     const isAuthenticated = localStorage.getItem("authenticated") === "true";
@@ -134,6 +136,8 @@ const AppProvider = ({ children }) => {
         setMerchAtcClicked,
         isAtcDisabled,
         setIsAtcDisabled,
+        addressTwoEmpty,
+        setAddressTwoEmpty,
       }}
     >
       {children}

@@ -2,7 +2,8 @@
   height: auto;
 }
 
-.profile-field-container, .user-details {
+.profile-field-container,
+.user-details {
   height: auto;
 }
 
@@ -10,7 +11,6 @@
   width: 50vw;
   box-shadow: 0px 4px 8px var(--5, 0.4);
   min-height: 300px;
-  max-height: 800px;
   background-color: var(--2);
   border-radius: 2rem;
   margin: 50px 0;
@@ -18,14 +18,13 @@
 
 .profile-container,
 .current-profile,
-.edit-profile, .user-details {
+.user-details {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.current-profile,
-.edit-profile {
+.current-profile {
   width: 100%;
 }
 
@@ -41,25 +40,24 @@
 }
 
 .profile-field-title {
-  min-width: 100px;
   flex-shrink: 0;
 }
 
-.title, .profile-field-title, .edit-field-title {
+.title,
+.profile-field-title {
   font-family: "active", sans-serif;
 }
 
-.profile-field-container, .edit-pair-container, .state-pair-container {
+.profile-field-container {
   font-size: 3.5rem;
-} 
-
-.profile-field-title, .edit-field-title {
-  color: var(--3);
-  margin: 0 10px;
-  
 }
 
-.profile-field-value, input.edit-field-value {
+.profile-field-title {
+  color: var(--3);
+  margin: 0 10px;
+}
+
+.profile-field-value {
   font-family: "Raleway", sans-serif;
   color: var(--5);
   font-weight: 600;
@@ -79,18 +77,11 @@
   display: flex;
   flex-wrap: wrap;
   margin: 20px 10px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-.edit-pair-container {
-  padding: 5px 0;
-}
-
-.edit-field-title {
-  text-align: right;
-}
-
-.contact-pair-container, .edit-pair-container, .edit-buttons {
+.contact-pair-container,
+.edit-buttons {
   display: flex;
 }
 
@@ -99,23 +90,12 @@
   margin: 0 30px;
 }
 
-.edit-pair-container {
-  justify-content: space-around;
-  margin-right: 80px;
-  align-items: center;
-}
-
-.edit-field-value.placeholder {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
 .edit-profile-button {
   color: var(--1);
   background-color: var(--5);
 }
 
-.edit-profile-button, .cancel-button, .save-button {
+.edit-profile-button {
   font-size: 1.5rem;
   font-weight: 600;
   width: auto;
@@ -127,28 +107,13 @@
   border: 1px solid var(--5);
 }
 
-.cancel-button {
-  color: var(--4);
-  background-color: var(--1);
-}
-
-.save-button:hover, .cancel-button:hover, .edit-profile-button:hover {
+.edit-profile-button:hover {
   cursor: pointer;
-}
-
-.cancel-button:hover, .save-button:hover {
-  background-color: var(--5);
-  color: var(--1);
 }
 
 .edit-profile-button:hover {
   color: var(--5);
   background-color: var(--1);
-}
-
-.save-button {
-  background-color: var(--1);
-  color: var(--3);
 }
 
 .profile-error {
@@ -162,44 +127,7 @@
   margin-left: 0.25rem;
 }
 
-.edit-field-value {
-  height: 4rem;
-  font-size: 2rem;
-  width: 80%;
-  font-weight: 600;
-  padding: 5px;
-}
-
-.edit-field-value::placeholder {
-  color: var(--2);
-  font-size: 1.5rem;
-  text-align: center;
-  line-height: 4rem;
-}
-
-.state-pair-container, .edit-buttons {
-  justify-content: center;
-}
-
-
-.state-pair-container {
-  display: flex;
-  margin-right: 60px;
-}
-
-.state-list {
-  color: var(--3);
-  height: auto;
-  padding: 5px 0;
-  border-radius: 0.4rem;
-}
-
-.edit-buttons {
-  margin-top: 10px;
-}
-
 @media (max-width: 1000px) {
-
   .profile-container {
     width: 80vw;
   }
@@ -207,39 +135,14 @@
   .profile-field-title {
     text-align: right;
   }
-  
-  .profile-field-title, .edit-field-title, .profile-field-value {
+
+  .profile-field-title,
+  .profile-field-value {
     font-size: 2.5rem;
   }
-  
+
   .contact-pair-container {
     padding: 5px 0;
-  }
-
-  .edit-pair-container {
-    width: 100%;
-    margin-right: 0;
-  }
-
-  .edit-field-title {
-    width: 100px;
-    margin-left: 0;
-  }
-
-  .edit-field-value {
-    font-size: 1.5rem;
-  }
-
-  .state-pair-container {
-    gap: 20px;
-  }
-
-  .state-field-title {
-    margin: 0 0 0 60px;
-  }
-
-  .state-list {
-    margin-right: 20%;
   }
 }
 
@@ -251,13 +154,13 @@
   .profile-field-title {
     margin-left: 0;
   }
-  
-  .profile-field-title, .edit-field-title, .profile-field-value {
+
+  .profile-field-title,
+  .profile-field-value {
     font-size: 2rem;
   }
 
   .contact-pair-container {
     margin: 0 30px 0 0;
-}
-
+  }
 }
